@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .navbar {
@@ -40,9 +41,7 @@ a {
   margin-left: 6%;
 }
 
-.logo-carrito-navbar{
- 
+.logo-carrito-navbar {
   margin: 10px;
   margin-right: 6%;
-  
 }
