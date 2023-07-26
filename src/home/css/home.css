@@ -177,10 +177,70 @@
   justify-content: center;
   cursor: pointer;
 }
+/* Responsive Laptop */
+@media screen and (max-width: 1024px) {
+  .home-titulo-primera-seccion {
+    font-weight: 300;
+    font-size: 2rem;
+  }
+  .home-div-franjaNegra-imagen {
+    width: 20rem;
+  }
 
-/* Inicio de Responsive */
+  .home-input-buscar-productos {
+    width: 20rem;
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 2.5rem;
+  }
+  .home-contenedor-input-buscar {
+    position: relative;
+  }
+  .home-icono-lupa-input-buscar {
+    font-size: 1rem;
+    position: absolute;
+    top: 35%;
+    left: 4%;
+  }
+  .home-boton-submit-buscar-productos {
+    padding: 1rem;
+    color: white;
+    font-size: 1rem;
+  }
 
-@media screen and (max-width: 425px) {
+  /* Segunda seccion: Sobre nosotros */
+  .home-segundo-section-sobre-nosotros {
+    display: flex;
+
+    gap: 2rem;
+  }
+  .home-imagen-sobre-nosotros {
+    width: 35rem;
+  }
+  .home-titulo-sobreNosotros {
+    font-size: 2rem;
+  }
+  .home-titulo-sobreNosotros-tituloPagina {
+    font-size: 2rem;
+  }
+  .home-contenedor-texto-sobre-nosotros {
+    padding: 1rem;
+  }
+  .home-boton-sobreNosotros-leermas {
+    width: 10rem;
+  }
+
+  /* Cuarta seccion: Donde encontrarnos */
+  .home-cuarta-section-donde-encontrarnos-titulo {
+    font-size: 1.5rem;
+  }
+  .home-cuarta-section-mapa {
+    width: 100%;
+  }
+}
+/* Inicio de Responsive de Mobile hasta Tablet*/
+
+@media screen and (max-width: 768px) {
   .home-primer-section {
     flex-direction: column;
     gap: 0;
@@ -236,7 +296,7 @@
     gap: 2rem;
   }
   .home-imagen-sobre-nosotros {
-    max-width: 100%;
+    width: 100%;
   }
   .home-titulo-sobreNosotros {
     font-size: 2rem;
