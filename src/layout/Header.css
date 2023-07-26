@@ -5,43 +5,12 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-.navbar {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 114px;
-  width: 100vw;
-}
-
-a {
-  text-decoration: none;
-  color: #6b6b6b;
-}
 
 .navbar a:hover {
   color: #ff6b6b;
 }
 
-.lista-navbar {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 15px;
-  align-items: center;
-  width: 50%;
-  list-style: none;
-  margin: 5px;
-  margin-right: 5%;
-  font-size: 20px;
-}
-
-.logo-navbar {
-  width: 15%;
-  margin: 10px;
-  margin-left: 6%;
-}
-
-.logo-carrito-navbar {
-  margin: 10px;
-  margin-right: 6%;
+.logo-navbar{
+  width: 80px;
+  
 }
