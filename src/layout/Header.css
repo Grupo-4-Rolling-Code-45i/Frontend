@@ -11,14 +11,18 @@
   align-items: center;
   height: 114px;
   width: 100vw;
- 
 }
+
 a {
   text-decoration: none;
-  color: black;
+  color: #6b6b6b;
 }
+
+.navbar a:hover {
+  color: #ff6b6b;
+}
+
 .lista-navbar {
-  
   display: flex;
   justify-content: space-evenly;
   gap: 15px;
@@ -31,8 +35,14 @@ a {
 }
 
 .logo-navbar {
-  color: black;
-  width: 10%;
+  width: 15%;
   margin: 10px;
   margin-left: 6%;
+}
+
+.logo-carrito-navbar{
+ 
+  margin: 10px;
+  margin-right: 6%;
+  
 }
