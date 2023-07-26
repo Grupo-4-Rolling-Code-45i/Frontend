@@ -177,3 +177,85 @@
   justify-content: center;
   cursor: pointer;
 }
+
+/* Inicio de Responsive */
+
+@media screen and (max-width: 425px) {
+  .home-primer-section {
+    flex-direction: column;
+    gap: 0;
+    background-image: url(../assets/img/primera-seccion-mobile.jpg);
+    background-size: cover;
+    padding: 0;
+  }
+  .home-titulo-primera-seccion {
+    color: white;
+  }
+  .home-div-imagen-primera-seccion {
+    display: none;
+  }
+
+  .home-titulo-primera-seccion {
+    font-weight: 300;
+    font-size: 2rem;
+  }
+  .home-formulario-buscar-productos {
+    display: flex;
+    margin-top: 1rem;
+  }
+  .home-input-buscar-productos {
+    width: 15rem;
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 2.5rem;
+  }
+  .home-contenedor-input-buscar {
+    position: relative;
+  }
+  .home-icono-lupa-input-buscar {
+    font-size: 1rem;
+    position: absolute;
+    top: 35%;
+    left: 4%;
+  }
+  .home-boton-submit-buscar-productos {
+    background-color: var(--rojo);
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0px 20px 20px 0px;
+    cursor: pointer;
+  }
+
+  /* Segunda seccion: Sobre nosotros */
+  .home-segundo-section-sobre-nosotros {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .home-imagen-sobre-nosotros {
+    max-width: 100%;
+  }
+  .home-titulo-sobreNosotros {
+    font-size: 2rem;
+  }
+  .home-titulo-sobreNosotros-tituloPagina {
+    font-size: 2rem;
+  }
+  .home-contenedor-texto-sobre-nosotros {
+    padding: 1rem;
+  }
+  .home-boton-sobreNosotros-leermas {
+    width: 10rem;
+  }
+
+  /* Cuarta seccion: Donde encontrarnos */
+  .home-cuarta-section-donde-encontrarnos-titulo {
+    font-size: 1.5rem;
+  }
+  .home-cuarta-section-mapa {
+    width: 100%;
+  }
+}
