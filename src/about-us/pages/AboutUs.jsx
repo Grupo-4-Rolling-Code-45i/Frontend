@@ -11,24 +11,34 @@ export const Aboutus = () => {
     <div className='sobreNosotros-container-cards'>
       <div className='sobreNosotros-card'>
         <div className='sobreNosotros-image-container'>
-          <img src="" alt="" />
+          <img  className='sobreNosotros-image' src='src\about-us\assets\nico.jpg' alt="Fotografía de Nico Quinteros" />
         </div>
-        <h4 className='sobreNosotros-nombre-card'>Nombre 1</h4>
+        <h4 className='sobreNosotros-nombre-card'>Nico Quinteros</h4>
         <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
         <div className="sobreNosotros-conteiner-botones">
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-linkedin-in"></i></button>
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button>
+          <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/nicol%C3%A1s-quinteros-459a93198/" target='_blank'>            
+          <button className='sobreNosotros-boton-social'>
+            <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+          </a>
+          <a  className='sobre-nosotros-link' href="https://github.com/nicoquinteros23" target='_blank'>
+          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button></a>
         </div>
       </div>
       <div className='sobreNosotros-card'>
         <div className='sobreNosotros-image-container'>
-          <img src="" alt="" />
+          <img className='sobreNosotros-image' src="src\about-us\assets\maxi.jpg" alt="Fotografía de Maxi Majorel" />
         </div>
-        <h4 className='sobreNosotros-nombre-card'>Nombre 1</h4>
+        <h4 className='sobreNosotros-nombre-card'>Maxi Majorel</h4>
         <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
         <div className="sobreNosotros-conteiner-botones">
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-linkedin-in"></i></button>
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button>
+          <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/maximo-majorel/" target='_blank'>            
+          <button className='sobreNosotros-boton-social'>
+            <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+          </a>
+          <a  className='sobre-nosotros-link' href="https://github.com/maximajorel" target='_blank'>
+          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button></a>
         </div>
       </div>
       <div className='sobreNosotros-card'>

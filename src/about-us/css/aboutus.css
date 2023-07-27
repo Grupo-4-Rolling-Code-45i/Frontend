@@ -34,6 +34,11 @@
   height: 20rem;
   border-radius: 20px;
 }
+.sobreNosotros-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
 .sobreNosotros-nombre-card {
   font-weight: bold;
   color: var(--rojo);
@@ -41,6 +46,9 @@
 }
 .sobreNosotros-desc-card {
   text-align: center;
+}
+.sobre-nosotros-link {
+  text-decoration: none;
 }
 .sobreNosotros-conteiner-botones {
   display: flex;
