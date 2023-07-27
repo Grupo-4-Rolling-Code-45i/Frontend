@@ -60,3 +60,23 @@
   width: 2rem;
   height: 2rem;
 }
+/* Responsive hasta laptop  */
+
+@media screen and (max-width: 1024px) {
+  .sobreNosotros-container-cards {
+    margin-top: 4rem;
+    flex-wrap: wrap !important;
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+/* Responsive Mobile  */
+
+@media screen and (max-width: 425px) {
+  .sobreNosotros-container-cards {
+    margin-top: 4rem;
+    flex-wrap: wrap !important;
+    justify-content: center;
+    gap: 20px;
+  }
+}
