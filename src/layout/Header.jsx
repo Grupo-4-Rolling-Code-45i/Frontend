@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Link } from "react-router-dom";
 
 function OffcanvasExample() {
   return (
@@ -12,8 +13,9 @@ function OffcanvasExample() {
       {["sm"].map((expand) => (
         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
+            <Nav.Link href="/">
             <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
-
+            </Nav.Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -27,23 +29,23 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Inicio</Nav.Link>
+                  <Nav.Link href="/">Inicio</Nav.Link>
 
-                  <Nav.Link href="#action2">Nuestros productos</Nav.Link>
-                  <Nav.Link href="#action3">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="#action4">Contacto</Nav.Link>
+                  <Nav.Link href="/crear">Nuestros productos</Nav.Link>
+                  <Nav.Link href="/sobre-nosotros">Sobre nosotros</Nav.Link>
+                  <Nav.Link href="/crear">Contacto</Nav.Link>
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action3">
+                    <NavDropdown.Item href="/crear">
                       Iniciar sesion
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
+                    <NavDropdown.Item href="/crear">
                       Crear cuenta
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="#action5">
+                  <Nav.Link href="/crear">
                     {" "}
                     <img src="src\assets\Carrito.png" alt="" />
                   </Nav.Link>

@@ -58,14 +58,19 @@ export const Aboutus = () => {
         </div>
       </div>
       <div className='sobreNosotros-card'>
-        <div className='sobreNosotros-image-container'>
-          <img src="" alt="" />
+      <div className='sobreNosotros-image-container'>
+          <img className='sobreNosotros-image' src="src\about-us\assets\agustin.jpg" alt="Fotografía de Damián Paz" />
         </div>
-        <h4 className='sobreNosotros-nombre-card'>Nombre 1</h4>
+        <h4 className='sobreNosotros-nombre-card'>Agustín Rubio</h4>
         <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
         <div className="sobreNosotros-conteiner-botones">
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-linkedin-in"></i></button>
-          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button>
+          <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/agustin-rubio-/" target='_blank'>            
+          <button className='sobreNosotros-boton-social'>
+            <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+          </a>
+          <a  className='sobre-nosotros-link' href="https://github.com/agustin-rubio" target='_blank'>
+          <button className='sobreNosotros-boton-social'><i class="fa-brands fa-github"></i></button></a>
         </div>
       </div>
     </div>
