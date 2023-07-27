@@ -1,0 +1,62 @@
+:root {
+  --rojo: #ff5a5f;
+  --negro: #252525;
+  --amarillo: #fcd581;
+}
+.sobreNosotros-main-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 115px);
+  padding: 1rem;
+}
+.sobreNosotros-titulo {
+  font-weight: bold;
+  color: var(--rojo);
+}
+.sobreNosotros-container-cards {
+  display: flex;
+  margin-top: 4rem;
+  flex-wrap: wrap !important;
+  justify-content: space-between;
+  gap: 20px;
+}
+.sobreNosotros-card {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  gap: 10px;
+}
+.sobreNosotros-image-container {
+  background-color: gray;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 20px;
+}
+.sobreNosotros-nombre-card {
+  font-weight: bold;
+  color: var(--rojo);
+  font-size: 2rem;
+}
+.sobreNosotros-desc-card {
+  text-align: center;
+}
+.sobreNosotros-conteiner-botones {
+  display: flex;
+  gap: 5px;
+}
+.sobreNosotros-boton-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 100%;
+  outline: none;
+  border: none;
+  background-color: var(--rojo);
+  color: white;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+}
