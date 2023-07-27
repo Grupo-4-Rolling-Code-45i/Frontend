@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 113px);
+  padding: 1rem;
 }
 .ErrorPage-404-numero {
   font-size: 15rem;
@@ -17,4 +18,27 @@
 }
 .ErrorPage-404-texto {
   font-size: 2rem;
+}
+
+/* Responsive tablet  */
+
+@media screen and (max-width: 768px) {
+  .ErrorPage-404-numero {
+    font-size: 10rem;
+  }
+  .ErrorPage-404-texto {
+    font-size: 1.2rem;
+  }
+
+  /* Responsive mobile  */
+
+  @media screen and (max-width: 425px) {
+    .ErrorPage-404-numero {
+      font-size: 8rem;
+    }
+    .ErrorPage-404-texto {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
 }
