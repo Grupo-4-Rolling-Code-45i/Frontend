@@ -10,12 +10,7 @@ function OffcanvasExample() {
   return (
     <>
       {["sm"].map((expand) => (
-        <Navbar
-          sticky="top"
-          key={expand}
-          expand={expand}
-          className="bg-body-tertiary mb-3"
-        >
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
             <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
 
