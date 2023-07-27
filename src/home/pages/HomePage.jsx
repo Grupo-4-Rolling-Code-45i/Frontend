@@ -7,7 +7,7 @@ export const HomePage = () => {
         <section className='home-primer-section'>
             <div className='home-div-imagen-primera-seccion'>
                 <div className='home-div-franjaNegra-imagen'>
-                    <img className='home-imagen-pizza-primera-seccion' src="src\home\assets\img\pizza-primera-seccion-png.png" alt="" />
+                    <img className='home-imagen-pizza-primera-seccion' src="src\home\assets\img\pizza-primera-seccion-png.png" alt="Imagen de Pizza" />
                 </div>
                 </div>
             <div className='home-div-formularioBuscar-primera-seccion'>
@@ -25,7 +25,7 @@ export const HomePage = () => {
          {/* Segunda sección de la web */}
         <section className='home-segundo-section-sobre-nosotros'>
             <div className='home-contenedor-imagen-sobre-nosotros'>
-                <img className='home-imagen-sobre-nosotros' src="src\home\assets\img\pizza-sobre-nosotros.png" alt="" />
+                <img className='home-imagen-sobre-nosotros' src="src\home\assets\img\pizza-sobre-nosotros.png" alt="Imagen de Pizza sobre una mesa con las porciones cortadas" />
             </div>
             <div className='home-contenedor-texto-sobre-nosotros'>
                 <h3 className='home-titulo-sobreNosotros'>Sobre nosotros</h3>
