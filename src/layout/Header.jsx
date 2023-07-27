@@ -1,25 +1,60 @@
-import React from 'react';
-import './Header.css'
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
+function OffcanvasExample() {
+  return (
+    <>
+      {["sm"].map((expand) => (
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+          <Container fluid>
+            <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
 
-export default function header(){
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  PIZZERIA ROLLING CODE
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="#action1">Inicio</Nav.Link>
 
-    return <>
-   <header>
-      
-        <nav className="navbar">
-          <a  href="">  <img className="logo-navbar" src="src\assets\logo-pizzeria.png" alt="" /></a>
-        
-  
-          <ul className="lista-navbar">
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Nuestros productos</a></li>
-            <li><a href="">Sobre nosotros</a></li>
-            <li><a href="">Contacto</a></li>
-            <li><a href=""> <img className="logo-carrito-navbar" src="src\assets\Carrito.png" alt="" /> </a></li>
-          </ul>
-        </nav>
-      </header>
-   
-   </>
+                  <Nav.Link href="#action2">Nuestros productos</Nav.Link>
+                  <Nav.Link href="#action3">Sobre nosotros</Nav.Link>
+                  <Nav.Link href="#action4">Contacto</Nav.Link>
+                  <NavDropdown
+                    title="Cuenta"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item href="#action3">
+                      Iniciar sesion
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      Crear cuenta
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Nav.Link href="#action5">
+                    {" "}
+                    <img src="src\assets\Carrito.png" alt="" />
+                  </Nav.Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
+    </>
+  );
 }
+
+export default OffcanvasExample;
