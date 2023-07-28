@@ -1,0 +1,142 @@
+/* @import '/node_modules/bootstrap/dist/css/bootstrap.min.css'; */
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos para el primer div con la foto grande y detalles */
+  .product-details {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .product-image {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .product-image img {
+    width: 100%;
+    max-width: 400px; /* Ajusta el tamaño de la imagen según tu diseño */
+    height: auto;
+  }
+  
+  .product-info {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .product-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .product-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .product-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .product-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-actions input {
+    margin-right: 10px;
+    width: 38px;
+    padding: 4px 0 2px 12px;
+    border: none;
+    border-radius: 6px;
+    color: black;
+    font-weight: 550;
+    background-color: #FCD581;
+  }
+
+  .product-actions button {
+    padding: 5px 20px;
+    border: none;
+    color: white;
+    background-color: #FF5A5F;
+    border-radius: 10px;
+
+  }
+  
+  /* Estilos para el segundo div con los pasos para realizar el pedido */
+  .how-to-order {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+  }
+  
+  .step-card {
+    flex: 1;
+    max-width: 200px; /* Ajusta el tamaño según tu diseño */
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .step-card img {
+    width: 100%;
+    max-height: 150px; /* Ajusta el tamaño de la imagen según tu diseño */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .step-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .step-card p {
+    font-size: 14px;
+  }
+  
+  /* Estilos para el tercer div con productos relacionados */
+  .related-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  
+  .related-product-card {
+    flex: 1;
+    max-width: 200px; /* Ajusta el tamaño según tu diseño */
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .related-product-card img {
+    width: 100%;
+    max-height: 150px; /* Ajusta el tamaño de la imagen según tu diseño */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .related-product-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .related-product-card p {
+    font-size: 14px;
+  }
