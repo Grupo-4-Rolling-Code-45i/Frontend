@@ -1,3 +1,19 @@
-.formstyles{
-    background-image: "src\contacto\assets\img\pizza-background.jpg";
+.container-styles{
+    background-image:url("../assets/img/pizza.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:120vh;
+    background-position: center;
+}
+
+.titulo
+{
+    color: #ff5a5f ;
+    
+}
+
+#boton
+{
+    color:  #252525 !important;
+    background-color:#fcd581 ;
 }
