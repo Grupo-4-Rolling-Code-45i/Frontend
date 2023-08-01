@@ -163,6 +163,9 @@
   justify-content: space-around;
   margin-bottom: 3rem;
 }
+.home-social-link {
+  text-decoration: none;
+}
 .home-cuarta-section-boton-redesSociales {
   color: white;
   padding: 1rem;
