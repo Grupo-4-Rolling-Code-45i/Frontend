@@ -6,13 +6,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Error404 } from './404/pages/Error404';
 import { Principal } from './admin/pages/Principal';
 import { Usuarios } from './admin/pages/Usuarios';
+import { Productos } from './admin/pages/Productos';
 
 export default function App() {
   return (
     <div>
       <Header />
       {/* <Principal/> */}
-      <Usuarios/>
+      {/* <Usuarios/> */}
+      <Productos/>
       {/* <BrowserRouter>
         <Routes>
             <Route path='/' element={ <HomePage/>}/>

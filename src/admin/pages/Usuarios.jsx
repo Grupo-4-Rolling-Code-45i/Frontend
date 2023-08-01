@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router';
-import "../css/usuarios.css";
+import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 export const Usuarios = () => {
   
