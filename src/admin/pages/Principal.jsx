@@ -4,8 +4,8 @@ import { Button, Container } from 'react-bootstrap';
 import "../css/principal.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {BsFillPersonFill,BsCartFill} from "react-icons/bs";
-import{FaPizzaSlice} from "react-icons/fa";
+import {BsFillPersonFill,BsCartFill} from 'react-icons/bs';
+import{FaPizzaSlice} from 'react-icons/fa';
 
 export const Principal = () => {
   return (

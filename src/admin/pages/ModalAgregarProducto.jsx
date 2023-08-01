@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import {FaPlusCircle} from "react-icons/fa";
+import {FaPlusCircle} from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 
@@ -154,10 +154,11 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
               <Form.Label>Descripcion</Form.Label>
               <Form.Control as="textarea" rows={3} 
               name='descripcion' 
+              placeholder='de 8 porciones con jamon serrano y tomates frescos'
               value={formData.descripcion}
               onChange={handleChange}
            
-              maxLength={50}
+              maxLength={60}
               minLength={3}
               />
               
@@ -171,6 +172,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
               <Form.Control 
               type='text'
               name='imagen' 
+              placeholder='https://ejemplo.com/pizza_napolitana.jpg'
               value={formData.imagen}
              
               onChange={handleChange}

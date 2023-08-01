@@ -7,14 +7,16 @@ import { Error404 } from './404/pages/Error404';
 import { Principal } from './admin/pages/Principal';
 import { Usuarios } from './admin/pages/Usuarios';
 import { Productos } from './admin/pages/Productos';
+import { Pedidos } from './admin/pages/Pedidos';
 
 export default function App() {
   return (
     <div>
       <Header />
-      {/* <Principal/> */}
+      <Principal/>
       {/* <Usuarios/> */}
-      <Productos/>
+      {/* <Pedidos/> */}
+      {/* <Productos/> */}
       {/* <BrowserRouter>
         <Routes>
             <Route path='/' element={ <HomePage/>}/>

@@ -25,6 +25,23 @@ export const Usuarios = () => {
         console.log(error);
         }
     }
+
+
+const activarUsersDB= async (e) =>{
+
+
+
+    try{
+        
+    }
+
+    catch{
+
+    }
+}
+
+
+
     
     useEffect(() => {
    cargarUsersDB();
@@ -37,48 +54,68 @@ export const Usuarios = () => {
     return (
     <div>
 
-<h2 className='m-3 text-center rojo'>USUARIOS</h2>
+<h2 className='m-3 text-center rojo pt-2'>USUARIOS</h2>
 <Container fluid>
 
 <Table responsive variant='warning' striped bordered hover >
-      <thead>
+      <thead className='text-center'>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
           <th>Email</th>
           <th>Rol</th>
+          <th>Estado</th>
+          <th>Activar</th>
+          <th>Inactivar</th>
+          
         </tr>
       </thead>
-      <tbody>
+      <tbody className='text-center'>
       <tr>
                 <td>1</td>
                 <td>Juan Pérez</td>
                 <td>juan@example.com</td>
                 <td>Administrador</td>
+                <td>Activo</td>
+                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+               
             </tr>
             <tr>
                 <td>2</td>
                 <td>María López</td>
                 <td>maria@example.com</td>
                 <td>Usuario</td>
+                <td>Activo</td>
+                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Carlos Ruiz</td>
                 <td>carlos@example.com</td>
                 <td>Usuario</td>
+                <td>Activo</td>
+                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>Laura Gómez</td>
                 <td>laura@example.com</td>
                 <td>Administrador</td>
+                <td>Activo</td>
+                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Pedro Santos</td>
                 <td>pedro@example.com</td>
                 <td>Usuario</td>
+                <td>Activo</td>
+                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
             </tr>
 
 
@@ -97,6 +134,9 @@ return(
     <td>{user.nombre}</td>
     <td>{user.email}</td>
     <td>{user.rol}</td>
+    <td>{user.estado}</td>
+    <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
+    <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
   </tr>
 )
 

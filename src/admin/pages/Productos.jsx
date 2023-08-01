@@ -3,7 +3,7 @@ import  { useState } from 'react'
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import Swal from 'sweetalert2';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router';
@@ -56,21 +56,47 @@ export const Productos = () => {
     }
     
   const eliminarProductsDB = async(id) => {
-    try{
-      const resp=await pruebaApi.delete(`/admin/eliminar/${id}`);
-      console.log(resp);
-      
-  }
 
-  catch(error)
-  {
-  console.log(error);
-  if(error.response.status===401){
-    localStorage.removeItem("token");
-    navigate("/login");
-  }
-  }
-  };
+    Swal.fire({
+      title: 'Está seguro de eliminar el producto?',
+      text: "esta accion es irreversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FCD581',
+      cancelButtonColor: '#FF5A5F',
+      confirmButtonText: '<h6 class=negro>Si, quiero eliminarlo </h6>',
+    })
+
+    .then((result) => {
+      if (result.isConfirmed) {
+
+        try{
+          const resp= pruebaApi.delete(`/admin/eliminar/${id}`);
+          console.log(resp);
+          Swal.fire(
+            'Eliminado!',
+            'el producto fue eliminado.',
+            'success'
+          )
+          
+      }
+    
+      catch(error)
+      {
+      console.log(error);
+      if(error.response.status===401){
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+      }
+      };
+
+
+      }
+    )}
+
+
+ 
 
 
   const handleChangeEdit = (e) => {
@@ -162,13 +188,13 @@ setShowedit(true);
   return (
     <div>
 
-<Container>
+<Container fluid>
 
-<h2 className='text-center rojo '>PRODUCTOS</h2>
+<h2 className='text-center rojo pt-2 '>PRODUCTOS</h2>
 <ModalAgregarProducto/>
 
 <Table  responsive variant='warning' striped bordered hover>
-      <thead>
+      <thead className='text-center'>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
@@ -179,7 +205,7 @@ setShowedit(true);
           <th>Editar</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='text-center'>
 
       <tr>
                 <td>1</td>
@@ -187,7 +213,7 @@ setShowedit(true);
                 <td>12.99</td>
                 <td>Deliciosa tarta hecha con manzanas frescas.</td>
                 <td>https://ejemplo.com/tarta_manzana.jpg</td>
-                <td><Button className='bg-rojo' >Eliminar</Button ></td>
+                <td><Button onClick={()=> eliminarProductsDB(1)} className='bg-rojo' variant='danger'>Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
@@ -196,7 +222,7 @@ setShowedit(true);
                 <td>8.50</td>
                 <td>Pasta italiana con salsa carbonara y tocino.</td>
                 <td>https://ejemplo.com/pasta_carbonara.jpg</td>
-                <td><Button className='bg-rojo' >Eliminar</Button ></td>
+                <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
@@ -205,7 +231,7 @@ setShowedit(true);
                 <td>10.00</td>
                 <td>Clásica pizza italiana con tomate, mozzarella y albahaca.</td>
                 <td>https://ejemplo.com/pizza_margarita.jpg</td>
-                <td><Button className='bg-rojo' >Eliminar</Button ></td>
+                <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
@@ -214,7 +240,7 @@ setShowedit(true);
                 <td>15.99</td>
                 <td>Selección de sushi con variedad de pescados y vegetales.</td>
                 <td>https://ejemplo.com/sushi_variado.jpg</td>
-                <td><Button className='bg-rojo' >Eliminar</Button ></td>
+                <td><Button className='bg-rojo' variant='danger'>Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
@@ -223,7 +249,7 @@ setShowedit(true);
                 <td>9.75</td>
                 <td>Tacos mexicanos con carne al pastor y salsa.</td>
                 <td>https://ejemplo.com/tacos_pastor.jpg</td>
-                <td><Button className='bg-rojo' >Eliminar</Button ></td>
+                <td><Button className='bg-rojo'variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
 
