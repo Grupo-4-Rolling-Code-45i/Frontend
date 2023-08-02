@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from './layout/Header';
-import Footer from './layout/Footer';
+import Header from './layout/Header'
+import Footer from './layout/Footer'
 import { HomePage } from './home/pages/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Error404 } from './404/pages/Error404';
 import { Aboutus } from './about-us/pages/AboutUs';
-import { Contacto } from "./contacto/Contacto";
+
 
 export default function App() {
   return (
@@ -16,9 +16,9 @@ export default function App() {
             <Route path='/' element={ <HomePage/>}/>
             <Route path='*' element={ <Error404/>}/>            
             <Route path='/sobre-nosotros' element={ <Aboutus/>}/>
-            <Route path='/contacto' element={ <Contacto/> }/>
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
