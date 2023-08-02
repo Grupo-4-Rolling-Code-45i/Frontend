@@ -92,14 +92,21 @@ export const Registro = () => {
                     text: 'Ocurrió un error inesperado, intentelo nuevamente',                
                   })
             }
-        } catch (error) {            
-            if (error.response.status === 409){
+        } catch (error) { 
+                       
+            if (error && error.response && error.response.status === 409){
                 return Swal.fire({
                     icon: 'error',
                     title: '¡Ups!',
                     text: `Ya existe un usuario registrado con el correo ${email}`,                
-                  })
-            } 
+                  }) 
+            } else{
+                return Swal.fire({
+                    icon: 'error',
+                    title: '¡Ups!',
+                    text: `Ocurrió un error inesperado, intentelo de nuevo`,                
+                  }) 
+            }
         }
 
         
