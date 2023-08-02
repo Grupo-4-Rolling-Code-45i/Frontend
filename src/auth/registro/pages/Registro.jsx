@@ -1,19 +1,38 @@
 import React, { useState } from 'react'
 import '../css/Registro.css'
 import Swal from 'sweetalert2';
+import reactToMyPizzaAPI from '../../../api/ReactToMyPizzaAPI';
 export const Registro = () => {
     const [nombre, setNombre] = useState('');
     const [edad, setEdad] = useState('');
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [confirmarContraseña, setConfirmarContraseña] = useState('');
-    const calcularEdad = (fechaNacimiento) =>{
-        const fechaActual = new Date()
-        const fechaNac = new Date(fechaNacimiento)
-        const edadIngresada = fechaActual.getFullYear() - fechaNac.getFullYear();
-        setEdad(edadIngresada)
-    }
-    const handleRegister = (e)=>{
+    const calcularEdad = (fechaNacimiento) => {
+        const fechaActual = new Date();
+        const fechaNac = new Date(fechaNacimiento);
+        let edadIngresada = fechaActual.getFullYear() - fechaNac.getFullYear();
+      
+        const mesActual = fechaActual.getMonth();
+        const mesNacimiento = fechaNac.getMonth();
+      
+        const diaActual = fechaActual.getDate();
+        const diaNacimiento = fechaNac.getDate();
+      
+        
+        if (mesNacimiento > mesActual) {
+          edadIngresada--;
+        } else if (mesNacimiento === mesActual) {
+          
+          if (diaNacimiento > diaActual) {
+            edadIngresada--;
+          }
+        }
+      
+        setEdad(edadIngresada);
+      };
+      
+    const handleRegister = async (e)=>{
         e.preventDefault();
         // Validaciones
         // ! Verificar que no haya campos vacios
@@ -43,7 +62,6 @@ export const Registro = () => {
               })
         }
         // ! Verificar que la edad ingresada sea mayor a 13 años
-        console.log(edad)
         if(+edad < 13){
             return Swal.fire({
                 icon: 'error',
@@ -51,6 +69,39 @@ export const Registro = () => {
                 text: 'Debe ser mayor de 13 años para poder registrarse en nuestro sitio',                
               })
         }
+        // ! Creo usuario en la base de datos
+        try {
+            const resp = await reactToMyPizzaAPI.post("api/auth/new",{
+                nombre,
+                edad,
+                email,
+                password: contraseña
+            })
+
+            if (resp.status === 201){
+                Swal.fire({
+                    icon: 'success',
+                    title: `Bienvenido a React to my pizza ${nombre}!`,
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
+            } else{
+                return Swal.fire({
+                    icon: 'error',
+                    title: '¡Ups!',
+                    text: 'Ocurrió un error inesperado, intentelo nuevamente',                
+                  })
+            }
+        } catch (error) {            
+            if (error.response.status === 409){
+                return Swal.fire({
+                    icon: 'error',
+                    title: '¡Ups!',
+                    text: `Ya existe un usuario registrado con el correo ${email}`,                
+                  })
+            } 
+        }
+
         
     }
   return (
