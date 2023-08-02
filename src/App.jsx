@@ -19,6 +19,7 @@ export default function App() {
             <Route path='/contacto' element={ <Contacto/> }/>
         </Routes>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }
