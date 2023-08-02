@@ -33,7 +33,7 @@ function OffcanvasExample() {
 
                   <Nav.Link href="/crear">Nuestros productos</Nav.Link>
                   <Nav.Link href="/sobre-nosotros">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="/crear">Contacto</Nav.Link>
+                  <Nav.Link href="/contacto">Contacto</Nav.Link>
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
