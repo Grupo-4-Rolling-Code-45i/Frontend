@@ -61,3 +61,14 @@
   font-weight: bold;
   width: 8rem;
 }
+
+@media screen and (max-width: 425px) {
+  .registro-primer-titulo {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .registro-formulario {
+    padding: 1rem;
+    width: 100%;
+  }
+}
