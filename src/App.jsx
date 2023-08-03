@@ -27,6 +27,7 @@ export default function App() {
             <Route path='/admin-pedidos' element={ <Pedidos/> }/>
         </Routes>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }
