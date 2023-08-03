@@ -5,18 +5,21 @@ import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
+import pruebaApi from '../../api/prueba';
+
+
 export const Usuarios = () => {
   
   
     const [cargarUsuarios, setcargarUsuarios] = useState([]);
     
-// const navigate=useNavigate();
     const cargarUsersDB= async () =>
     {
 
         try{
-            // const resp=await pruebaApi.get("/admin/usuarios");
-            // setcargarUsuarios(resp.data.usuarios);
+            //reemplazar por ruta correcta
+             const resp=await pruebaApi.get("/admin/usuarios");
+             setcargarUsuarios(resp.data.usuarios);
 
         }
 
@@ -26,30 +29,48 @@ export const Usuarios = () => {
         }
     }
 
+const activarUsersDB= async (_id,e) =>{
 
-const activarUsersDB= async (e) =>{
+    
 
-
-
+if(e===false){
+   let estado="inactivo";
     try{
-        
+        //reemplazar por ruta correcta
+        const resp=await pruebaApi.put("/auth/editar",{_id,estado});
     }
 
     catch{
-
+console.log(error);
     }
+
 }
 
+if(e===true){
+    let estado="activo";
+    try{
+        //reemplazar por ruta correcta
+        const resp=await pruebaApi.put("/auth/editar",{_id,estado});
+    }
 
+    catch{
+console.log(error);
+    }
 
-    
+}
+
+ 
+}
+
     useEffect(() => {
    cargarUsersDB();
   
     }, []);
   
-  
-  
+    useEffect(() => {
+        cargarUsersDB();
+       
+         }, [activarUsersDB]);
   
     return (
     <div>
@@ -117,14 +138,6 @@ const activarUsersDB= async (e) =>{
                 <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
                 <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
             </tr>
-
-
-
-
-
-
-
-
 
 {cargarUsuarios.map((user) =>{
 return(

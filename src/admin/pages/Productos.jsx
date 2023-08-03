@@ -22,6 +22,8 @@ export const Productos = () => {
     useEffect(() => {
    cargarProductsDB();
     }, []);
+
+    
     
     const [showedit, setShowedit] = useState(false);
 

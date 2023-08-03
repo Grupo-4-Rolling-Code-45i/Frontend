@@ -6,21 +6,20 @@ import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 import{FaCheck} from 'react-icons/fa';
-
-
+import pruebaApi from '../../api/prueba';
 
 
 export const Pedidos = () => {
 
     const [cargarPedidos, setcargarPedidos] = useState([]);
     
-// const navigate=useNavigate();
     const cargarPedidosDB= async () =>
     {
 
         try{
-            // const resp=await pruebaApi.get("/admin/pedidos");
-            // setcargarUsuarios(resp.data.pedidos);
+            //reemplazar por ruta correcta
+           const resp=await pruebaApi.get("/admin/pedidos");
+            setcargarPedidos(resp.data.pedidos);
 
         }
 
@@ -30,35 +29,32 @@ export const Pedidos = () => {
         }
     }
 
+    const confirmarPedidosDB= async (_id) =>{
 
-
-    const confirmarPedidosDB= async (e) =>{
-
-
-
-        try{
-            
-        }
-    
-        catch{
-    
-        }
-    }
-    
-    
-    
+       
+            let estado="entregado";
+             try{
+                 const resp=await pruebaApi.put("/admin/editarpedido",{_id,estado});
+             }
+         
+             catch{
+         console.log(error);
+             }
+         
+         }
         
         useEffect(() => {
        cargarPedidosDB();
       
         }, []);
 
-
+        useEffect(() => {
+            cargarPedidosDB();
+           
+             }, [confirmarPedidosDB]);
 
   return (
     <div>
-
-
 
 <h2 className='m-3 text-center rojo pt-2'>Pedidos</h2>
 <Container fluid>
