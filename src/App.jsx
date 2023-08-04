@@ -25,6 +25,7 @@ export default function App() {
             <Route path='/admin-usuarios' element={ <Usuarios/> }/>
             <Route path='/admin-productos' element={ <Productos/> }/>
             <Route path='/admin-pedidos' element={ <Pedidos/> }/>
+            <Route path='/admin-principal' element={ <Principal/> }/>
         </Routes>
       </BrowserRouter>
       <Footer/>

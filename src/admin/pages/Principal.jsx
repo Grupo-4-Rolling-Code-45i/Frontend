@@ -6,8 +6,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {BsFillPersonFill,BsCartFill} from 'react-icons/bs';
 import{FaPizzaSlice} from 'react-icons/fa';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+
 
 export const Principal = () => {
+
+const navigate=useNavigate();
+
+const navAdmin=(nav)=>{
+navigate(nav);
+
+}
+
+
+
   return (
     <div>
 
@@ -18,8 +31,9 @@ export const Principal = () => {
     <Col   >
     
     <h1 style={{fontSize:"600%"}}>   <BsFillPersonFill/>  </h1> 
+    
         
-    <Button className="" id='boton-principal'> Usuarios</Button>
+    <Button className="" id='boton-principal'onClick={()=>navAdmin("/admin-usuarios")}> Usuarios</Button>
 
     
     </Col>
@@ -27,13 +41,13 @@ export const Principal = () => {
     <Col >
   
     <h1 style={{fontSize:"600%"}}>   <FaPizzaSlice/>  </h1> 
-    <Button className=" " id='boton-principal'>Productos</Button>
+    <Button className=" " id='boton-principal' onClick={()=>navAdmin("/admin-productos")}>Productos</Button>
    
     
     </Col>
     <Col className='justify-content-center' >
     <h1 style={{fontSize:"600%"}}>   <BsCartFill/>  </h1> 
-    <Button className=" " id='boton-principal'>Pedidos</Button>
+    <Button className=" " id='boton-principal' onClick={()=>navAdmin("/admin-pedidos")}>Pedidos</Button>
     
     </Col>
 </Row>

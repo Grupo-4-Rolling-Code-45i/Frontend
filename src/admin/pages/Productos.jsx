@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
+import pruebaApi from '../../api/prueba';
 
 export const Productos = () => {
 
@@ -23,7 +24,8 @@ export const Productos = () => {
    cargarProductsDB();
     }, []);
 
-    
+  
+
     
     const [showedit, setShowedit] = useState(false);
 
@@ -41,18 +43,18 @@ export const Productos = () => {
     {
 
         try{
-            // const resp=await pruebaApi.get("/admin/productos");
-            // setcargarProductos(resp.data.productos);
+             const resp=await pruebaApi.get("/admin/productos");
+             setcargarProductos(resp.data.productos);
 
         }
 
         catch(error)
         {
         console.log(error);
-        if(error.response.status===401){
-          localStorage.removeItem("token");
-          navigate("/login");
-        }
+        //if(error.response.status===401){
+          // localStorage.removeItem("token");
+          // navigate("/login");
+       // }
      
         }
     }
@@ -97,18 +99,12 @@ export const Productos = () => {
       }
     )}
 
-
- 
-
-
   const handleChangeEdit = (e) => {
 
     setFormDataEdit({
         ...formDataEdit,
         [e.target.name]: e.target.value,
     });
-    
-    
     
     
     
@@ -151,7 +147,7 @@ export const Productos = () => {
     {
     
         try{
-            const resp=await pruebaApi.put("/admin/editar",{__id,nombre,precio,descripcion,imagen});
+            const resp=await pruebaApi.put("/admin/editar",{_id,nombre,precio,descripcion,imagen});
             console.log(resp);
     
         }
@@ -159,10 +155,10 @@ export const Productos = () => {
         catch(error)
         {
         console.log(error);
-        if(error.response.status===401){
-          localStorage.removeItem("token");
-          navigate("/login");
-        }
+        // if(error.response.status===401){
+        //   localStorage.removeItem("token");
+        //   navigate("/login");
+        // }
         }
     }
 
@@ -174,19 +170,6 @@ setShowedit(true);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div>
 
@@ -194,6 +177,86 @@ setShowedit(true);
 
 <h2 className='text-center rojo pt-2 '>PRODUCTOS</h2>
 <ModalAgregarProducto/>
+
+<Modal show={showedit} onHide={handleCloseEdit}>
+        <Modal.Header closeButton>
+          <Modal.Title className='rojo'>Editar Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmitEdit}>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+              maxLength={20}
+                type="text"
+                
+                name='nombre'
+                 value={formDataEdit.nombre}
+                autoFocus
+                onChange={handleChangeEdit}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Label>Precio</Form.Label>
+              <Form.Control
+              
+                type="number"
+                
+                name='pecio'
+                value={formDataEdit.precio}
+                onChange={handleChangeEdit}
+                
+              />
+            </Form.Group>
+
+
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Descripcion</Form.Label>
+              <Form.Control as="textarea" rows={3} 
+              name='descripcion' 
+              value={formDataEdit.descripcion}
+              onChange={handleChangeEdit}
+              maxLength={50}
+              />
+              
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Imagen</Form.Label>
+              <Form.Control
+              maxLength={20}
+                type="text"
+                
+                name='imagen'
+                 value={formDataEdit.imagen}
+                autoFocus
+                onChange={handleChangeEdit}
+              />
+            </Form.Group>
+
+
+            <Button className='bg-amarillo' variant="warning" type='submit' 
+          onClick={handleCloseEdit}
+          >
+            Aceptar
+          </Button>
+          </Form>
+        </Modal.Body>
+
+
+        <Modal.Footer>
+       
+
+          
+         
+        </Modal.Footer>
+      </Modal>
 
 <Table  responsive variant='warning' striped bordered hover>
       <thead className='text-center'>
@@ -211,19 +274,19 @@ setShowedit(true);
 
       <tr>
                 <td>1</td>
-                <td>Tarta de Manzana</td>
+                <td>pizza de Manzana</td>
                 <td>12.99</td>
-                <td>Deliciosa tarta hecha con manzanas frescas.</td>
-                <td>https://ejemplo.com/tarta_manzana.jpg</td>
+                <td>Deliciosa pizza hecha con manzanas frescas.</td>
+                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
                 <td><Button onClick={()=> eliminarProductsDB(1)} className='bg-rojo' variant='danger'>Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Pasta Carbonara</td>
+                <td>Pizza Carbonara</td>
                 <td>8.50</td>
-                <td>Pasta italiana con salsa carbonara y tocino.</td>
-                <td>https://ejemplo.com/pasta_carbonara.jpg</td>
+                <td>Pizzaitaliana con salsa carbonara y tocino.</td>
+                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
                 <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
@@ -232,25 +295,25 @@ setShowedit(true);
                 <td>Pizza Margarita</td>
                 <td>10.00</td>
                 <td>Clásica pizza italiana con tomate, mozzarella y albahaca.</td>
-                <td>https://ejemplo.com/pizza_margarita.jpg</td>
+                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
                 <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Sushi Variado</td>
+                <td>pizza Variada</td>
                 <td>15.99</td>
-                <td>Selección de sushi con variedad de pescados y vegetales.</td>
-                <td>https://ejemplo.com/sushi_variado.jpg</td>
+                <td>Selección de pizza con variedad de pescados y vegetales.</td>
+                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
                 <td><Button className='bg-rojo' variant='danger'>Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>Tacos al Pastor</td>
+                <td>pizza al Pastor</td>
                 <td>9.75</td>
-                <td>Tacos mexicanos con carne al pastor y salsa.</td>
-                <td>https://ejemplo.com/tacos_pastor.jpg</td>
+                <td>pizza mexicana con carne al pastor y salsa.</td>
+                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
                 <td><Button className='bg-rojo'variant='danger' >Eliminar</Button ></td>
                 <td><Button o variant='secondary'>Editar</Button ></td>
             </tr>
@@ -265,7 +328,7 @@ return(
     <td>{product.nombre}</td>
     <td>{product.precio}</td>
     <td>{product.descripcion}</td>
-    <td>{product.imagen}</td>
+    <td> <img src={product.imagen} alt="" width={60} /> </td>
     <td><Button onClick={()=> eliminarProductsDB(product._id)} variant='danger' className='bg-rojo'>Eliminar</Button ></td>
     <td><Button onClick={()=> editarProductoClick(product)} variant='secondary'>Editar</Button ></td>
   </tr>
@@ -275,23 +338,7 @@ return(
     </tbody>
     </Table>
 
-
-
-
-
-
-
-
-
-
-
-
 </Container>
-
-
-
-
-
 
 
     </div>
