@@ -41,17 +41,17 @@ function handleSubmit(e){
    <Form className='text-light p-2' onSubmit={handleSubmit}>
 <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Nombre</Form.Label>
-        <Form.Control required minLength={3} maxLength={20} type="text" placeholder="Escriba su nombre" />
+        <Form.Control required minLength={3} maxLength={30} type="text" placeholder="Escriba su nombre" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control required minLength={3} maxLength={20} type="email" placeholder="Escriba su email" />
+        <Form.Control required minLength={3} maxLength={30} type="email" placeholder="Escriba su email" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Mensaje</Form.Label>
-        <Form.Control required minLength={5} maxLength={100} as="textarea" rows={3} placeholder="Escriba aquí su mensaje" />
+        <Form.Control required minLength={5} maxLength={200} as="textarea" rows={3} placeholder="Escriba aquí su mensaje" />
       </Form.Group>
 
       <Button id='boton'  type="submit" >

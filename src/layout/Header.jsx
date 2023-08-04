@@ -6,8 +6,19 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
+import ModalLogin from "./ModalLogin";
+import { useState } from "react";
 
 function OffcanvasExample() {
+
+
+
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       {["sm"].map((expand) => (
@@ -33,12 +44,12 @@ function OffcanvasExample() {
 
                   <Nav.Link href="/crear">Nuestros productos</Nav.Link>
                   <Nav.Link href="/sobre-nosotros">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="/crear">Contacto</Nav.Link>
+                  <Nav.Link href="/contacto">Contacto</Nav.Link>
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="/crear">
+                    <NavDropdown.Item  onClick={handleShow}>
                       Iniciar sesion
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/crear">
@@ -54,7 +65,9 @@ function OffcanvasExample() {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-      ))}
+       
+      ))} 
+      <ModalLogin show={show} handleClose={handleClose} />
     </>
   );
 }
