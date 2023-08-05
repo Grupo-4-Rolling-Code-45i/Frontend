@@ -120,16 +120,16 @@ export const Registro = () => {
             {/*  Aqui inicia el formulario de registro */}
             <form onSubmit={handleRegister} className='registro-formulario'>
                 <label className="registro-label" htmlFor="nombre">Ingrese su nombre completo:</label>
-                    <input className='registro-inputs' type="text" placeholder='Ej: Jhon Doe' name='nombre' id='nombre' onChange={(e) => setNombre(e.target.value)} maxlength="41"/>
+                    <input className='registro-inputs' type="text" placeholder='Ej: Jhon Doe' name='nombre' id='nombre' onChange={(e) => setNombre(e.target.value)} maxlength="41" required/>
                     
                 <label className="registro-label" htmlFor="fecha-nacimiento">Ingrese su fecha de nacimiento:</label>
                     <input className='registro-inputs' type="date" name="fecha-nacimiento" id="fecha-nacimiento" required onChange={(e) => calcularEdad(e.target.value)}/>
                 <label className="registro-label" for="correo-electronico" >Ingrese su correo electrónico:</label>
                     <input className='registro-inputs' type="email" name="correo-electronico" id="correo-electronico" placeholder='Ej: jhondoe@ricapizza.com' required onChange={(e) => setEmail(e.target.value)} maxlength="50"/>
                 <label className="registro-label" htmlFor="contraseña">Ingrese su contraseña:</label>
-                <input className='registro-inputs' type="password" name="contraseña" id="contraseña" placeholder='Escriba una contraseña dificil de adivinar' onChange={(e) => setContraseña(e.target.value)} minlength="8" maxlength="70" />
+                <input className='registro-inputs'  required type="password" name="contraseña" id="contraseña" placeholder='Escriba una contraseña dificil de adivinar' onChange={(e) => setContraseña(e.target.value)} minlength="8" maxlength="70" />
                 <label className="registro-label" htmlFor="confirmar-contraseña">Por favor, repita su contraseña:</label>
-                <input className='registro-inputs' type="password" name="contraseña" id="confirmar-contraseña" placeholder='Repita su contraseña dificil de adivinar' onChange={(e) => setConfirmarContraseña(e.target.value)} minlength="8" maxlength="70"/>
+                <input className='registro-inputs' required type="password" name="contraseña" id="confirmar-contraseña" placeholder='Repita su contraseña dificil de adivinar' onChange={(e) => setConfirmarContraseña(e.target.value)} minlength="8" maxlength="70"/>
                 <input className="registro-boton-submit" type="submit" value="Registrarme ahora" />
             </form>
         </section> 
