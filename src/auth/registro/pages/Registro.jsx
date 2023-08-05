@@ -120,7 +120,7 @@ export const Registro = () => {
             {/*  Aqui inicia el formulario de registro */}
             <form onSubmit={handleRegister} className='registro-formulario'>
                 <label className="registro-label" htmlFor="nombre">Ingrese su nombre completo:</label>
-                    <input className='registro-inputs' type="text" placeholder='Ej: Jhon Doe' name='nombre' id='nombre' onChange={(e) => setNombre(e.target.value)} maxlength="20"/>
+                    <input className='registro-inputs' type="text" placeholder='Ej: Jhon Doe' name='nombre' id='nombre' onChange={(e) => setNombre(e.target.value)} maxlength="41"/>
                     
                 <label className="registro-label" htmlFor="fecha-nacimiento">Ingrese su fecha de nacimiento:</label>
                     <input className='registro-inputs' type="date" name="fecha-nacimiento" id="fecha-nacimiento" required onChange={(e) => calcularEdad(e.target.value)}/>
