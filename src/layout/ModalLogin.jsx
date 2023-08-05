@@ -1,23 +1,25 @@
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import LoginUi from "./LoginUi";
 
 const ModalLogin = ({show , handleClose}) => {
   
   return (
     <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title>Modal heading</Modal.Title>
+      <Modal.Title></Modal.Title>
     </Modal.Header>
-    <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-    <Modal.Footer>
-      <Button variant="secondary" onClick={handleClose}>
-        Close
-      </Button>
-      <Button variant="primary" onClick={handleClose}>
+    <Modal.Body>
+      <LoginUi/>
+
+    </Modal.Body>
+    {/* <Modal.Footer >
+      
+    <Button variant="secondary" size="lg" onClick={handleClose}>
         Save Changes
       </Button>
-    </Modal.Footer>
+    </Modal.Footer> */}
   </Modal>
   );
 };
