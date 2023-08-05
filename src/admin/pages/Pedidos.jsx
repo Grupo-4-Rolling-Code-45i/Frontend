@@ -7,6 +7,7 @@ import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 import{FaCheck} from 'react-icons/fa';
 import pruebaApi from '../../api/prueba';
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 
 export const Pedidos = () => {
@@ -18,7 +19,7 @@ export const Pedidos = () => {
 
         try{
             //reemplazar por ruta correcta
-           const resp=await pruebaApi.get("/admin/pedidos");
+           const resp=await reactToMyPizzaAPI.get("/api/orders");
             setcargarPedidos(resp.data.pedidos);
 
         }
@@ -34,7 +35,7 @@ export const Pedidos = () => {
        
             let estado="entregado";
              try{
-                 const resp=await pruebaApi.put("/admin/editarpedido",{_id,estado});
+                 const resp=await reactToMyPizzaAPI.put("/api/order/edit",{_id,estado});
              }
          
              catch{

@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import {FaPlusCircle} from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import pruebaApi from '../../api/prueba';
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 
 
@@ -87,7 +88,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
 {
 
     try{
-        const resp=await pruebaApi.post("/admin/new",{nombre,precio,descripcion,imagen});
+        const resp=await reactToMyPizzaAPI.post("/api/product/new",{nombre,precio,descripcion,imagen});
 
 
         

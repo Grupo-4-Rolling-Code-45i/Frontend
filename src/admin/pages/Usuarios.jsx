@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 import pruebaApi from '../../api/prueba';
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+
 
 
 export const Usuarios = () => {
@@ -18,7 +20,7 @@ export const Usuarios = () => {
 
         try{
             //reemplazar por ruta correcta
-             const resp=await pruebaApi.get("/admin/usuarios");
+             const resp=await reactToMyPizzaAPI.get("/api/users");
              setcargarUsuarios(resp.data.usuarios);
 
         }
@@ -37,7 +39,7 @@ if(e===false){
    let estado="inactivo";
     try{
         //reemplazar por ruta correcta
-        const resp=await pruebaApi.put("/auth/editar",{_id,estado});
+        const resp=await reactToMyPizzaAPI.put("/api/users/edit",{_id,estado});
     }
 
     catch{
@@ -50,7 +52,7 @@ if(e===true){
     let estado="activo";
     try{
         //reemplazar por ruta correcta
-        const resp=await pruebaApi.put("/auth/editar",{_id,estado});
+        const resp=await reactToMyPizzaAPI.put("/api/users/edit",{_id,estado});
     }
 
     catch{
@@ -71,7 +73,7 @@ const adminUsersDB= async (_id,e) =>{
        let rol="usuario";
         try{
             //reemplazar por ruta correcta
-            const resp=await pruebaApi.put("/auth/editar",{_id,rol});
+            const resp=await reactToMyPizzaAPI.put("/api/users/edit",{_id,rol});
         }
     
         catch{
@@ -84,7 +86,7 @@ const adminUsersDB= async (_id,e) =>{
         let rol="administrador";
         try{
             //reemplazar por ruta correcta
-            const resp=await pruebaApi.put("/auth/editar",{_id,rol});
+            const resp=await reactToMyPizzaAPI.put("/api/users/edit",{_id,rol});
         }
     
         catch{

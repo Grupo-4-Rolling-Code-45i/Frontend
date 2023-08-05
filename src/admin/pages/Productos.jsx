@@ -11,6 +11,7 @@ import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
 import pruebaApi from '../../api/prueba';
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 export const Productos = () => {
 
@@ -43,7 +44,7 @@ export const Productos = () => {
     {
 
         try{
-             const resp=await pruebaApi.get("/admin/productos");
+             const resp=await reactToMyPizzaAPI.get("/api/products");
              setcargarProductos(resp.data.productos);
 
         }
@@ -75,7 +76,7 @@ export const Productos = () => {
       if (result.isConfirmed) {
 
         try{
-          const resp= pruebaApi.delete(`/admin/eliminar/${id}`);
+          const resp= pruebaApi.delete(`/api/product/delete/${id}`);
           console.log(resp);
           Swal.fire(
             'Eliminado!',
@@ -147,7 +148,7 @@ export const Productos = () => {
     {
     
         try{
-            const resp=await pruebaApi.put("/admin/editar",{_id,nombre,precio,descripcion,imagen});
+            const resp=await reactToMyPizzaAPI.put("/api/product/edit",{_id,nombre,precio,descripcion,imagen});
             console.log(resp);
     
         }
