@@ -13,7 +13,7 @@ export const Cart = () => {
         return carrito.reduce((total, item) => total + item.quantity * item.price, 0);
     };
 
-    // Función para manejar cambios en la cantidad desde el input
+// Función para guardar cambios en la cantidad desde el input
     const cambiarQ = (itemId, newQuantity) => {
     setCarrito((prevItems) =>
         prevItems.map((item) =>
