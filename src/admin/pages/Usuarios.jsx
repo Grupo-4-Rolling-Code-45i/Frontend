@@ -62,6 +62,45 @@ console.log(error);
  
 }
 
+
+const adminUsersDB= async (_id,e) =>{
+
+    
+
+    if(e===false){
+       let rol="usuario";
+        try{
+            //reemplazar por ruta correcta
+            const resp=await pruebaApi.put("/auth/editar",{_id,rol});
+        }
+    
+        catch{
+    console.log(error);
+        }
+    
+    }
+    
+    if(e===true){
+        let rol="administrador";
+        try{
+            //reemplazar por ruta correcta
+            const resp=await pruebaApi.put("/auth/editar",{_id,rol});
+        }
+    
+        catch{
+    console.log(error);
+        }
+    
+    }
+    
+     
+    }
+
+
+
+
+
+
     useEffect(() => {
    cargarUsersDB();
   
@@ -71,6 +110,11 @@ console.log(error);
         cargarUsersDB();
        
          }, [activarUsersDB]);
+
+         useEffect(() => {
+            cargarUsersDB();
+           
+             }, [adminUsersDB()]);
   
     return (
     <div>
@@ -86,8 +130,8 @@ console.log(error);
           <th>Email</th>
           <th>Rol</th>
           <th>Estado</th>
-          <th>Activar</th>
-          <th>Inactivar</th>
+          <th>Activar/Inactivar</th>
+          <th>Admin/Usuario</th>
           
         </tr>
       </thead>
@@ -98,8 +142,13 @@ console.log(error);
                 <td>juan@example.com</td>
                 <td>Administrador</td>
                 <td>Activo</td>
-                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+                <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
                
             </tr>
             <tr>
@@ -108,8 +157,13 @@ console.log(error);
                 <td>maria@example.com</td>
                 <td>Usuario</td>
                 <td>Activo</td>
-                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+                <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
             </tr>
             <tr>
                 <td>3</td>
@@ -117,8 +171,13 @@ console.log(error);
                 <td>carlos@example.com</td>
                 <td>Usuario</td>
                 <td>Activo</td>
-                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+                <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
             </tr>
             <tr>
                 <td>4</td>
@@ -126,8 +185,13 @@ console.log(error);
                 <td>laura@example.com</td>
                 <td>Administrador</td>
                 <td>Activo</td>
-                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+                <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
             </tr>
             <tr>
                 <td>5</td>
@@ -135,8 +199,13 @@ console.log(error);
                 <td>pedro@example.com</td>
                 <td>Usuario</td>
                 <td>Activo</td>
-                <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-                <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+                <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
             </tr>
 
 {cargarUsuarios.map((user) =>{
@@ -148,8 +217,13 @@ return(
     <td>{user.email}</td>
     <td>{user.rol}</td>
     <td>{user.estado}</td>
-    <td><Button onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button ></td>
-    <td><Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button ></td>
+    <td><Button className='m-2' onClick={()=> activarUsersDB(user._id,true)} variant='warning'>Activar</Button >
+                <Button onClick={()=> activarUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Inactivar</Button >
+                </td>
+                <td>
+                <Button className='m-2' onClick={()=> adminUsersDB(user._id,true)} variant='warning'>Admin</Button >
+                <Button onClick={()=> adminUsersDB(user._id,false)} variant='danger' className='bg-rojo'>Usuario</Button >  
+                </td>
   </tr>
 )
 
