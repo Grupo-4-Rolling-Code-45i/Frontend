@@ -8,7 +8,7 @@ const ModalLogin = ({show , handleClose}) => {
   return (
     <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title>Login</Modal.Title>
+      <Modal.Title></Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <LoginUi/>
