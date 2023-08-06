@@ -2,19 +2,19 @@ import "./Login.css";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
 
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log("email", email);
     console.log("password", password);
-    console.log("formulario enviado");
 
-//  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
+    //  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
     // ! Verificar que no haya campos vacios
     if (email.trim() === "" || password.trim() === "") {
@@ -45,24 +45,35 @@ function LoginUi() {
       });
     }
 
+    //mandar los datos al backend
+    try {
+      const resp = await reactToMyPizzaAPI.post("/api/auth/login", {
+        email,
+        password,
+      });
+      console.log(resp);
 
-    
+      // Swal.fire({
+      //   position: "center",
+      //   icon: "success",
+      //   title: "Bienvenido",
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
 
-
-
-
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Bienvenido",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-
-    setTimeout(() => {
-      window.location.href = "/";
-      // navigate("/");               // redirecciona a la ruta /home
-    }, 2000);
+      // setTimeout(() => {
+      //   window.location.href = "/";
+      //   // navigate("/");               // redirecciona a la ruta /home
+      // }, 2000);
+    } catch (error) {
+      console.log(error);
+      console.log("USUARIO NO LOGUEADO");
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "El correo electronico o la contraseña son incorrectos",
+      });
+    }
   };
 
   return (
@@ -77,15 +88,15 @@ function LoginUi() {
           <div>
             <h1>Iniciar Sesión</h1>
 
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleLogin}>
               <div>
                 {/* //PRIMERA CAPA DE SEGURIDAD, VALIDACIONES DEL IMPUT */}
                 <input
                   required
                   type="email"
                   placeholder="Email"
-                  maxlength="64"
-                  minlength="4"
+                  maxLength="64"
+                  minLength="4"
                   className="name"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -96,8 +107,8 @@ function LoginUi() {
                   required
                   type="password"
                   placeholder="Contraseña"
-                  maxlength="128"
-                  minlength="8"
+                  maxLength="128"
+                  minLength="8"
                   className="name"
                   onChange={(e) => setPassword(e.target.value)}
                 />
