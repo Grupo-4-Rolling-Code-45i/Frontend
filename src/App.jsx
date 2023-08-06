@@ -20,7 +20,7 @@ export default function App() {
             <Route path='/producto' element={ <Products/> }/>         
             <Route path='/sobre-nosotros' element={ <Aboutus/>}/>
             <Route path='/contacto' element={ <Contacto/> }/>
-            <Route path='registro' element={<Registro/>}/>
+            <Route path='/registro' element={<Registro/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />

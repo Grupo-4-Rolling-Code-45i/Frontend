@@ -52,7 +52,7 @@ function OffcanvasExample() {
                     <NavDropdown.Item  onClick={handleShow}>
                       Iniciar sesion
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/crear">
+                    <NavDropdown.Item href="/registro">
                       Crear cuenta
                     </NavDropdown.Item>
                   </NavDropdown>

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
 
+
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,8 +12,7 @@ function LoginUi() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("email", email);
-    console.log("password", password);
+    
 
     //  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
@@ -52,27 +52,37 @@ function LoginUi() {
         password,
       });
       console.log(resp);
+      
 
-      // Swal.fire({
-      //   position: "center",
-      //   icon: "success",
-      //   title: "Bienvenido",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // });
+      if (resp.status === 201) {
+        console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
+        Swal.fire({
+          icon: "success",
+          title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
 
-      // setTimeout(() => {
-      //   window.location.href = "/";
-      //   // navigate("/");               // redirecciona a la ruta /home
-      // }, 2000);
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      } else {
+        console.log("DATOS INCORRECTOS, USUARIO NO LOGUEADO");
+        return Swal.fire({
+          icon: "error",
+          title: "¡Ups!",
+          text: "Datos incorecctos, intentelo nuevamente",
+        });
+      }
     } catch (error) {
       console.log(error);
       console.log("USUARIO NO LOGUEADO");
       Swal.fire({
         icon: "error",
         title: "¡Ups!",
-        text: "El correo electronico o la contraseña son incorrectos",
+        text: "Ocurrió un error inesperado, intentelo nuevamente",
       });
+      
     }
   };
 
@@ -122,8 +132,8 @@ function LoginUi() {
             </form>
 
             <p className="link">
-              <a href="#">¿Olvidaste tu contraseña?</a> O{" "}
-              <a href="#">Crear cuenta</a>
+              <a href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
+              <a href="/registro">Crear cuenta</a>
             </p>
           </div>
         </div>
