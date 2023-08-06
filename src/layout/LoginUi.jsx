@@ -14,7 +14,7 @@ function LoginUi() {
     console.log("password", password);
     console.log("formulario enviado");
 
- //SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
+//  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
     // ! Verificar que no haya campos vacios
     if (email.trim() === "" || password.trim() === "") {
@@ -79,7 +79,7 @@ function LoginUi() {
 
             <form className="form" onSubmit={handleSubmit}>
               <div>
-                //PRIMERA CAPA DE SEGURIDAD, VALIDACIONES DEL IMPUT
+                {/* //PRIMERA CAPA DE SEGURIDAD, VALIDACIONES DEL IMPUT */}
                 <input
                   required
                   type="email"
