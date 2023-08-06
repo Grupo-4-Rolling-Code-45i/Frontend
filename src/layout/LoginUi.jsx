@@ -14,6 +14,43 @@ function LoginUi() {
     console.log("password", password);
     console.log("formulario enviado");
 
+ //VALIDACIONES
+
+    // ! Verificar que no haya campos vacios
+    if (email.trim() === "" || password.trim() === "") {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "Todos los campos son obligatorios",
+      });
+    }
+
+    // ! Verificar Email
+    const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!patronEmail.test(email)) {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "El correo electronico que ingresaste no es válido",
+      });
+    }
+
+    // ! Verificar que la CONTRASEÑA tenga al menos 8 caracteres
+    if (password.length < 8) {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "La contraseña debe tener al menos 8 caracteres",
+      });
+    }
+
+
+    
+
+
+
+
     Swal.fire({
       position: "center",
       icon: "success",
