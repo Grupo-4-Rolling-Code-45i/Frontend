@@ -87,7 +87,7 @@ function LoginUi() {
   };
 
   return (
-    <div className="main">
+    <div className="main-login">
       <div className="sub-main">
         <div>
           <div className="imgs">
@@ -107,7 +107,7 @@ function LoginUi() {
                   placeholder="Email"
                   maxLength="64"
                   minLength="4"
-                  className="name"
+                  className="input-login"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -119,7 +119,7 @@ function LoginUi() {
                   placeholder="Contraseña"
                   maxLength="128"
                   minLength="8"
-                  className="name"
+                  className="input-login"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -132,8 +132,8 @@ function LoginUi() {
             </form>
 
             <p className="link">
-              <a href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
-              <a href="/registro">Crear cuenta</a>
+              <a className="hipervinculo-login" href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
+              <a className="hipervinculo-login" href="/registro">Crear cuenta</a>
             </p>
           </div>
         </div>

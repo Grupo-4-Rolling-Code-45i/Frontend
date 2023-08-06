@@ -10,13 +10,13 @@ export default function Footer() {
           </div>
           <div className="footer-elementos"> 
           <ul>
-          <h4>Enlaces utiles</h4>
+          <h4 className="h4-footer">Enlaces utiles</h4>
           
               
-                  <li><a href="">Inicio</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="">Inicio</a></li>
                   {/* <li><a href="">Nuestros productos</a></li> */}
-                  <li><a href="">Sobre nosotros</a></li>
-                  <li><a href="">Contacto</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="">Sobre nosotros</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="">Contacto</a></li>
               </ul>
              
   
@@ -24,8 +24,8 @@ export default function Footer() {
           <div className="footer-elementos">
           
               <ul>
-               <h4>Contacto</h4>
-                  <li><a href="">Link redes sociales</a></li>
+               <h4 className="h4-footer">Contacto</h4>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="">Link redes sociales</a></li>
               </ul>
              
           
