@@ -23,7 +23,7 @@ function OffcanvasExample() {
     <>
       {["sm"].map((expand) => (
         <Navbar sticky="top" key={expand} expand={expand} className="bg-body-tertiary mb-3">
-          <Container fluid>
+          <Container fluid className="caja-navbar">
             <Nav.Link href="/">
             <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
             </Nav.Link>
@@ -40,11 +40,11 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Inicio</Nav.Link>
+                  <Nav.Link href="/">Inicio </Nav.Link>
 
-                  <Nav.Link href="/crear">Nuestros productos</Nav.Link>
-                  <Nav.Link href="/sobre-nosotros">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="/contacto">Contacto</Nav.Link>
+                  
+                  <Nav.Link href="/sobre-nosotros">Sobre nosotros </Nav.Link>
+                  <Nav.Link href="/contacto">Contacto </Nav.Link>
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}

@@ -96,7 +96,7 @@ function LoginUi() {
             </div>
           </div>
           <div>
-            <h1>Iniciar Sesión</h1>
+            <h1 className="h1-login">Iniciar Sesión</h1>
 
             <form className="form" onSubmit={handleLogin}>
               <div>

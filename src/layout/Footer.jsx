@@ -5,7 +5,7 @@ export default function Footer() {
           <div className="footer-elementos">
             <div className="caja-logo">
               <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
-              pizzeria rolling code
+              React to my pizza!
             </div>
           </div>
           <div className="footer-elementos"> 
