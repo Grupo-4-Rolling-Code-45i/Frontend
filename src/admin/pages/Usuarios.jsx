@@ -5,7 +5,6 @@ import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
-import pruebaApi from '../../api/prueba';
 import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 

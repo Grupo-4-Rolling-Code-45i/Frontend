@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {FaPlusCircle} from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import pruebaApi from '../../api/prueba';
 import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 

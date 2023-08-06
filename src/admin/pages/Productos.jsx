@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router';
 import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
-import pruebaApi from '../../api/prueba';
 import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 export const Productos = () => {
@@ -76,7 +75,7 @@ export const Productos = () => {
       if (result.isConfirmed) {
 
         try{
-          const resp= pruebaApi.delete(`/api/product/delete/${id}`);
+          const resp= reactToMyPizzaAPI.delete(`/api/product/delete/${id}`);
           console.log(resp);
           Swal.fire(
             'Eliminado!',
@@ -176,7 +175,7 @@ setShowedit(true);
 
 <Container fluid>
 
-<h2 className='text-center rojo pt-2 '>PRODUCTOS</h2>
+<h2 className='text-center rojo pt-2 m-0'>PRODUCTOS</h2>
 <ModalAgregarProducto/>
 
 <Modal show={showedit} onHide={handleCloseEdit}>
