@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/home.css'
 import { Link } from 'react-router-dom'
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI'
 export const HomePage = () => {
+        const [productos, setProductos] = useState([])
+        useEffect(() => {
+            try {
+            // Peticion GET (Todos los productos)
+          reactToMyPizzaAPI.get('/api/products/').then((response) =>{
+            const listaProductos = response.data.response;            
+            setProductos(listaProductos)
+            console.log(productos)
+          })    
+        } catch (error) {
+                console.log(`Ha ocurrido un error a la hora de querer obtener los productos, por favor contacte un administrador: ${error}`)
+            }
+        }, [])
+        
   return (
     <>
     {/* Primera sección de la web */}
@@ -39,10 +54,20 @@ export const HomePage = () => {
         <section className='home-tercer-section-menu'>
             <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
             <div className='home-contenedor-cards-productos'>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
+                
+            {productos.map((producto) => (
+            <div key={producto.id} className="home-card-productos">
+                <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
+                <div className='home-contenedor-info-productos'>
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
+                <p className='home-precio-producto'>${producto.precio}</p>
+                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <Link to={`/producto?id=${producto._id}`}>
+                <button className='home-boton-verProducto'>Ver producto</button>
+                </Link>
+                </div>
+            </div>
+          ))}
             </div>
         </section>
         <section className='home-cuarta-section-donde-encontrarnos'>
