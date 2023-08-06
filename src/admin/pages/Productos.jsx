@@ -272,52 +272,6 @@ setShowedit(true);
       </thead>
       <tbody className='text-center'>
 
-      <tr>
-                <td>1</td>
-                <td>pizza de Manzana</td>
-                <td>12.99</td>
-                <td>Deliciosa pizza hecha con manzanas frescas.</td>
-                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
-                <td><Button onClick={()=> eliminarProductsDB(1)} className='bg-rojo' variant='danger'>Eliminar</Button ></td>
-                <td><Button o variant='secondary'>Editar</Button ></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Pizza Carbonara</td>
-                <td>8.50</td>
-                <td>Pizzaitaliana con salsa carbonara y tocino.</td>
-                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
-                <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
-                <td><Button o variant='secondary'>Editar</Button ></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Pizza Margarita</td>
-                <td>10.00</td>
-                <td>Clásica pizza italiana con tomate, mozzarella y albahaca.</td>
-                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
-                <td><Button className='bg-rojo' variant='danger' >Eliminar</Button ></td>
-                <td><Button o variant='secondary'>Editar</Button ></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>pizza Variada</td>
-                <td>15.99</td>
-                <td>Selección de pizza con variedad de pescados y vegetales.</td>
-                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
-                <td><Button className='bg-rojo' variant='danger'>Eliminar</Button ></td>
-                <td><Button o variant='secondary'>Editar</Button ></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>pizza al Pastor</td>
-                <td>9.75</td>
-                <td>pizza mexicana con carne al pastor y salsa.</td>
-                <td><img src="https://img.freepik.com/foto-gratis/pepperoni-rodajas-finas-es-aderezo-pizza-popular-pizzerias-estilo-americano-aislado-sobre-fondo-blanco-naturaleza-muerta_639032-229.jpg?w=2000" alt="" width={60} /></td>
-                <td><Button className='bg-rojo'variant='danger' >Eliminar</Button ></td>
-                <td><Button o variant='secondary'>Editar</Button ></td>
-            </tr>
-
 
 
 {cargarProductos.map((product) =>{
