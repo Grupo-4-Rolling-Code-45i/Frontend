@@ -14,6 +14,7 @@ function OffcanvasExample() {
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
   //Y EN BASE A ESO MUESTRA UNA OPCION U OTRA EN EL NAVBAR
   const user = localStorage.getItem("token");
+  const rol = localStorage.getItem("rol");
 
 
 
@@ -23,6 +24,7 @@ function OffcanvasExample() {
   const handleShow = () => setShow(true);
 const handleLogin = () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("rol");
   console.log("SESION EXPIRADA");
   Swal.fire({
     icon: "success",
@@ -76,9 +78,36 @@ const handleLogin = () => {
                   >
                     {user ? (
                       <li>
-                        <NavDropdown.Item onClick={handleLogin }>
+                        {rol === "admin" ? (<>
+                          <NavDropdown.Item href="/admin">
+                            Administrar
+                            </NavDropdown.Item>
+                            <NavDropdown.Item onClick={handleLogin }>
+                            Cerar sesion
+                            </NavDropdown.Item>
+                            </>
+                            ) : (
+                            <NavDropdown.Item onClick={handleLogin }>
+                            Cerar sesion
+                            </NavDropdown.Item>
+                                
+                                )
+                                  
+                                  }
+
+
+
+
+
+
+
+
+                        {/* <NavDropdown.Item onClick={handleLogin }>
                           Cerrar sesion
                         </NavDropdown.Item>
+                        <NavDropdown.Item href="/registro">
+                          Administrar
+                        </NavDropdown.Item> */}
                       </li>
                     ) : (
                       <li>

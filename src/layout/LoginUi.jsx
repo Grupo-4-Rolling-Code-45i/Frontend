@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
 
-
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +11,6 @@ function LoginUi() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
 
     //  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
@@ -54,18 +52,31 @@ function LoginUi() {
       console.log(resp);
       //GUARDO EL TOKEN EN EL LOCAL STORAGE
       localStorage.setItem("token", resp.data.token);
+      localStorage.setItem("rol", resp.data.usuario.rol);
 
       if (resp.status === 200) {
-        if (resp.data.usuario.rol === "admin") {
-          localStorage.setItem("rol", resp.data.usuario.rol);
-        } 
         console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
-        Swal.fire({
-          icon: "success",
-          title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (resp.data.usuario.rol === "admin") {
+          
+          Swal.fire({
+            icon: "success",
+            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            text: "Usuario Administrador",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          console.log("USUARIO CLIENTE");
+          Swal.fire({
+            icon: "success",
+            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            text: "Redireccionando...",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+
+        
 
         setTimeout(() => {
           window.location.href = "/";
@@ -86,7 +97,6 @@ function LoginUi() {
         title: "¡Ups!",
         text: "Ocurrió un error inesperado, intentelo nuevamente",
       });
-      
     }
   };
 
@@ -136,8 +146,13 @@ function LoginUi() {
             </form>
 
             <p className="link">
-              <a className="hipervinculo-login" href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
-              <a className="hipervinculo-login" href="/registro">Crear cuenta</a>
+              <a className="hipervinculo-login" href="/Error404">
+                ¿Olvidaste tu contraseña?
+              </a>{" "}
+              O{" "}
+              <a className="hipervinculo-login" href="/registro">
+                Crear cuenta
+              </a>
             </p>
           </div>
         </div>
@@ -147,9 +162,6 @@ function LoginUi() {
 }
 
 export default LoginUi;
-
-
-
 
 //codigo para el catch cuando se vence el token
 
@@ -172,4 +184,3 @@ export default LoginUi;
 //     text: "Ocurrió un error inesperado, intentelo nuevamente",
 //   });
 // }
-
