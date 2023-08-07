@@ -7,8 +7,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import ModalLogin from "./ModalLogin";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { PizzeriaContext } from "../PedidosContext/PedidosContext";
+import {BsFillPersonFill} from 'react-icons/bs';
 function OffcanvasExample() {
   
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
@@ -17,8 +19,8 @@ function OffcanvasExample() {
   const rol = localStorage.getItem("rol");
 
 
-
-
+  const {currentUser, getAuth} = useContext(PizzeriaContext)
+console.log(currentUser);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,6 +40,12 @@ const handleLogin = () => {
     window.location.href = "/";
   }, 2000);
 }
+
+useEffect(() => {
+ getAuth();
+
+}, [])
+
   return (
     <>
       {["sm"].map((expand) => (
@@ -67,11 +75,31 @@ const handleLogin = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Inicio </Nav.Link>
+                {
+                  currentUser?
+                  <h5 className="start-100 mt-3"><BsFillPersonFill/>{currentUser.nombre}</h5>
+                  : <></>
 
-                  <Nav.Link href="/sobre-nosotros">Sobre nosotros </Nav.Link>
-                  <Nav.Link href="/contacto">Contacto </Nav.Link>
+                }
+            
+                
+                
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                
+                {
+                    currentUser?.rol == "admin"?
+                  
+                <Nav.Link >  <Link className="adminbutton" to="/admin-principal">Admin</Link></Nav.Link>
+                  :
+                        <></>
+                }
+                  <Nav.Link> <Link className="quitarHiperv" to="/">Inicio</Link> </Nav.Link>
+                 
+
+                  <Nav.Link> <Link className="quitarHiperv" to="/sobre-nosotros">Sobre nosotros</Link></Nav.Link>
+
+                  <Nav.Link > <Link className="quitarHiperv" to="/contacto">Contacto</Link>  </Nav.Link>
+              
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -80,7 +108,7 @@ const handleLogin = () => {
                       <li>
                         {rol === "admin" ? (<>
                           <NavDropdown.Item href="/admin">
-                            Administrar
+                            {/* Administrar */}
                             </NavDropdown.Item>
                             <NavDropdown.Item onClick={handleLogin }>
                             Cerar sesion
@@ -115,8 +143,8 @@ const handleLogin = () => {
                           Iniciar sesion
                         </NavDropdown.Item>
 
-                        <NavDropdown.Item href="/registro">
-                          Crear cuenta
+                        <NavDropdown.Item  > <Link className="quitarHiperv" to="/registro"> Crear cuenta</Link>
+                        
                         </NavDropdown.Item>
                       </li>
                     )}
@@ -128,9 +156,9 @@ const handleLogin = () => {
                       Crear cuenta
                     </NavDropdown.Item> */}
                   </NavDropdown>
-                  <Nav.Link href="/crear">
-                    {" "}
-                    <img src="src\assets\Carrito.png" alt="" />
+                  <Nav.Link > <Link to="/crear">  {" "}
+                    <img src="src\assets\Carrito.png" alt="" />  </Link>
+                   
                   </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
