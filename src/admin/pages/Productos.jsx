@@ -43,9 +43,10 @@ export const Productos = () => {
     {
 
         try{
-             const resp=await reactToMyPizzaAPI.get("/api/products");
-             setcargarProductos(resp.data.productos);
-
+             const resp = await reactToMyPizzaAPI.get("/api/products");
+                      
+             setcargarProductos(resp.data.response);
+            
         }
 
         catch(error)
