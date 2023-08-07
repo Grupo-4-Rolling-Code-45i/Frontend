@@ -71,3 +71,12 @@ a:hover {
   align-items: center;
   flex-direction: column;
 }
+.quitarHiperv{
+  text-decoration: none;
+  color: black;
+}
+
+.adminbutton{
+  text-decoration: none;
+  color: #ff6b6b;
+}
