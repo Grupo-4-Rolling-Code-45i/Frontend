@@ -52,7 +52,8 @@ function LoginUi() {
         password,
       });
       console.log(resp);
-      
+      //GUARDO EL TOKEN EN EL LOCAL STORAGE
+      localStorage.setItem("token", resp.data.token);
 
       if (resp.status === 200) {
         console.log("DATOS CORRECTOS, USUARIO LOGUEADO");

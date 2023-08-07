@@ -77,6 +77,10 @@ export const Registro = () => {
                 email,
                 password: contraseña
             })
+            
+            
+            //Guardo el token en el local storage
+            localStorage.setItem("token", resp.data.token);
 
             if (resp.status === 201){
                 Swal.fire({
