@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import  { useState } from 'react'
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
@@ -11,20 +11,20 @@ import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
 import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+import { PizzeriaContext } from '../../PedidosContext/PedidosContext';
 
 export const Productos = () => {
 
+  
+    const {currentUser} = useContext(PizzeriaContext)
 
-    
     const [cargarProductos, setcargarProductos] = useState([]);
-// const navigate=useNavigate();
+// const navigate=useNavigate()
 
     
     useEffect(() => {
    cargarProductsDB();
     }, []);
-
-  
 
     
     const [showedit, setShowedit] = useState(false);
@@ -44,8 +44,8 @@ export const Productos = () => {
 
         try{
              const resp=await reactToMyPizzaAPI.get("/api/products");
-             setcargarProductos(resp.data.productos);
-
+             setcargarProductos(resp.data.response);
+console.log(resp);
         }
 
         catch(error)
@@ -77,6 +77,7 @@ export const Productos = () => {
 
         try{
           const resp= reactToMyPizzaAPI.delete(`/api/products/delete/${id}`);
+          cargarProductsDB();
           console.log(resp);
           Swal.fire(
             'Eliminado!',
@@ -175,9 +176,10 @@ setShowedit(true);
     <div>
 
 <Container fluid>
+       
 
 <h2 className='text-center rojo pt-2 m-0'>PRODUCTOS</h2>
-<ModalAgregarProducto/>
+<ModalAgregarProducto obtenerProductos = {cargarProductsDB}/>
 
 <Modal show={showedit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>

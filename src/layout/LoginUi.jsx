@@ -1,12 +1,15 @@
 import "./Login.css";
 import Swal from "sweetalert2";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
+import { PizzeriaContext } from "../PedidosContext/PedidosContext";
 
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const {login} = useContext(PizzeriaContext)
   // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -49,9 +52,10 @@ function LoginUi() {
         email,
         password,
       });
+      login({email, password})
       console.log(resp);
       //GUARDO EL TOKEN EN EL LOCAL STORAGE
-      localStorage.setItem("token", resp.data.token);
+      // localStorage.setItem("token", resp.data.token);
       localStorage.setItem("rol", resp.data.usuario.rol);
 
       if (resp.status === 200) {

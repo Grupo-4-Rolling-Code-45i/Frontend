@@ -13,12 +13,15 @@ import { Pedidos } from './admin/pages/Pedidos';
 import { Contacto } from './contacto/Contacto';
 import { Cart } from './cart/pages/Cart';
 import { Registro } from './auth/registro/pages/Registro';
+import PedidosContext from './PedidosContext/PedidosContext';
 
 export default function App() {
   return (
     <div>
-      <Header />
+   
       <BrowserRouter>
+      <PedidosContext>
+      <Header />
         <Routes>
             <Route path='/' element={ <HomePage/>}/>
             <Route path='*' element={ <Error404/>}/>
@@ -33,6 +36,7 @@ export default function App() {
             <Route path='/producto' element={ <Products/> }/>
             <Route path='registro' element={<Registro/>}/>
         </Routes>
+        </PedidosContext>
       </BrowserRouter>
       <Footer />
     </div>
