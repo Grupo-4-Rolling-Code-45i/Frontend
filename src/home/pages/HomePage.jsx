@@ -16,7 +16,7 @@ export const HomePage = () => {
                 <form className='home-formulario-buscar-productos'>
                     <div className='home-contenedor-input-buscar'>
                     <input className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required/>
-                    <i class="fa-solid fa-magnifying-glass home-icono-lupa-input-buscar"></i>
+                    <i className="fa-solid fa-magnifying-glass home-icono-lupa-input-buscar"></i>
                     </div>
                     <input className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
                 </form>
@@ -47,14 +47,14 @@ export const HomePage = () => {
         </section>
         <section className='home-cuarta-section-donde-encontrarnos'>
             <h2 className='home-cuarta-section-donde-encontrarnos-titulo'>¿Donde encontrarnos?</h2>
-            <iframe className='home-cuarta-section-mapa' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14240.408879082126!2d-65.2072018!3d-26.8367009!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1690391123408!5m2!1ses-419!2sar" width="1000" height="450" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe className='home-cuarta-section-mapa' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14240.408879082126!2d-65.2072018!3d-26.8367009!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1690391123408!5m2!1ses-419!2sar" width="1000" height="450" style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             <div className='home-cuarta-section-contenedor-redesSociales'>
                 <Link className='home-social-link' to="/404">
-                <button className='home-cuarta-section-boton-redesSociales'><i class="fa-brands fa-facebook-f"></i></button></Link>
+                <button className='home-cuarta-section-boton-redesSociales'><i className="fa-brands fa-facebook-f"></i></button></Link>
                 <Link className='home-social-link' to="/404">
-                <button className='home-cuarta-section-boton-redesSociales'><i class="fa-brands fa-instagram"></i></button></Link>
+                <button className='home-cuarta-section-boton-redesSociales'><i className="fa-brands fa-instagram"></i></button></Link>
                 <Link className='home-social-link' to="/404">
-                <button className='home-cuarta-section-boton-redesSociales'><i class="fa-brands fa-twitter"></i></button></Link>
+                <button className='home-cuarta-section-boton-redesSociales'><i className="fa-brands fa-twitter"></i></button></Link>
             </div>
         </section>
     </>
