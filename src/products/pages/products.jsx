@@ -1,20 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
+import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
+import { Link } from "react-router-dom";
 export const Products = () => {
+    const urlParams  = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');  
+    const [producto, setProducto] = useState([])
+    
+    useEffect(() => {
+      try {
+        reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
+            const RespProducto = response.data.response;
+            
+            setProducto(RespProducto)
+            
+        })
+      } catch (error) {
+        console.log("Ocurrió un error, por favor contactese con el administrador")
+      }    
+      
+    }, [])
+    const {nombre,precio,descripcion,imagen} = producto
+
+    // Mostrar todos los productos:
+    const [productos, setProductos] = useState([])
+        useEffect(() => {
+            try {
+            // Peticion GET (Todos los productos)
+          reactToMyPizzaAPI.get('/api/products/').then((response) =>{
+            const listaProductos = response.data.response;            
+            setProductos(listaProductos)
+            
+          })    
+        } catch (error) {
+                console.log(`Ha ocurrido un error a la hora de querer obtener los productos, por favor contacte un administrador: ${error}`)
+            }
+        }, [])
     return (
         <>
             {/* Primer div con foto del producto y detalles */}
             <Container className="product-details">
                 <div className="product-image">
                 {/* Aquí la imagen del producto */}
-                <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" alt="Pizza" />
+                <img src={imagen} alt={nombre} />
                 </div>
                 <div className="product-info">
-                <h1>Nombre del Producto</h1>
-                <h3>Precio</h3>
-                <p>Esta pizza tiene cualidades que la hacen una opción exquisita para el paladar. Cuenta con la cocción justa y los ingredientes perfectos para hacerla una excelente compañera en cualquier lugar, en cualquier momento.</p>
+                <h1 className="product-title-product-page">{nombre}</h1>
+                <h3 className="product-price-product-page">${precio}</h3>
+                <p>{descripcion}</p>
                 <div className="product-actions">
                     <input type="number" min="1" max="55" defaultValue="1"/>
                     <Button variant="danger">Agregar al pedido</Button>
@@ -49,7 +84,7 @@ export const Products = () => {
 
             {/* Tercer div con productos relacionados */}
                 <h2 className="sec-title">Productos Relacionados</h2>
-            <div className="related-products">
+            {/* <div className="related-products">
                 <div className="related-product-card">
                 <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" alt="Producto Relacionado 1" />
                 <h3>Producto Relac 1</h3>
@@ -74,7 +109,26 @@ export const Products = () => {
                 <p>Descripción del producto relacionado 4</p>
                 <h6>Precio</h6>
                 </div>
+            </div> */}
+                    <section className='home-tercer-section-menu'>
+            <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
+            <div className='home-contenedor-cards-productos'>
+                
+            {productos.map((producto) => (
+            <div key={producto.id} className="home-card-productos">
+                <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
+                <div className='home-contenedor-info-productos'>
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
+                <p className='home-precio-producto'>${producto.precio}</p>
+                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <Link onClick={() => Window.location.reload()} to={`/producto?id=${producto._id}`}>
+                <button className='home-boton-verProducto'>Ver producto</button>
+                </Link>
+                </div>
             </div>
+          ))}
+            </div>
+        </section>
         </>
     )
 }
