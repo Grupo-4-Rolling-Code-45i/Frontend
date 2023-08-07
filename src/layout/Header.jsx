@@ -5,9 +5,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Link } from "react-router-dom";
+import ModalLogin from "./ModalLogin";
+import { useState } from "react";
+
 
 function OffcanvasExample() {
   let user = false;
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -52,11 +60,12 @@ function OffcanvasExample() {
                       </li>
                     ) : (
                       <li>
-                        <NavDropdown.Item href="#action3">
+                        <NavDropdown.Item  onClick={handleShow}>
                           Iniciar sesion
                         </NavDropdown.Item>
 
-                        <NavDropdown.Item href="#action4">
+                        <NavDropdown.Item href="/registro">
+
                           Crear cuenta
                         </NavDropdown.Item>
                       </li>
