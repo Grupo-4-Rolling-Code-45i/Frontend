@@ -24,7 +24,7 @@ export const Cart = () => {
 
     return (
     <Container className='containerCart'>
-        <h2>Su Pedido:</h2>
+        <h2 className='pedidoTitle'>Su Pedido:</h2>
         <Table striped borderless responsive>
             <thead>
                 <tr>
@@ -39,7 +39,7 @@ export const Cart = () => {
                     <tr key={item.id}>
                         <td>{item.name}</td>
                         <td>
-                            <input type="number" value={item.quantity} min="1" onChange={(e) => cambiarQ(item.id, e.target.value)}/>
+                            <input className='inputCart' type="number" value={item.quantity} min="1" onChange={(e) => cambiarQ(item.id, e.target.value)}/>
                         </td>
                         <td>${item.price}</td>
                         <td>
@@ -50,7 +50,7 @@ export const Cart = () => {
             </tbody>
         </Table>
         <div className="total">
-            <h5>Total: ${calculateTotal()}</h5>
+            <h5 className='totalCart'>Total: ${calculateTotal()}</h5>
             <Button className='botonPedido' variant="danger">Realizar Pedido</Button>
         </div>
     </Container>
