@@ -6,7 +6,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Error404 } from './404/pages/Error404';
 import { Products } from './products/pages/products';
 import { Aboutus } from './about-us/pages/AboutUs';
-import { Contacto } from "./contacto/Contacto";
+import { Contacto } from './contacto/Contacto';
+import { Cart } from './cart/pages/Cart';
+import { Registro } from './auth/registro/pages/Registro';
 
 export default function App() {
   return (
@@ -16,9 +18,11 @@ export default function App() {
         <Routes>
             <Route path='/' element={ <HomePage/>}/>
             <Route path='*' element={ <Error404/>}/>
-            <Route path='/producto' element={ <Products/> }/>         
             <Route path='/sobre-nosotros' element={ <Aboutus/>}/>
             <Route path='/contacto' element={ <Contacto/> }/>
+            <Route path='/cart' element={ <Cart/>}/>
+            <Route path='/producto' element={ <Products/> }/>
+            <Route path='registro' element={<Registro/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />
