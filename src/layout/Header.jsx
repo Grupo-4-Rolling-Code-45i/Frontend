@@ -8,17 +8,36 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import ModalLogin from "./ModalLogin";
 import { useState } from "react";
-
+import Swal from "sweetalert2";
 function OffcanvasExample() {
   
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
   //Y EN BASE A ESO MUESTRA UNA OPCION U OTRA EN EL NAVBAR
-  let user = localStorage.getItem("user");
+  const user = localStorage.getItem("token");
+  const rol = localStorage.getItem("rol");
+
+
+
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+const handleLogin = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("rol");
+  console.log("SESION EXPIRADA");
+  Swal.fire({
+    icon: "success",
+    title: "Sesion cerrada",
+    text: "Vuelva pronto",
+    showConfirmButton: false,
+    timer: 2000,
 
+  });
+  setTimeout(() => {
+    window.location.href = "/";
+  }, 2000);
+}
   return (
     <>
       {["sm"].map((expand) => (
@@ -59,9 +78,36 @@ function OffcanvasExample() {
                   >
                     {user ? (
                       <li>
-                        <NavDropdown.Item href="#action3">
+                        {rol === "admin" ? (<>
+                          <NavDropdown.Item href="/admin">
+                            Administrar
+                            </NavDropdown.Item>
+                            <NavDropdown.Item onClick={handleLogin }>
+                            Cerar sesion
+                            </NavDropdown.Item>
+                            </>
+                            ) : (
+                            <NavDropdown.Item onClick={handleLogin }>
+                            Cerar sesion
+                            </NavDropdown.Item>
+                                
+                                )
+                                  
+                                  }
+
+
+
+
+
+
+
+
+                        {/* <NavDropdown.Item onClick={handleLogin }>
                           Cerrar sesion
                         </NavDropdown.Item>
+                        <NavDropdown.Item href="/registro">
+                          Administrar
+                        </NavDropdown.Item> */}
                       </li>
                     ) : (
                       <li>
