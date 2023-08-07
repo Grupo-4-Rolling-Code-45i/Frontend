@@ -23,7 +23,7 @@ export const Products = () => {
             </Container>
 
             {/* Segundo div con los pasos para realizar el pedido */}
-                <h2>¿Cómo realizar tu pedido?</h2>
+                <h2 className="sec-title">¿Cómo realizar tu pedido?</h2>
             <div className="how-to-order">
                 <div className="step-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR25D2Fb5RZd7SPLYv9sGzq4WvLoaNtMPK62SB8SFOp6qsAQgKQ1hRqSMZseWRAxEu2PvI&usqp=CAU" alt="Ingredientes" />
@@ -48,7 +48,7 @@ export const Products = () => {
             </div>
 
             {/* Tercer div con productos relacionados */}
-                <h2>Productos Relacionados</h2>
+                <h2 className="sec-title">Productos Relacionados</h2>
             <div className="related-products">
                 <div className="related-product-card">
                 <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" alt="Producto Relacionado 1" />
