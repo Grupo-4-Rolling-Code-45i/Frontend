@@ -87,7 +87,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
 {
 
     try{
-        const resp=await reactToMyPizzaAPI.post("/api/product/new",{nombre,precio,descripcion,imagen});
+        const resp=await reactToMyPizzaAPI.post("/api/products/new",{nombre,precio,descripcion,imagen});
 
 
         

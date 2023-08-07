@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  
 }
 
 .navbar a:hover {
@@ -12,6 +13,14 @@
 .logo-navbar {
   width: 90px;
 }
+
+.caja-navbar{
+  font-size: 24px;
+}
+
+
+
+
 
 /* ESTILOS FOOTER */
 
@@ -24,6 +33,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  font-size: 20px;
 }
 
 .footer-elementos {
@@ -36,12 +46,12 @@
   justify-content: start;
 }
 
-h4 {
+.h4-footer {
   margin-bottom: 20px;
   color: #ff6b6b;
 }
 
-li a {
+.hipervinculo-footer {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
@@ -51,7 +61,7 @@ a:hover {
   color: #ff6b6b;
 }
 
-li {
+.li-footer {
   list-style: none;
   margin-bottom: 10px;
 }

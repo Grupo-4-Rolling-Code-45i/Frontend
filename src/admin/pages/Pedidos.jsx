@@ -21,6 +21,8 @@ export const Pedidos = () => {
            const resp=await reactToMyPizzaAPI.get("/api/orders");
             setcargarPedidos(resp.data.pedidos);
 
+            const resp2=await reactToMyPizzaAPI.get("/api/users");
+
         }
 
         catch(error)

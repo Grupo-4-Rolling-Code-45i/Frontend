@@ -2,34 +2,92 @@ import "./Login.css";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
+
 
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("email", email);
-    console.log("password", password);
-    console.log("formulario enviado");
+    
 
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Bienvenido",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    //  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
-    setTimeout(() => {
-      window.location.href = "/";
-      // navigate("/");               // redirecciona a la ruta /home
-    }, 2000);
+    // ! Verificar que no haya campos vacios
+    if (email.trim() === "" || password.trim() === "") {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "Todos los campos son obligatorios",
+      });
+    }
+
+    // ! Verificar Email
+    const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!patronEmail.test(email)) {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "El correo electronico que ingresaste no es válido",
+      });
+    }
+
+    // ! Verificar que la CONTRASEÑA tenga al menos 8 caracteres
+    if (password.length < 8) {
+      return Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "La contraseña debe tener al menos 8 caracteres",
+      });
+    }
+
+    //mandar los datos al backend
+    try {
+      const resp = await reactToMyPizzaAPI.post("/api/auth/login", {
+        email,
+        password,
+      });
+      console.log(resp);
+      
+
+      if (resp.status === 201) {
+        console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
+        Swal.fire({
+          icon: "success",
+          title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      } else {
+        console.log("DATOS INCORRECTOS, USUARIO NO LOGUEADO");
+        return Swal.fire({
+          icon: "error",
+          title: "¡Ups!",
+          text: "Datos incorecctos, intentelo nuevamente",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("USUARIO NO LOGUEADO");
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "Ocurrió un error inesperado, intentelo nuevamente",
+      });
+      
+    }
   };
 
   return (
-    <div className="main">
+    <div className="main-login">
       <div className="sub-main">
         <div>
           <div className="imgs">
@@ -38,18 +96,18 @@ function LoginUi() {
             </div>
           </div>
           <div>
-            <h1>Iniciar Sesión</h1>
+            <h1 className="h1-login">Iniciar Sesión</h1>
 
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleLogin}>
               <div>
-                {/* <img src={email} alt="email" className="email"/> */}
+                {/* //PRIMERA CAPA DE SEGURIDAD, VALIDACIONES DEL IMPUT */}
                 <input
                   required
                   type="email"
                   placeholder="Email"
-                  maxlength="64"
-                  minlength="4"
-                  className="name"
+                  maxLength="64"
+                  minLength="4"
+                  className="input-login"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -59,9 +117,9 @@ function LoginUi() {
                   required
                   type="password"
                   placeholder="Contraseña"
-                  maxlength="128"
-                  minlength="8"
-                  className="name"
+                  maxLength="128"
+                  minLength="8"
+                  className="input-login"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -74,8 +132,8 @@ function LoginUi() {
             </form>
 
             <p className="link">
-              <a href="#">¿Olvidaste tu contraseña?</a> O{" "}
-              <a href="#">Crear cuenta</a>
+              <a className="hipervinculo-login" href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
+              <a className="hipervinculo-login" href="/registro">Crear cuenta</a>
             </p>
           </div>
         </div>

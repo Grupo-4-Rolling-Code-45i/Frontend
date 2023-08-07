@@ -66,16 +66,17 @@ export const Productos = () => {
       text: "esta accion es irreversible!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#FCD581',
-      cancelButtonColor: '#FF5A5F',
-      confirmButtonText: '<h6 class=negro>Si, quiero eliminarlo </h6>',
+      confirmButtonColor: '#FF5A5F',
+      cancelButtonColor: '#545454',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar',
     })
 
     .then((result) => {
       if (result.isConfirmed) {
 
         try{
-          const resp= reactToMyPizzaAPI.delete(`/api/product/delete/${id}`);
+          const resp= reactToMyPizzaAPI.delete(`/api/products/delete/${id}`);
           console.log(resp);
           Swal.fire(
             'Eliminado!',
@@ -147,7 +148,7 @@ export const Productos = () => {
     {
     
         try{
-            const resp=await reactToMyPizzaAPI.put("/api/product/edit",{_id,nombre,precio,descripcion,imagen});
+            const resp=await reactToMyPizzaAPI.put("/api/products/edit",{_id,nombre,precio,descripcion,imagen});
             console.log(resp);
     
         }
