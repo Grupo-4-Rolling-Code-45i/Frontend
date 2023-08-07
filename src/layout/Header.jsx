@@ -7,10 +7,17 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 function OffcanvasExample() {
+  let user = false;
+
   return (
     <>
       {["sm"].map((expand) => (
-        <Navbar sticky="top" key={expand} expand={expand} className="bg-body-tertiary mb-3">
+        <Navbar
+          sticky="top"
+          key={expand}
+          expand={expand}
+          className="bg-body-tertiary mb-3"
+        >
           <Container fluid>
             <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
 
@@ -32,17 +39,37 @@ function OffcanvasExample() {
                   <Nav.Link href="#action2">Nuestros productos</Nav.Link>
                   <Nav.Link href="#action3">Sobre nosotros</Nav.Link>
                   <Nav.Link href="#action4">Contacto</Nav.Link>
+
                   <NavDropdown
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action3">
+                    {user ? (
+                      <li>
+                        <NavDropdown.Item href="#action3">
+                          Cerrar sesion
+                        </NavDropdown.Item>
+                      </li>
+                    ) : (
+                      <li>
+                        <NavDropdown.Item href="#action3">
+                          Iniciar sesion
+                        </NavDropdown.Item>
+
+                        <NavDropdown.Item href="#action4">
+                          Crear cuenta
+                        </NavDropdown.Item>
+                      </li>
+                    )}
+
+                    {/* <NavDropdown.Item href="#action3">
                       Iniciar sesion
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#action4">
                       Crear cuenta
-                    </NavDropdown.Item>
+                    </NavDropdown.Item> */}
                   </NavDropdown>
+
                   <Nav.Link href="#action5">
                     {" "}
                     <img src="src\assets\Carrito.png" alt="" />
