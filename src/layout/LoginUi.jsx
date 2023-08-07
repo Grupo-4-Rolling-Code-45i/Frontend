@@ -56,6 +56,9 @@ function LoginUi() {
       localStorage.setItem("token", resp.data.token);
 
       if (resp.status === 200) {
+        if (resp.data.usuario.rol === "admin") {
+          localStorage.setItem("rol", resp.data.usuario.rol);
+        } 
         console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
         Swal.fire({
           icon: "success",
