@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-      <>
+      <footer id="footer">
         <div className="caja-footer">
           <div className="footer-elementos">
             <div className="caja-logo">
@@ -32,7 +32,7 @@ export default function Footer() {
           
           </div>
         </div>
-      </>
+      </footer>
     );
   }
   
