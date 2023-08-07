@@ -54,7 +54,7 @@ function LoginUi() {
       console.log(resp);
       
 
-      if (resp.status === 201) {
+      if (resp.status === 200) {
         console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
         Swal.fire({
           icon: "success",

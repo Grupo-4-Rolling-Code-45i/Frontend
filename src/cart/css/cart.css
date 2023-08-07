@@ -5,7 +5,7 @@
     font-size: 1.1em;
 }
 
-input {
+.input-carrito {
     width: 5vw;
     border: none;
     font-size: 1.04em;
@@ -55,7 +55,7 @@ h5 {
         margin: auto;
         width: 100%;
     }
-    input {
+    .input-carrito {
         width: 12vw;
     }
 }

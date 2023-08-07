@@ -39,7 +39,7 @@ export const Cart = () => {
                     <tr key={item.id}>
                         <td>{item.name}</td>
                         <td>
-                            <input type="number" value={item.quantity} min="1" onChange={(e) => cambiarQ(item.id, e.target.value)}/>
+                            <input  className='input-carrito' type="number" value={item.quantity} min="1" onChange={(e) => cambiarQ(item.id, e.target.value)}/>
                         </td>
                         <td>${item.price}</td>
                         <td>
