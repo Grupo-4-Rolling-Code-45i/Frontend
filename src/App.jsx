@@ -13,6 +13,7 @@ import { Pedidos } from './admin/pages/Pedidos';
 import { Contacto } from './contacto/Contacto';
 import { Cart } from './cart/pages/Cart';
 import { Registro } from './auth/registro/pages/Registro';
+import { Buscar } from './search/pages/Buscar';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
             <Route path='/cart' element={ <Cart/>}/>
             <Route path='/producto' element={ <Products/> }/>
             <Route path='registro' element={<Registro/>}/>
+            <Route path='buscar' element={<Buscar/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />

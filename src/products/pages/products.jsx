@@ -84,32 +84,6 @@ export const Products = () => {
 
             {/* Tercer div con productos relacionados */}
                 <h2 className="sec-title">Productos Relacionados</h2>
-            {/* <div className="related-products">
-                <div className="related-product-card">
-                <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" alt="Producto Relacionado 1" />
-                <h3>Producto Relac 1</h3>
-                <p>Descripción del producto relacionado 1</p>
-                <h6>Precio</h6>
-                </div>
-                <div className="related-product-card">
-                <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" />
-                <h3>Producto Relac 2</h3>
-                <p>Descripción del producto relacionado 2</p>
-                <h6>Precio</h6>
-                </div>
-                <div className="related-product-card">
-                <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" />
-                <h3>Producto Relac 3</h3>
-                <p>Descripción del producto relacionado 3</p>
-                <h6>Precio</h6>
-                </div>
-                <div className="related-product-card">
-                <img src="https://img.freepik.com/foto-gratis/pizza-carne-pimiento-albahaca-rucula-tomate-queso-cebolla-vista-superior_141793-2772.jpg?w=2000" />
-                <h3>Producto Relac 4</h3>
-                <p>Descripción del producto relacionado 4</p>
-                <h6>Precio</h6>
-                </div>
-            </div> */}
                     <section className='home-tercer-section-menu'>
             <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
             <div className='home-contenedor-cards-productos'>
