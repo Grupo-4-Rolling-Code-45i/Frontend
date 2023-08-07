@@ -144,3 +144,29 @@ function LoginUi() {
 }
 
 export default LoginUi;
+
+
+
+
+//codigo para el catch cuando se vence el token
+
+// if (error.response.status === 401) {
+//   localStorage.removeItem("token");
+//   console.log("SESION EXPIRADA");
+//   Swal.fire({
+//     icon: "error",
+//     title: "¡Ups!",
+//     text: "Su sesión ha expirado, por favor vuelva a iniciar sesión",
+//   });
+//   setTimeout(() => {
+//     window.location.href = "/login";
+//   }, 2000);
+// } else {
+//   console.log("USUARIO NO LOGUEADO");
+//   Swal.fire({
+//     icon: "error",
+//     title: "¡Ups!",
+//     text: "Ocurrió un error inesperado, intentelo nuevamente",
+//   });
+// }
+
