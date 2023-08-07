@@ -1,11 +1,11 @@
 .containerCart {
     margin-top: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     width: 50%;
     font-size: 1.1em;
 }
 
-.input-carrito {
+.inputCart {
     width: 5vw;
     border: none;
     font-size: 1.04em;
@@ -32,11 +32,11 @@ div .total {
     height: 1.5em;
 }
 
-h2 {
+.pedidoTitle {
     margin: 0.6em 0;
 }
 
-h5 {
+.totalCart {
     font-weight: 600;
 }
 
@@ -55,7 +55,7 @@ h5 {
         margin: auto;
         width: 100%;
     }
-    .input-carrito {
+    .inputCart {
         width: 12vw;
     }
 }
