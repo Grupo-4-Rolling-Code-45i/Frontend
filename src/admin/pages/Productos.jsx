@@ -208,7 +208,7 @@ setShowedit(true);
               
                 type="number"
                 
-                name='pecio'
+                name='precio'
                 value={formDataEdit.precio}
                 onChange={handleChangeEdit}
                 
