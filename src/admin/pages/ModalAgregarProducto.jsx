@@ -9,7 +9,7 @@ import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
 
 
 
-export const ModalAgregarProducto = () => {
+export const ModalAgregarProducto = ({obtenerProductos}) => {
 
 
     const [show, setShow] = useState(false);
@@ -90,7 +90,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
         const resp=await reactToMyPizzaAPI.post("/api/products/new",{nombre,precio,descripcion,imagen});
 
 
-        
+        obtenerProductos();
 
     }
 
