@@ -151,7 +151,7 @@ export const Productos = () => {
     
         try{
             const resp=await reactToMyPizzaAPI.put("/api/products/edit",{_id,nombre,precio,descripcion,imagen});
-            console.log(resp);
+            cargarProductsDB();
     
         }
     
@@ -208,7 +208,7 @@ setShowedit(true);
               
                 type="number"
                 
-                name='pecio'
+                name='precio'
                 value={formDataEdit.precio}
                 onChange={handleChangeEdit}
                 

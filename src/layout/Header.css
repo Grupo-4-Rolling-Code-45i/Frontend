@@ -99,6 +99,10 @@ a:hover {
   align-items: center;
   flex-direction: column;
 }
+.quitarHiperv{
+  text-decoration: none;
+  color: black;
+}
 
 #logo-footer {
   width: 80px;

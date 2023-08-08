@@ -20,11 +20,11 @@ function OffcanvasExample() {
 
 
   const {currentUser, getAuth} = useContext(PizzeriaContext)
-console.log(currentUser);
+  //console.log(currentUser);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const handleLogin = () => {
+  const handleLogin = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("rol");
   console.log("SESION EXPIRADA");
@@ -80,16 +80,17 @@ useEffect(() => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                {
-                  currentUser?
-                  <h5 className="start-100 mt-3"><BsFillPersonFill/>{currentUser.nombre}</h5>
-                  : <></>
-
-                }
+               
             
                 
                 
                 <Nav className="justify-content-end flex-grow-1 pe-3">
+                {
+                  currentUser?
+                  <h5 className=" mt-3 me-2"><BsFillPersonFill/>{currentUser.nombre}</h5>
+                  : <></>
+
+                }
                 
                 {
                     currentUser?.rol == "admin"?
@@ -105,7 +106,8 @@ useEffect(() => {
 
                   <Nav.Link > <Link className="quitarHiperv" to="/contacto">Contacto</Link>  </Nav.Link>
               
-                  <NavDropdown 
+                  <NavDropdown
+                  
                      
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}

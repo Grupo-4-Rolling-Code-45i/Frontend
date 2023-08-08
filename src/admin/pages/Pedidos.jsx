@@ -21,7 +21,6 @@ export const Pedidos = () => {
            const resp=await reactToMyPizzaAPI.get("/api/orders");
             setcargarPedidos(resp.data.pedidos);
 
-            const resp2=await reactToMyPizzaAPI.get("/api/users");
 
         }
 
@@ -36,10 +35,11 @@ export const Pedidos = () => {
        
             let estado="entregado";
              try{
-                 const resp=await reactToMyPizzaAPI.put("/api/order/edit",{_id,estado});
+                 const resp=await reactToMyPizzaAPI.put("/api/orders/edit",{_id,estado});
+                 cargarPedidosDB();
              }
          
-             catch{
+             catch(error){
          console.log(error);
              }
          
@@ -50,10 +50,7 @@ export const Pedidos = () => {
       
         }, []);
 
-        useEffect(() => {
-            cargarPedidosDB();
-           
-             }, [confirmarPedidosDB]);
+       
 
   return (
     <div>
