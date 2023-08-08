@@ -3,6 +3,7 @@ import { Container, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
 import "../css/cart.css";
 import rubbishbin from '../assets/rubbishbin.png';
+// import jwt from 'jsonwebtoken';
 
 export const Cart = () => {
     const [carrito, setCarrito] = useState([]);
@@ -13,13 +14,25 @@ export const Cart = () => {
     }, []);
 
     const obtenerCarrito = () => {
-        axios.get('/api/cart')
+
+        // // Obtener el token de autenticación del almacenamiento local o donde corresponda
+        // const token = localStorage.getItem('token'); // Asumiendo que el token se almacena en localStorage
+
+        // // Decodificar el token para obtener los datos del usuario, que incluye su ID
+        // const decodedToken = jwt.decode(token);
+        // const usuarioId = decodedToken.userId;
+
+        // const usuarioValor = { "usuario" : "64d1be09a30684c4ba25ea5f" }
+
+        axios.get('/api/cart/64d1be09a30684c4ba25ea5f')
             .then(response => {
                 setCarrito(response.data.carrito);
                 calcularTotal(response.data.carrito);
+                console.log(response.data);
             })
             .catch(error => {
                 console.error('Error al obtener el carrito:', error);
+                console.log(error);
             });
     };
 
