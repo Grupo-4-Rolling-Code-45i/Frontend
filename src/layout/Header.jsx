@@ -56,12 +56,17 @@ useEffect(() => {
           className="bg-body-tertiary mb-3"
         >
           <Container fluid className="caja-navbar">
-            <Nav.Link href="/">
+            <Nav.Link href="/" id="caja-logo-texto">
               <img
                 className="logo-navbar"
-                src="src\assets\rolling.png"
+                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
                 alt=""
               />
+              <div className="texto-logo">
+                 <div className="cajita">React to my </div>
+                
+                 <div className="cajita" id="pizza">PIZZA</div>
+              </div>
             </Nav.Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -71,7 +76,7 @@ useEffect(() => {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  PIZZERIA ROLLING CODE
+                  React to my Pizza!
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -101,6 +106,8 @@ useEffect(() => {
                   <Nav.Link > <Link className="quitarHiperv" to="/contacto">Contacto</Link>  </Nav.Link>
               
                   <NavDropdown
+                  
+                     
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >

@@ -35,10 +35,11 @@ export const Pedidos = () => {
        
             let estado="entregado";
              try{
-                 const resp=await reactToMyPizzaAPI.put("/api/order/edit",{_id,estado});
+                 const resp=await reactToMyPizzaAPI.put("/api/orders/edit",{_id,estado});
+                 cargarPedidosDB();
              }
          
-             catch{
+             catch(error){
          console.log(error);
              }
          
@@ -127,7 +128,7 @@ return(
 
     <tr key={pedido._id}>
     <td>{pedido._id}</td>
-    <td>{pedido.usuario.nombre}</td>
+    <td>{pedido.usuario}</td>
     <td>{pedido.producto}</td>
     <td>{pedido.fecha}</td>
     <td>{pedido.estado}</td>
