@@ -30,7 +30,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\maxi.jpg" alt="Fotografía de Maxi Majorel" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Maxi Majorel</h4>
-        <p className='sobreNosotros-desc-card'></p>
+        <p className='sobreNosotros-desc-card'>Tengo 22 años, estudio fotografía pero desde chico que me gusta la informática así que decidí aprender a programar. Actualmente estoy creando junto a amigos una agencia donde publicaremos nuestros proyectos en Github.</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/maximo-majorel/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
