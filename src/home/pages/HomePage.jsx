@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/home.css'
 import { Link } from 'react-router-dom'
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI'
+import Swal from 'sweetalert2'
 export const HomePage = () => {
+    
+
+    const [terminoBusqueda, setTerminoBusqueda] = useState("")
+    const handleBuscar = (e) =>{
+        e.preventDefault()
+        if(terminoBusqueda.trim() !== ''){
+            window.location.href = `/buscar?buscar=${terminoBusqueda}`;
+        }else{
+            new Swal({
+                title: "Error",
+                text: "Debe ingresar un termino para buscar",
+                icon: "error",
+                button: "Aceptar",
+            })
+        }
+        
+    }
+    
+        const [productos, setProductos] = useState([])
+        useEffect(() => {
+            try {
+            // Peticion GET (Todos los productos)
+          reactToMyPizzaAPI.get('/api/products/').then((response) =>{
+            const listaProductos = response.data.response;            
+            setProductos(listaProductos)
+            
+          })    
+        } catch (error) {
+                console.log(`Ha ocurrido un error a la hora de querer obtener los productos, por favor contacte un administrador: ${error}`)
+            }
+        }, [])
+        
   return (
     <>
     {/* Primera sección de la web */}
@@ -13,9 +47,9 @@ export const HomePage = () => {
                 </div>
             <div className='home-div-formularioBuscar-primera-seccion'>
                 <h2 className='home-titulo-primera-seccion'>Desde nuestra <span className='span-red'>cocina</span><br></br> a la puerta de tu <span className='span-red'>casa</span></h2>
-                <form className='home-formulario-buscar-productos'>
+                <form onSubmit={handleBuscar} className='home-formulario-buscar-productos'>
                     <div className='home-contenedor-input-buscar'>
-                    <input className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required/>
+                    <input className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required onChange={(e)=> setTerminoBusqueda(e.target.value)}/>
                     <i className="fa-solid fa-magnifying-glass home-icono-lupa-input-buscar"></i>
                     </div>
                     <input className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
@@ -39,10 +73,20 @@ export const HomePage = () => {
         <section className='home-tercer-section-menu'>
             <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
             <div className='home-contenedor-cards-productos'>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
-                <div className="home-card-productos">Aquí van las cards de productos</div>
+                
+            {productos.map((producto) => (
+            <div key={producto.id} className="home-card-productos">
+                <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
+                <div className='home-contenedor-info-productos'>
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
+                <p className='home-precio-producto'>${producto.precio}</p>
+                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <Link to={`/producto?id=${producto._id}`}>
+                <button className='home-boton-verProducto'>Ver producto</button>
+                </Link>
+                </div>
+            </div>
+          ))}
             </div>
         </section>
         <section className='home-cuarta-section-donde-encontrarnos'>

@@ -1,11 +1,20 @@
 export default function Footer() {
     return (
-      <>
+      <footer id="footer">
         <div className="caja-footer">
           <div className="footer-elementos">
-            <div className="caja-logo">
-              <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
-              React to my pizza!
+          <div  id="caja-logo-texto">
+              <img
+                className="logo-navbar"
+                id="logo-footer"
+                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
+                alt=""
+              />
+              <div className="texto-logo">
+                 <div className="cajita">React to my </div>
+                
+                 <div className="cajita" id="pizza-footer">PIZZA</div>
+              </div>
             </div>
           </div>
           <div className="footer-elementos"> 
@@ -32,7 +41,7 @@ export default function Footer() {
           
           </div>
         </div>
-      </>
+      </footer>
     );
   }
   

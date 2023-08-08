@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../css/Registro.css'
 import Swal from 'sweetalert2';
 import reactToMyPizzaAPI from '../../../api/ReactToMyPizzaAPI';
+import { Navigate } from 'react-router';
 export const Registro = () => {
     const [nombre, setNombre] = useState('');
     const [edad, setEdad] = useState('');
@@ -77,6 +78,10 @@ export const Registro = () => {
                 email,
                 password: contraseña
             })
+            
+            
+            //Guardo el token en el local storage
+            localStorage.setItem("token", resp.data.token);
 
             if (resp.status === 201){
                 Swal.fire({
@@ -85,6 +90,9 @@ export const Registro = () => {
                     showConfirmButton: false,
                     timer: 2000
                   })
+                  setTimeout(() => {
+                    window.location.href = "/"
+                  }, 1600);
             } else{
                 return Swal.fire({
                     icon: 'error',
