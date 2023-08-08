@@ -14,7 +14,7 @@ export const Aboutus = () => {
           <img  className='sobreNosotros-image' src='src\about-us\assets\nico.jpg' alt="Fotografía de Nico Quinteros" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Nico Quinteros</h4>
-        <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
+        <p className='sobreNosotros-desc-card'>Tengo 21 años, soy de Tucumán y estudio Ingeniería en Sistemas de Información en la UTN. Me gusta mucho todo lo que tenga que ver con la programacion y la robótica. Pueden ver mas de mi y mis proyectos en mi Github o mi Linkedin!</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/nicol%C3%A1s-quinteros-459a93198/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
@@ -30,7 +30,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\maxi.jpg" alt="Fotografía de Maxi Majorel" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Maxi Majorel</h4>
-        <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
+        <p className='sobreNosotros-desc-card'>Tengo 22 años, soy de Tucumán. Estudio fotografía pero desde chico que me gusta la informática así que decidí aprender a programar. Actualmente estoy creando junto a amigos una agencia donde publicaremos nuestros proyectos en Github.</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/maximo-majorel/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
@@ -46,7 +46,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\damian.jpg" alt="Fotografía de Damián Paz" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Damián Paz</h4>
-        <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
+        <p className='sobreNosotros-desc-card'>Tengo 29 años, soy Ing. Electrónico y siempre me gustó todo lo relacionado a la tecnología en sus diferentes aplicaciones. Me gusta aprender y estar a la vanguardia, por eso decidí ampliar mis conocimientos en programación. Pueden ver mis proyectos en Github.</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/damian-paz-b72336185/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
@@ -62,7 +62,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\agustin.jpg" alt="Fotografía de Damián Paz" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Agustín Rubio</h4>
-        <p className='sobreNosotros-desc-card'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quis blanditiis sint error quos doloribus saepe temporibus facilis beatae vero praesentium cupiditate, animi aspernatur eius ipsum repellendus illo velit dolores.</p>
+        <p className='sobreNosotros-desc-card'>Tengo 24 años, soy de Tucumán. Soy fotógrafo, estudio Ingeniería en Sistemas de Información en la UTN. Me gusta aprender sobre ciencia y tecnología, la programación, mecánica, electrónica y robótica. Pueden ver más sobre mis proyectos en mis redes!</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/agustin-rubio-/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
