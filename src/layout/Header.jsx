@@ -80,16 +80,17 @@ useEffect(() => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                {
-                  currentUser?
-                  <h5 className="start-100 mt-3"><BsFillPersonFill/>{currentUser.nombre}</h5>
-                  : <></>
-
-                }
+               
             
                 
                 
                 <Nav className="justify-content-end flex-grow-1 pe-3">
+                {
+                  currentUser?
+                  <h5 className=" mt-3 me-2"><BsFillPersonFill/>{currentUser.nombre}</h5>
+                  : <></>
+
+                }
                 
                 {
                     currentUser?.rol == "admin"?
