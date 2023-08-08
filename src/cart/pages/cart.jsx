@@ -4,13 +4,21 @@ import axios from 'axios';
 import "../css/cart.css";
 import rubbishbin from '../assets/rubbishbin.png';
 // import jwt from 'jsonwebtoken';
+import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
 
 export const Cart = () => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        obtenerCarrito();
+        // obtenerCarrito();
+        try {
+            reactToMyPizzaAPI.get(`api/cart/64d1be09a30684c4ba25ea5f`).then((response) =>{
+                console.log(response);
+            })
+          } catch (error) {
+            console.log("Ocurrió un error, por favor contactese con el administrador")
+          }    
     }, []);
 
     const obtenerCarrito = () => {
@@ -24,16 +32,16 @@ export const Cart = () => {
 
         // const usuarioValor = { "usuario" : "64d1be09a30684c4ba25ea5f" }
 
-        axios.get('/api/cart/64d1be09a30684c4ba25ea5f')
-            .then(response => {
-                setCarrito(response.data.carrito);
-                calcularTotal(response.data.carrito);
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error('Error al obtener el carrito:', error);
-                console.log(error);
-            });
+        // reactToMyPizzaAPI.get('/api/cart/64d1be09a30684c4ba25ea5f')
+        //     .then(response => {
+        //         // setCarrito(response.data.carrito);
+        //         // calcularTotal(response.data.carrito);
+        //         console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error al obtener el carrito:', error);
+        //         console.log(error);
+        //     });
     };
 
     const calcularTotal = (items) => {
