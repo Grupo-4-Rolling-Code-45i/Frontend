@@ -62,7 +62,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\agustin.jpg" alt="Fotografía de Damián Paz" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Agustín Rubio</h4>
-        <p className='sobreNosotros-desc-card'></p>
+        <p className='sobreNosotros-desc-card'>Tengo 24 años, soy fotógrafo, estudio Ingeniería en Sistemas de Información en la UTN. Me gusta aprender sobre ciencia y tecnología, la programación, mecánica, electrónica y robótica. Pueden ver más sobre mis proyectos en Github!</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/agustin-rubio-/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
