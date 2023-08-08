@@ -1,7 +1,34 @@
 export default function Footer() {
+
+  window.onscroll = function() {
+    if(document.documentElement.scrollTop > 100){
+        document.querySelector('.go-top-container').classList.add('show');
+}else{
+    document.querySelector('.go-top-container').classList.remove('show');
+}
+}
+
+
+
+
+document.querySelector('.go-top-container').addEventListener('click', () => {
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+});
+
+
+
+
+
     return (
       <>
         <div className="caja-footer">
+
+      
+
+
           <div className="footer-elementos">
             <div className="caja-logo">
               <img className="logo-navbar" src="src\assets\rolling.png" alt="" />
@@ -31,7 +58,23 @@ export default function Footer() {
           
           
           </div>
+
+
+
+          <div class="go-top-container">
+			<div class="go-top-buttom">
+				<i class="fa-solid fa-chevron-up"></i>
+			</div>
+		</div>
+
+
+
+
         </div>
+
+
+
+        
       </>
     );
   }
