@@ -10,16 +10,30 @@ export const Cart = () => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
 
-    useEffect(() => {
-        // obtenerCarrito();
-        try {
-            reactToMyPizzaAPI.get(`api/cart/64d1be09a30684c4ba25ea5f`).then((response) =>{
-                console.log(response);
-            })
-          } catch (error) {
-            console.log("Ocurrió un error, por favor contactese con el administrador")
-          }    
-    }, []);
+    // useEffect(() => {
+    //     // obtenerCarrito();
+    //     try {
+    //         reactToMyPizzaAPI.get(`api/cart/64d1be09a30684c4ba25ea5f`).then((response) =>{
+    //             console.log(response);
+    //         })
+    //       } catch (error) {
+    //         console.log("Ocurrió un error, por favor contactese con el administrador")
+    //       }    
+    // }, []);
+async function getCarrito() {
+    try {
+        await reactToMyPizzaAPI({
+            url: "api/cart/64d1be09a30684c4ba25ea5f",
+            method: "GET",
+          }).then((response) =>
+        console.log(response)
+        )
+    } catch (error) {
+        console.log("Ocurrió un error, por favor contactese con");
+    }
+}
+
+getCarrito()
 
     const obtenerCarrito = () => {
 
@@ -50,7 +64,7 @@ export const Cart = () => {
     };
 
     const cambiarCantidad = (itemId, newQuantity) => {
-        axios.put(`/api/cart/edit/${itemId}`, { cantidad: newQuantity })
+        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { cantidad: newQuantity })
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
@@ -61,7 +75,7 @@ export const Cart = () => {
     };
 
     const eliminarProducto = (itemId) => {
-        axios.delete(`/api/cart/delete/${itemId}`)
+        reactToMyPizzaAPI.delete(`/api/cart/delete/${itemId}`)
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
