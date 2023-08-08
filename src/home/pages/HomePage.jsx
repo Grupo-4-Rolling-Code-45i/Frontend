@@ -49,10 +49,10 @@ export const HomePage = () => {
                 <h2 className='home-titulo-primera-seccion'>Desde nuestra <span className='span-red'>cocina</span><br></br> a la puerta de tu <span className='span-red'>casa</span></h2>
                 <form onSubmit={handleBuscar} className='home-formulario-buscar-productos'>
                     <div className='home-contenedor-input-buscar'>
-                    <input max-length="20" className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required onChange={(e)=> setTerminoBusqueda(e.target.value)}/>
+                    <input maxlength="50" className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required onChange={(e)=> setTerminoBusqueda(e.target.value)}/>
                     <i className="fa-solid fa-magnifying-glass home-icono-lupa-input-buscar"></i>
                     </div>
-                    <input className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
+                    <input  className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
                 </form>
                 </div>
 
