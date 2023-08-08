@@ -164,10 +164,26 @@ useEffect(() => {
                       Crear cuenta
                     </NavDropdown.Item> */}
                   </NavDropdown>
+                 
+                 
+                  {
+                  currentUser?
                   <Nav.Link > <Link to="/crear">  {" "}
                     <img src="src\assets\Carrito.png" alt="" />  </Link>
                    
                   </Nav.Link>
+                  : <></>
+
+                }
+                 
+                 
+                  {/* <Nav.Link > <Link to="/crear">  {" "}
+                    <img src="src\assets\Carrito.png" alt="" />  </Link>
+                   
+                  </Nav.Link> */}
+
+
+
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
