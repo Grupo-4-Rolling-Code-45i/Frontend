@@ -21,7 +21,6 @@ export const Pedidos = () => {
            const resp=await reactToMyPizzaAPI.get("/api/orders");
             setcargarPedidos(resp.data.pedidos);
 
-            const resp2=await reactToMyPizzaAPI.get("/api/users");
 
         }
 
@@ -50,10 +49,7 @@ export const Pedidos = () => {
       
         }, []);
 
-        useEffect(() => {
-            cargarPedidosDB();
-           
-             }, [confirmarPedidosDB]);
+       
 
   return (
     <div>
@@ -131,7 +127,7 @@ return(
 
     <tr key={pedido._id}>
     <td>{pedido._id}</td>
-    <td>{pedido.usuario}</td>
+    <td>{pedido.usuario.nombre}</td>
     <td>{pedido.producto}</td>
     <td>{pedido.fecha}</td>
     <td>{pedido.estado}</td>
