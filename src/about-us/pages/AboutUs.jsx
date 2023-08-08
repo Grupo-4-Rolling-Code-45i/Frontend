@@ -46,7 +46,7 @@ export const Aboutus = () => {
           <img className='sobreNosotros-image' src="src\about-us\assets\damian.jpg" alt="Fotografía de Damián Paz" />
         </div>
         <h4 className='sobreNosotros-nombre-card'>Damián Paz</h4>
-        <p className='sobreNosotros-desc-card'></p>
+        <p className='sobreNosotros-desc-card'>Tengo 29 años, soy Ing. Electrónico y siempre me gustó todo lo relacionado a la tecnología en sus diferentes aplicaciones. Me gusta aprender y estar a la vanguardia, por eso decidí ampliar mis conocimientos en programación. Pueden ver mis proyectos en Github.</p>
         <div className="sobreNosotros-conteiner-botones">
           <a  className='sobre-nosotros-link' href="https://www.linkedin.com/in/damian-paz-b72336185/" target='_blank'>            
           <button className='sobreNosotros-boton-social'>
