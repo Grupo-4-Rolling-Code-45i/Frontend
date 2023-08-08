@@ -151,7 +151,7 @@ export const Productos = () => {
     
         try{
             const resp=await reactToMyPizzaAPI.put("/api/products/edit",{_id,nombre,precio,descripcion,imagen});
-            console.log(resp);
+            cargarProductsDB();
     
         }
     
