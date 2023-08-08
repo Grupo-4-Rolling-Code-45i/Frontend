@@ -20,11 +20,11 @@ function OffcanvasExample() {
 
 
   const {currentUser, getAuth} = useContext(PizzeriaContext)
-console.log(currentUser);
+  //console.log(currentUser);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const handleLogin = () => {
+  const handleLogin = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("rol");
   console.log("SESION EXPIRADA");
