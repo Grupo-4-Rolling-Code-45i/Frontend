@@ -56,7 +56,7 @@ export const Cart = () => {
 
     // --- Cambiar cantidad lógica ---
 
-    const cambiarCantidad = (itemId, newQuantity) => {
+    const actualizarCantidad = (itemId, newQuantity) => {
 
         if(currentUser) {
 
@@ -132,7 +132,7 @@ export const Cart = () => {
                                     type="number"
                                     value={item.cantidad}
                                     min="1"
-                                    onChange={(e) => cambiarCantidad(item._id, e.target.value)}
+                                    onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>
                             <td>${item.precio}</td>

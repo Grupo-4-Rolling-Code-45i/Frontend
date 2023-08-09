@@ -53,27 +53,32 @@ export const Products = () => {
             setCantidadAEnviar(cant);
         };
 
+        // Petición POST ---
+
         const agregarProducto = () => {
 
             if(currentUser) {
-    
+
                 const usuarioId4 = currentUser._id;
-    
+
                 const bodyIDadd = {
                     nombre : producto.nombre,
                     precio : producto.precio,
-                    cantidad : cantidadAEnviar,
+                    cantidad : parseInt(cantidadAEnviar, 10),
                     usuario : usuarioId4
                 }
-        
-                reactToMyPizzaAPI.post(`/api/cart/new` , { data : bodyIDadd })
+
+                reactToMyPizzaAPI.post('/api/cart/new',
+                        { data : bodyIDadd })
                     .then(response => {
                         console.log(response);
                     })
                     .catch(error => {
-                        console.error('Error al eliminar el producto:', error);
+                        console.error('Error al agregar el producto:', error);
+                        console.log(bodyIDadd);
+                        console.log(error);
                     });
-                }
+            }
         };
 
     return (
