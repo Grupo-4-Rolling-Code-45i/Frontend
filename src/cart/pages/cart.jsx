@@ -59,7 +59,11 @@ export const Cart = () => {
     };
 
     const cambiarCantidad = (itemId, newQuantity) => {
-        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { cantidad: newQuantity })
+        const Cantidad = {
+            usuario : '64d1be09a30684c4ba25ea5f',
+            cantidad : newQuantity
+        }
+        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : Cantidad })
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
@@ -69,7 +73,9 @@ export const Cart = () => {
             });
     };
 
-    const bodyID = {    usuario : '64d1be09a30684c4ba25ea5f'   }
+    const bodyID = {
+        usuario : '64d1be09a30684c4ba25ea5f'
+    }
 
     const eliminarProducto = (itemID) => {
         reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
