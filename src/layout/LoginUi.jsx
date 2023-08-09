@@ -1,18 +1,19 @@
 import "./Login.css";
 import Swal from "sweetalert2";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
-
-
+import { PizzeriaContext } from "../PedidosContext/PedidosContext";
+import reactToMyPizzaAPI from "../api/ApiReactToMyPizza";
+import iconoUsuarioLogin from '../assets/usuario.png'
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const {login} = useContext(PizzeriaContext)
   // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
 
     //  SEGUNDA CAPA DE SEGURIDAD, VALIDACIONES DEL FORMULARIO CON JS
 
@@ -51,17 +52,35 @@ function LoginUi() {
         email,
         password,
       });
+      login({email, password})
       console.log(resp);
-      
+      //GUARDO EL TOKEN EN EL LOCAL STORAGE
+      // localStorage.setItem("token", resp.data.token);
+      localStorage.setItem("rol", resp.data.usuario.rol);
 
-      if (resp.status === 201) {
+      if (resp.status === 200) {
         console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
-        Swal.fire({
-          icon: "success",
-          title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (resp.data.usuario.rol === "admin") {
+          
+          Swal.fire({
+            icon: "success",
+            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            text: "Usuario Administrador",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          console.log("USUARIO CLIENTE");
+          Swal.fire({
+            icon: "success",
+            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            text: "Redireccionando...",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+
+        
 
         setTimeout(() => {
           window.location.href = "/";
@@ -75,14 +94,62 @@ function LoginUi() {
         });
       }
     } catch (error) {
-      console.log(error);
-      console.log("USUARIO NO LOGUEADO");
-      Swal.fire({
-        icon: "error",
-        title: "¡Ups!",
-        text: "Ocurrió un error inesperado, intentelo nuevamente",
-      });
+      console.log(error.response.status);
+      console.log(error.response);
+      switch (error.response.status) {
       
+        case 400:
+          localStorage.removeItem("token");
+          console.log("USUARIO O CONTRASEÑA INCORRECTOS");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        
+        case 401:
+          localStorage.removeItem("token");
+          console.log("USUARIO DESHABILITADO");
+          Swal.fire({
+            icon: "error",
+            title: "Usuario deshabilitado",
+            text: "Por favor contacte al administrador",
+          });
+         
+          break;
+
+
+
+
+          case 404:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        default:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Ocurrió un error inesperado, intentelo nuevamente",
+          });
+          break;
+      }
+
+
+
+
+      // console.log(error);
+      // console.log("USUARIO NO LOGUEADO");
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "¡Ups!",
+      //   text: "Ocurrió un error inesperado, intentelo nuevamente",
+      // });
     }
   };
 
@@ -92,7 +159,7 @@ function LoginUi() {
         <div>
           <div className="imgs">
             <div className="container-image">
-              <img src="src\assets\usuario.png" alt="" className="profile" />
+              <img src={iconoUsuarioLogin} alt="Icono usuario" className="profile" />
             </div>
           </div>
           <div>
@@ -132,8 +199,13 @@ function LoginUi() {
             </form>
 
             <p className="link">
-              <a className="hipervinculo-login" href="/Error404">¿Olvidaste tu contraseña?</a> O{" "}
-              <a className="hipervinculo-login" href="/registro">Crear cuenta</a>
+              <a className="hipervinculo-login" href="/Error404">
+                ¿Olvidaste tu contraseña?
+              </a>{" "}
+              O{" "}
+              <a className="hipervinculo-login" href="/registro">
+                Crear cuenta
+              </a>
             </p>
           </div>
         </div>
@@ -143,3 +215,25 @@ function LoginUi() {
 }
 
 export default LoginUi;
+
+//codigo para el catch cuando se vence el token
+
+// if (error.response.status === 401) {
+//   localStorage.removeItem("token");
+//   console.log("SESION EXPIRADA");
+//   Swal.fire({
+//     icon: "error",
+//     title: "¡Ups!",
+//     text: "Su sesión ha expirado, por favor vuelva a iniciar sesión",
+//   });
+//   setTimeout(() => {
+//     window.location.href = "/login";
+//   }, 2000);
+// } else {
+//   console.log("USUARIO NO LOGUEADO");
+//   Swal.fire({
+//     icon: "error",
+//     title: "¡Ups!",
+//     text: "Ocurrió un error inesperado, intentelo nuevamente",
+//   });
+// }
