@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { PizzeriaContext } from "../PedidosContext/PedidosContext";
 import {BsFillPersonFill} from 'react-icons/bs';
+import imagenCarrito from '../assets/Carrito.png'
 function OffcanvasExample() {
   
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
@@ -169,7 +170,7 @@ useEffect(() => {
                   {
                   currentUser?
                   <Nav.Link > <Link to="/crear">  {" "}
-                    <img src="src\assets\Carrito.png" alt="" />  </Link>
+                    <img src={imagenCarrito} alt="" />  </Link>
                    
                   </Nav.Link>
                   : <></>
@@ -178,7 +179,7 @@ useEffect(() => {
                  
                  
                   {/* <Nav.Link > <Link to="/crear">  {" "}
-                    <img src="src\assets\Carrito.png" alt="" />  </Link>
+                    <img src={imagenCarrito} alt="" />  </Link>
                    
                   </Nav.Link> */}
 
