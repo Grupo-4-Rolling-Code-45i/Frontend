@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../css/home.css'
 import { Link } from 'react-router-dom'
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI.js'
+
 import Swal from 'sweetalert2'
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza'
 export const HomePage = () => {
     
 

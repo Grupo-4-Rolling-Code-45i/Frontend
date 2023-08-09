@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router';
 import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI.js';
+
 import { PizzeriaContext } from '../../PedidosContext/PedidosContext';
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza';
 
 export const Productos = () => {
 
