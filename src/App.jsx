@@ -1,46 +1,35 @@
-import React from 'react';
-import Header from './layout/Header';
-import Footer from './layout/Footer';
-import { HomePage } from './home/pages/HomePage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Error404 } from './404/pages/Error404';
-import { Products } from './products/pages/products';
-import { Aboutus } from './about-us/pages/AboutUs';
-import { Principal } from './admin/pages/Principal';
-import { Usuarios } from './admin/pages/Usuarios';
-import { Productos } from './admin/pages/Productos';
-import { Pedidos } from './admin/pages/Pedidos';
-import { Contacto } from './contacto/Contacto';
-import { Cart } from './cart/pages/Cart';
-import { Registro } from './auth/registro/pages/Registro';
-import { Buscar } from './search/pages/Buscar';
-import PedidosContext from './PedidosContext/PedidosContext';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-export default function App() {
+function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div>
-   
-      <BrowserRouter>
-      <PedidosContext>
-      <Header />
-        <Routes>
-            <Route path='/' element={ <HomePage/>}/>
-            <Route path='*' element={ <Error404/>}/>
-            <Route path='/sobre-nosotros' element={ <Aboutus/>}/>
-            <Route path='/contacto' element={ <Contacto/> }/>
-            <Route path='/admin' element={ <Principal/> }/>
-            <Route path='/admin-usuarios' element={ <Usuarios/> }/>
-            <Route path='/admin-productos' element={ <Productos/> }/>
-            <Route path='/admin-pedidos' element={ <Pedidos/> }/>
-            <Route path='/admin-principal' element={ <Principal/> }/>
-            <Route path='/cart' element={ <Cart/>}/>
-            <Route path='/producto' element={ <Products/> }/>
-            <Route path='registro' element={<Registro/>}/>
-            <Route path='buscar' element={<Buscar/>}/>
-        </Routes>
-        </PedidosContext>
-      </BrowserRouter>
-      <Footer />
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
+
+export default App
