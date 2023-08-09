@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
-import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
+
 import { Link } from "react-router-dom";
+import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 export const Products = () => {
     const urlParams  = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');  
