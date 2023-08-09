@@ -6,6 +6,8 @@ import rubbishbin from '../assets/rubbishbin.png';
 import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 import { PizzeriaContext } from "../../PedidosContext/PedidosContext";
 
+import Swal from "sweetalert2";
+
 export const Cart = () => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
@@ -98,10 +100,14 @@ export const Cart = () => {
             const bodyID = {
                 usuario : usuarioId3
             }
-    
+
             reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
                 .then(response => {
                     console.log(response);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Producto elminado del pedido.",
+                    });
                     obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
                 })
                 .catch(error => {
@@ -109,6 +115,53 @@ export const Cart = () => {
                 });
             }
     };
+
+    // Enviar el pedido
+
+    const crearPedido = async () => {
+
+        if (currentUser) {
+            console.log("peticion enviada");
+
+        const usuarioId4 = currentUser._id;
+
+        const pedidosArray = [carrito];
+
+            console.log(usuarioId4);
+        try {
+            await reactToMyPizzaAPI.post('/api/orders/new', {pedidosArray, usuarioId4})
+            console.log("ok");
+            carrito.forEach(item => {
+                eliminarProducto(item._id);
+            });
+            Swal.fire({
+                icon: "success",
+                title: "¡Listo!",
+                text: "El pedido fue enviado correctamente.",
+            });
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: "Error inesperado",
+                text: "Estamos experimentando un problema, intente más tarde",
+            });
+        }
+
+        // reactToMyPizzaAPI.post('/api/orders/new' , { data : data1})
+        //         .then(response => {
+        //             console.log(response);
+        //             obtenerCarrito();
+        //             console.log("anduvo") // Actualizar el carrito después de eliminar un producto
+        //         })
+        //         .catch(error => {
+        //             console.error('Error enviar el pedido:', error);
+        //         });
+
+    }
+
+    }
+
 
     return (
         <Container className='containerCart'>
@@ -151,7 +204,7 @@ export const Cart = () => {
             </Table>
             <div className="total">
                 <h5 className='totalCart'>Total: ${total}</h5>
-                <Button className='botonPedido' variant="danger">Realizar Pedido</Button>
+                <Button className='botonPedido' variant="danger" onClick={() => crearPedido()}>Realizar Pedido</Button>
             </div>
         </Container>
     );
