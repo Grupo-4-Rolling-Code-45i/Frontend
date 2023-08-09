@@ -1,3 +1,4 @@
+import logoReactToMyPizza from '../assets/Logo_React_to_my_Pizza_SVG.svg'
 export default function Footer() {
     return (
       <footer id="footer">
@@ -7,7 +8,7 @@ export default function Footer() {
               <img
                 className="logo-navbar"
                 id="logo-footer"
-                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
+                src={logoReactToMyPizza}
                 alt=""
               />
               <div className="texto-logo">
