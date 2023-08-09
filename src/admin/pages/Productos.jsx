@@ -53,10 +53,10 @@ export const Productos = () => {
         catch(error)
         {
         console.log(error);
-        //if(error.response.status===401){
-          // localStorage.removeItem("token");
-          // navigate("/login");
-       // }
+    if(error.response.status===401){
+      localStorage.removeItem("token");
+      navigate("/");
+    }
      
         }
     }
