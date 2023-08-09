@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import "../css/cart.css";
 import rubbishbin from '../assets/rubbishbin.png';
 // import jwt from 'jsonwebtoken';
 import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
+import { PizzeriaContext } from "../../PedidosContext/PedidosContext";
 
 export const Cart = () => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
 
+    const {currentUser} = useContext(PizzeriaContext)
+
     useEffect(() => {
         obtenerCarrito();
-    }, []);
+    }, [currentUser]);
+
+    // --- Obtener carrito ---
 
     const obtenerCarrito = () => {
+
+        if(currentUser) {
 
         // // Obtener el token de autenticación del almacenamiento local o donde corresponda
         // const token = localStorage.getItem('token'); // Asumiendo que el token se almacena en localStorage
@@ -24,9 +31,9 @@ export const Cart = () => {
 
         // Obtener carrito petición GET
 
-        const usuarioValor = '64d1be09a30684c4ba25ea5f'
+        const usuarioId1 = currentUser._id;
 
-        reactToMyPizzaAPI.get(`/api/cart/${usuarioValor}`)
+        reactToMyPizzaAPI.get(`/api/cart/${usuarioId1}`)
             .then(response => {
                 setCarrito(response.data.carrito);
                 calcularTotal(response.data.carrito);
@@ -36,20 +43,27 @@ export const Cart = () => {
                 console.error('Error al obtener el carrito:', error);
                 console.log(error);
             });
+        }
+
     };
 
-    // Calcular el total
+    // --- Calcular el total ---
 
     const calcularTotal = (items) => {
         const totalPrice = items.reduce((total, item) => total + item.cantidad * item.precio, 0);
         setTotal(totalPrice);
     };
 
-    // Cambiar cantidad lógica
+    // --- Cambiar cantidad lógica ---
 
     const cambiarCantidad = (itemId, newQuantity) => {
+
+        if(currentUser) {
+
+            const usuarioId2 = currentUser._id;
+
         const cantidad = {
-            usuario : '64d1be09a30684c4ba25ea5f',
+            usuario : usuarioId2,
             cantidad : newQuantity
         }
 
@@ -70,23 +84,30 @@ export const Cart = () => {
             .catch(error => {
                 console.error('Error al actualizar la cantidad:', error);
             });
+        }
     };
 
     // Eliminar producto DELETE
 
-    const bodyID = {
-        usuario : '64d1be09a30684c4ba25ea5f'
-    }
-
     const eliminarProducto = (itemID) => {
-        reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
-            .then(response => {
-                console.log(response);
-                obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
-            })
-            .catch(error => {
-                console.error('Error al eliminar el producto:', error);
-            });
+
+        if(currentUser) {
+
+            const usuarioId3 = currentUser._id;
+
+            const bodyID = {
+                usuario : usuarioId3
+            }
+    
+            reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
+                .then(response => {
+                    console.log(response);
+                    obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el producto:', error);
+                });
+            }
     };
 
     return (
