@@ -170,7 +170,7 @@ useEffect(() => {
                  
                   {
                   currentUser?
-                  <Nav.Link > <Link to="/crear">  {" "}
+                  <Nav.Link > <Link to="/cart">  {" "}
                     <img src={imagenCarrito} alt="icono carrito" />  </Link>
                    
                   </Nav.Link>
