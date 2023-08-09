@@ -94,7 +94,7 @@ useEffect(() => {
                 }
                 
                 {
-                    currentUser?.rol == "admin"?
+                    currentUser?.rol == "administrador"?
                   
                 <Nav.Link >  <Link className="adminbutton" to="/admin-principal">Admin</Link></Nav.Link>
                   :

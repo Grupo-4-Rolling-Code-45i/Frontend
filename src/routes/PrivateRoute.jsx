@@ -5,19 +5,32 @@ import { Navigate } from "react-router-dom";
 import  { PizzeriaContext } from "../PedidosContext/PedidosContext";
 
 const PrivateRoute = ({ children }) => {
-  const { getAuth, authenticated, loading } = useContext(PizzeriaContext);
-
+  const { getAuth, authenticated, loading,currentUser } = useContext(PizzeriaContext);
+  
+ 
+  
   useEffect(() => {
     getAuth();
   }, []);
 
-  return loading ? (
-    <Spinner />
-  ) : authenticated ? (
-    children
-  ) : (
-    <Navigate to="/" />
-  );
+  // return loading ? (
+  //   <Spinner />
+  // ) : currentUser.rol=="admin"? (
+  //   children
+  // ) : (
+  //   <Navigate to="/" />
+  // );
+
+  if (loading) {
+    return <Spinner />;
+  } else if (currentUser?.rol === "administrador") {
+    return children;
+  } else {
+    return <Navigate to="/" />;
+  }
+
+
+
 };
 
 export default PrivateRoute;
