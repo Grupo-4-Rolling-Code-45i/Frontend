@@ -9,6 +9,9 @@ import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza'
 export const HomePage = () => {
     reactToMyPizzaAPI
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      };
     const [terminoBusqueda, setTerminoBusqueda] = useState("")
     const handleBuscar = (e) =>{
         e.preventDefault()
@@ -85,7 +88,7 @@ export const HomePage = () => {
                 <p className='home-precio-producto'>${producto.precio}</p>
                 <p className='home-descripcion-producto'>{producto.descripcion}</p>
                 <Link to={`/producto?id=${producto._id}`}>
-                <button className='home-boton-verProducto'>Ver producto</button>
+                <button onClick={scrollToTop}  className='home-boton-verProducto'>Ver producto</button>
                 </Link>
                 </div>
             </div>

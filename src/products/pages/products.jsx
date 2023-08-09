@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
+
+import { PizzeriaContext } from "../../PedidosContext/PedidosContext";
 
 import { Link } from "react-router-dom";
 import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
@@ -14,6 +16,7 @@ export const Products = () => {
       try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
+            console.log(RespProducto)
             
             setProducto(RespProducto)
             
@@ -39,6 +42,48 @@ export const Products = () => {
                 console.log(`Ha ocurrido un error a la hora de querer obtener los productos, por favor contacte un administrador: ${error}`)
             }
         }, [])
+
+        // --- Cantidad ---
+
+        const {currentUser} = useContext(PizzeriaContext)
+
+        const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
+
+        const cambiarCantidad = (cant) => {
+            setCantidadAEnviar(cant);
+        };
+
+        // Petición POST ---
+
+        const agregarProducto = async () => {
+
+            if(currentUser) {
+
+                const usuarioId4 = currentUser._id;
+
+                
+                  const  nombre = producto.nombre
+                  const  precio = producto.precio
+                  const  cantidad = parseInt(cantidadAEnviar, 10)
+                 const    usuario = usuarioId4
+                
+
+                try{
+                    await reactToMyPizzaAPI.post('/api/cart/new',{ nombre, precio, cantidad, usuario})
+                       // console.log(bodyIDadd)
+
+                }
+
+                
+                 
+                    catch(error)  {
+                        console.error('Error al agregar el producto:', error);
+                        console.log(bodyIDadd);
+                        console.log(error);
+                    };
+            }
+        };
+
     return (
         <>
             {/* Primer div con foto del producto y detalles */}
@@ -52,8 +97,15 @@ export const Products = () => {
                 <h3 className="product-price-product-page">${precio}</h3>
                 <p>{descripcion}</p>
                 <div className="product-actions">
-                    <input type="number" min="1" max="55" defaultValue="1"/>
-                    <Button variant="danger">Agregar al pedido</Button>
+                    <input type="number"
+                    min="1" max="55"
+                    defaultValue="1"
+                    onChange={(e) => cambiarCantidad(e.target.value)}
+                    />
+                    <Button variant="danger"
+                    onClick={() => agregarProducto()}>
+                    Agregar al pedido
+                    </Button>
                 </div>
                 </div>
             </Container>
