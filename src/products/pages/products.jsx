@@ -55,29 +55,32 @@ export const Products = () => {
 
         // Petición POST ---
 
-        const agregarProducto = () => {
+        const agregarProducto = async () => {
 
             if(currentUser) {
 
                 const usuarioId4 = currentUser._id;
 
-                const bodyIDadd = {
-                    nombre : producto.nombre,
-                    precio : producto.precio,
-                    cantidad : parseInt(cantidadAEnviar, 10),
-                    usuario : usuarioId4
+                
+                  const  nombre = producto.nombre
+                  const  precio = producto.precio
+                  const  cantidad = parseInt(cantidadAEnviar, 10)
+                 const    usuario = usuarioId4
+                
+
+                try{
+                    await reactToMyPizzaAPI.post('/api/cart/new',{ nombre, precio, cantidad, usuario})
+                       // console.log(bodyIDadd)
+
                 }
 
-                reactToMyPizzaAPI.post('/api/cart/new',
-                        { data : bodyIDadd })
-                    .then(response => {
-                        console.log(response);
-                    })
-                    .catch(error => {
+                
+                 
+                    catch(error)  {
                         console.error('Error al agregar el producto:', error);
                         console.log(bodyIDadd);
                         console.log(error);
-                    });
+                    };
             }
         };
 
