@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { PizzeriaContext } from "../PedidosContext/PedidosContext";
 import {BsFillPersonFill} from 'react-icons/bs';
 import imagenCarrito from '../assets/Carrito.png'
+import logoReactToMyPizza from '../assets/Logo_React_to_my_Pizza_SVG.svg'
 function OffcanvasExample() {
   
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
@@ -60,8 +61,8 @@ useEffect(() => {
             <Nav.Link href="/" id="caja-logo-texto">
               <img
                 className="logo-navbar"
-                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
-                alt=""
+                src={logoReactToMyPizza}
+                alt="Logotipo React to my Pizza"
               />
               <div className="texto-logo">
                  <div className="cajita">React to my </div>
@@ -170,7 +171,7 @@ useEffect(() => {
                   {
                   currentUser?
                   <Nav.Link > <Link to="/crear">  {" "}
-                    <img src={imagenCarrito} alt="" />  </Link>
+                    <img src={imagenCarrito} alt="icono carrito" />  </Link>
                    
                   </Nav.Link>
                   : <></>

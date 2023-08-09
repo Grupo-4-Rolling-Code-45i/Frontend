@@ -2,10 +2,9 @@ import "./Login.css";
 import Swal from "sweetalert2";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-
 import { PizzeriaContext } from "../PedidosContext/PedidosContext";
 import reactToMyPizzaAPI from "../api/ApiReactToMyPizza";
-
+import iconoUsuarioLogin from '../assets/usuario.png'
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,7 +110,7 @@ function LoginUi() {
         <div>
           <div className="imgs">
             <div className="container-image">
-              <img src="src\assets\usuario.png" alt="" className="profile" />
+              <img src={iconoUsuarioLogin} alt="Icono usuario" className="profile" />
             </div>
           </div>
           <div>
