@@ -121,7 +121,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
-              maxLength={20}
+              maxLength={100}
                 type="text"
                 placeholder="Pizza Napolitana"
                 name='nombre'
@@ -141,7 +141,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
                 type="number"
                 placeholder="1500"
                 name='precio'
-               
+                min={0}
                 value={formData.precio}
                 onChange={handleChange}
                 
@@ -161,7 +161,7 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
               value={formData.descripcion}
               onChange={handleChange}
            
-              maxLength={60}
+              maxLength={200}
               minLength={3}
               />
               
@@ -177,9 +177,9 @@ const AgregarProductsDB= async (nombre,precio,descripcion,imagen) =>
               name='imagen' 
               placeholder='https://ejemplo.com/pizza_napolitana.jpg'
               value={formData.imagen}
-             
+              minLength={1}
               onChange={handleChange}
-             
+              maxLength={100}
               />
               
             </Form.Group>
