@@ -73,56 +73,7 @@ export const Pedidos = () => {
         </tr>
       </thead>
       <tbody className='text-center'>
-      <tr>
-                <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-               
-               
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-
-
-
-
-
-
-
-
+     
 
 {cargarPedidos.map((pedido) =>{
 return(
