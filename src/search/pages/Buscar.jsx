@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+
 import { Link } from 'react-router-dom';
 import '../css/busqueda.css';
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza';
 
 export const Buscar = () => {
   const urlParamsBuscar = new URLSearchParams(window.location.search);

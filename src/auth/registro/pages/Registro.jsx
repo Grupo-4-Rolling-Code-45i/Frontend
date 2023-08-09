@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import '../css/Registro.css'
 import Swal from 'sweetalert2';
-import reactToMyPizzaAPI from '../../../api/ReactToMyPizzaAPI';
+
 import { Navigate } from 'react-router';
+import reactToMyPizzaAPI from '../../../api/ApiReactToMyPizza';
+
 export const Registro = () => {
     const [nombre, setNombre] = useState('');
     const [edad, setEdad] = useState('');

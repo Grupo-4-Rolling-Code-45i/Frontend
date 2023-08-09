@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router';
 import { Container } from 'react-bootstrap';
 import "../css/admin.css";
 import { ModalAgregarProducto } from './ModalAgregarProducto';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+
 import { PizzeriaContext } from '../../PedidosContext/PedidosContext';
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza';
 
 export const Productos = () => {
 
@@ -192,11 +193,11 @@ setShowedit(true);
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
-              maxLength={20}
+              maxLength={100}
                 type="text"
-                
+              minLength={3}
                 name='nombre'
-                 value={formDataEdit.nombre}
+               value={formDataEdit.nombre}
                 autoFocus
                 onChange={handleChangeEdit}
               />
@@ -207,7 +208,7 @@ setShowedit(true);
               <Form.Control
               
                 type="number"
-                
+                min={0}
                 name='precio'
                 value={formDataEdit.precio}
                 onChange={handleChangeEdit}
@@ -226,7 +227,9 @@ setShowedit(true);
               name='descripcion' 
               value={formDataEdit.descripcion}
               onChange={handleChangeEdit}
-              maxLength={50}
+              maxLength={200}
+              minLength={3}
+
               />
               
             </Form.Group>
@@ -234,9 +237,9 @@ setShowedit(true);
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Imagen</Form.Label>
               <Form.Control
-              maxLength={20}
+              maxLength={200}
                 type="text"
-                
+                minLength={3}
                 name='imagen'
                  value={formDataEdit.imagen}
                 autoFocus

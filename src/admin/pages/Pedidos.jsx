@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 import{FaCheck} from 'react-icons/fa';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza';
+
 
 
 export const Pedidos = () => {

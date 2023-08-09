@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react'
+import reactToMyPizzaAPI from '../api/ApiReactToMyPizza';
 // import { toast } from 'react-toastify';
-import reactToMyPizzaAPI from '../api/ReactToMyPizzaAPI';
+
 
 export const PizzeriaContext = createContext();
 
@@ -34,8 +35,9 @@ const PedidosContext = ({children}) => {
           }
           reactToMyPizzaAPI.defaults.headers.common["Authorization"] = token;
           const { data } = await reactToMyPizzaAPI.get("/api/users/authStatus");
-          console.log(data);
+          
           setCurrentUser(data.user);
+          console.log(currentUser.rol);
           setAuthenticated(true);
         } catch (error) {
           setAuthenticated(false)
