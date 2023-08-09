@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import Loading from './layout/Loading';
 import { HomePage } from './home/pages/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Error404 } from './404/pages/Error404';
@@ -20,10 +21,11 @@ import PrivateRoute from './routes/PrivateRoute';
 export default function App() {
   return (
     <div>
-   
-      <BrowserRouter>
+   <Loading />
+      {/* <BrowserRouter>
       <PedidosContext>
       <Header />
+      <Loading />
         <Routes>
             <Route path='/' element={ <HomePage/>}/>
             <Route path='*' element={ <Error404/>}/>
@@ -41,7 +43,7 @@ export default function App() {
         </Routes>
         </PedidosContext>
       </BrowserRouter>
-      <Footer />
-    </div>
+      <Footer />*/}
+    </div> 
   );
 }
