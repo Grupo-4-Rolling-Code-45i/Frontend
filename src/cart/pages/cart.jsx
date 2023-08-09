@@ -37,6 +37,8 @@ export const Cart = () => {
         // const decodedToken = jwt.decode(token);
         // const usuarioId = decodedToken.userId;
 
+        // const itemId = carrito._id;
+
         const usuarioValor = '64d1be09a30684c4ba25ea5f'
 
         reactToMyPizzaAPI.get(`/api/cart/${usuarioValor}`)
@@ -67,8 +69,10 @@ export const Cart = () => {
             });
     };
 
-    const eliminarProducto = (itemId) => {
-        reactToMyPizzaAPI.delete(`/api/cart/delete/${itemId}`)
+    const bodyID = {    usuario : '64d1be09a30684c4ba25ea5f'   }
+
+    const eliminarProducto = (itemID) => {
+        reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
@@ -92,7 +96,7 @@ export const Cart = () => {
                 </thead>
                 <tbody>
                     {carrito.map((item) => (
-                        <tr key={item.id}>
+                        <tr key={item._id}>
                             <td>{item.nombre}</td>
                             <td>
                                 <input
