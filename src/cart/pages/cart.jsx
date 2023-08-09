@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
-import axios from 'axios';
 import "../css/cart.css";
 import rubbishbin from '../assets/rubbishbin.png';
 // import jwt from 'jsonwebtoken';
@@ -59,11 +58,11 @@ export const Cart = () => {
     };
 
     const cambiarCantidad = (itemId, newQuantity) => {
-        const Cantidad = {
+        const cantidad = {
             usuario : '64d1be09a30684c4ba25ea5f',
             cantidad : newQuantity
         }
-        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : Cantidad })
+        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : cantidad })
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
