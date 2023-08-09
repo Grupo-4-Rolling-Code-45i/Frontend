@@ -12,20 +12,6 @@ export const Cart = () => {
     useEffect(() => {
         obtenerCarrito();
     }, []);
-// async function getCarrito() {
-//     try {
-//         await reactToMyPizzaAPI({
-//             url: "api/cart/64d1be09a30684c4ba25ea5f",
-//             method: "GET",
-//           }).then((response) =>
-//         console.log(response)
-//         )
-//     } catch (error) {
-//         console.log("Ocurrió un error, por favor contactese con");
-//     }
-// }
-
-// getCarrito()
 
     const obtenerCarrito = () => {
 
@@ -36,7 +22,7 @@ export const Cart = () => {
         // const decodedToken = jwt.decode(token);
         // const usuarioId = decodedToken.userId;
 
-        // const itemId = carrito._id;
+        // Obtener carrito petición GET
 
         const usuarioValor = '64d1be09a30684c4ba25ea5f'
 
@@ -52,16 +38,30 @@ export const Cart = () => {
             });
     };
 
+    // Calcular el total
+
     const calcularTotal = (items) => {
         const totalPrice = items.reduce((total, item) => total + item.cantidad * item.precio, 0);
         setTotal(totalPrice);
     };
+
+    // Cambiar cantidad lógica
 
     const cambiarCantidad = (itemId, newQuantity) => {
         const cantidad = {
             usuario : '64d1be09a30684c4ba25ea5f',
             cantidad : newQuantity
         }
+
+        // Actualiza el estado de carrito con los cambios en la cantidad
+    const updatedCarrito = carrito.map(item =>
+        item._id === itemId ? { ...item, cantidad: parseInt(newQuantity) } : item
+    );
+
+    setCarrito(updatedCarrito);
+
+    // Petición PUT
+
         reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : cantidad })
             .then(response => {
                 console.log(response);
@@ -71,6 +71,8 @@ export const Cart = () => {
                 console.error('Error al actualizar la cantidad:', error);
             });
     };
+
+    // Eliminar producto DELETE
 
     const bodyID = {
         usuario : '64d1be09a30684c4ba25ea5f'
