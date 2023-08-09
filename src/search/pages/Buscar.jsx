@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI.js';
 import { Link } from 'react-router-dom';
 import '../css/busqueda.css';
 
