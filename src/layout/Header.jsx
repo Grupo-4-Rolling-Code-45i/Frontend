@@ -58,8 +58,7 @@ useEffect(() => {
           className="bg-body-tertiary mb-3"
         >
           <Container fluid className="caja-navbar">
-            <Nav.Link href="/" id="caja-logo-texto">
-              <img
+            <Nav.Link > <Link id="caja-logo-texto" className="quitarHiperv" to="/">  <img
                 className="logo-navbar"
                 src={logoReactToMyPizza}
                 alt="Logotipo React to my Pizza"
@@ -68,7 +67,8 @@ useEffect(() => {
                  <div className="cajita">React to my </div>
                 
                  <div className="cajita" id="pizza">PIZZA</div>
-              </div>
+              </div> </Link>
+             
             </Nav.Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas

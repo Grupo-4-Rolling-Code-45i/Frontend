@@ -128,7 +128,7 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
-                maxLength={20}
+              maxLength={100}
                 type="text"
                 placeholder="Pizza Napolitana"
                 name="nombre"
@@ -144,7 +144,8 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
               <Form.Control
                 type="number"
                 placeholder="1500"
-                name="precio"
+                name='precio'
+                min={0}
                 value={formData.precio}
                 onChange={handleChange}
               />
@@ -155,15 +156,14 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Descripcion</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="descripcion"
-                placeholder="de 8 porciones con jamon serrano y tomates frescos"
-                value={formData.descripcion}
-                onChange={handleChange}
-                maxLength={60}
-                minLength={3}
+              <Form.Control as="textarea" rows={3} 
+              name='descripcion' 
+              placeholder='de 8 porciones con jamon serrano y tomates frescos'
+              value={formData.descripcion}
+              onChange={handleChange}
+           
+              maxLength={200}
+              minLength={3}
               />
             </Form.Group>
 
@@ -172,12 +172,14 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Imagen</Form.Label>
-              <Form.Control
-                type="text"
-                name="imagen"
-                placeholder="https://ejemplo.com/pizza_napolitana.jpg"
-                value={formData.imagen}
-                onChange={handleChange}
+              <Form.Control 
+              type='text'
+              name='imagen' 
+              placeholder='https://ejemplo.com/pizza_napolitana.jpg'
+              value={formData.imagen}
+              minLength={1}
+              onChange={handleChange}
+              maxLength={100}
               />
             </Form.Group>
             <Button
