@@ -94,13 +94,62 @@ function LoginUi() {
         });
       }
     } catch (error) {
-      console.log(error);
-      console.log("USUARIO NO LOGUEADO");
-      Swal.fire({
-        icon: "error",
-        title: "¡Ups!",
-        text: "Ocurrió un error inesperado, intentelo nuevamente",
-      });
+      console.log(error.response.status);
+      console.log(error.response);
+      switch (error.response.status) {
+      
+        case 400:
+          localStorage.removeItem("token");
+          console.log("USUARIO O CONTRASEÑA INCORRECTOS");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        
+        case 401:
+          localStorage.removeItem("token");
+          console.log("USUARIO DESHABILITADO");
+          Swal.fire({
+            icon: "error",
+            title: "Usuario deshabilitado",
+            text: "Por favor contacte al administrador",
+          });
+         
+          break;
+
+
+
+
+          case 404:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        default:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Ocurrió un error inesperado, intentelo nuevamente",
+          });
+          break;
+      }
+
+
+
+
+      // console.log(error);
+      // console.log("USUARIO NO LOGUEADO");
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "¡Ups!",
+      //   text: "Ocurrió un error inesperado, intentelo nuevamente",
+      // });
     }
   };
 
