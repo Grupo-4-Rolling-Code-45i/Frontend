@@ -15,6 +15,7 @@ import { Cart } from './cart/pages/Cart';
 import { Registro } from './auth/registro/pages/Registro';
 import { Buscar } from './search/pages/Buscar';
 import PedidosContext from './PedidosContext/PedidosContext';
+import PrivateRoute from './routes/PrivateRoute';
 
 export default function App() {
   return (
@@ -28,11 +29,11 @@ export default function App() {
             <Route path='*' element={ <Error404/>}/>
             <Route path='/sobre-nosotros' element={ <Aboutus/>}/>
             <Route path='/contacto' element={ <Contacto/> }/>
-            <Route path='/admin' element={ <Principal/> }/>
-            <Route path='/admin-usuarios' element={ <Usuarios/> }/>
-            <Route path='/admin-productos' element={ <Productos/> }/>
-            <Route path='/admin-pedidos' element={ <Pedidos/> }/>
-            <Route path='/admin-principal' element={ <Principal/> }/>
+            <Route path='/admin' element={<PrivateRoute><Principal/></PrivateRoute>  }/>
+            <Route path='/admin-usuarios' element={ <PrivateRoute><Usuarios/></PrivateRoute>  }/>
+            <Route path='/admin-productos' element={<PrivateRoute><Productos/></PrivateRoute>  }/>
+            <Route path='/admin-pedidos' element={<PrivateRoute><Pedidos/></PrivateRoute>  }/>
+            <Route path='/admin-principal' element={<PrivateRoute><Principal/> </PrivateRoute> }/>
             <Route path='/cart' element={ <Cart/>}/>
             <Route path='/producto' element={ <Products/> }/>
             <Route path='registro' element={<Registro/>}/>
