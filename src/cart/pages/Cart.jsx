@@ -3,7 +3,7 @@ import { Container, Table, Button } from 'react-bootstrap';
 import "../css/cart.css";
 import rubbishbin from '../assets/rubbishbin.png';
 // import jwt from 'jsonwebtoken';
-import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
+import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 import { PizzeriaContext } from "../../PedidosContext/PedidosContext";
 
 export const Cart = () => {
