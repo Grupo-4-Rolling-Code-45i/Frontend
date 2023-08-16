@@ -139,7 +139,6 @@
 .home-card-productos {
   width: 15%;
   display: flex;
-
   flex-direction: column;
   overflow: hidden;
   padding: 0;
@@ -155,6 +154,9 @@
 }
 .home-contenedor-info-productos {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .home-nombre-producto {
   margin: 0;
@@ -170,11 +172,17 @@
   font-size: 1.5rem;
 }
 .home-descripcion-producto {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.contenido-parrafo {
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 .home-boton-verProducto {
   padding: 1rem;
