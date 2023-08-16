@@ -116,6 +116,27 @@ export const Cart = () => {
             }
     };
 
+    const eliminarProducto2 = (itemID) => {
+
+        if(currentUser) {
+
+            const usuarioId3 = currentUser._id;
+
+            const bodyID = {
+                usuario : usuarioId3
+            }
+
+            reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
+                .then(response => {
+                    console.log(response);
+                  
+                    obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el producto:', error);
+                });
+            }
+    };
     // Enviar el pedido
 
     const crearPedido = async () => {
@@ -125,14 +146,18 @@ export const Cart = () => {
 
         const usuarioId4 = currentUser._id;
 
-        const pedidosArray = [carrito];
+        const nombreProd = carrito.nombre;
+        const data = {
+            producto: [carrito],
+            usuario: usuarioId4
+          };
 
-            console.log(usuarioId4);
+            console.log(data);
         try {
-            await reactToMyPizzaAPI.post('/api/orders/new', {pedidosArray, usuarioId4})
+            await reactToMyPizzaAPI.post('/api/orders/new', data)
             console.log("ok");
             carrito.forEach(item => {
-                eliminarProducto(item._id);
+                eliminarProducto2(item._id);
             });
             Swal.fire({
                 icon: "success",

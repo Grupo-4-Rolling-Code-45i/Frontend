@@ -31,6 +31,8 @@ export const Pedidos = () => {
         }
     }
 
+    
+
     const confirmarPedidosDB= async (_id) =>{
 
        
@@ -51,7 +53,12 @@ export const Pedidos = () => {
       
         }, []);
 
-       
+        const pedidos= cargarPedidos.map((pedido) => {return(pedido.producto[0]?.map((e)=>{return(e.nombre)}))});
+
+        const user= cargarPedidos.map((pedido) => {return(pedido.usuario)});
+
+      console.log(user) 
+      
 
   return (
     <div>
@@ -72,7 +79,7 @@ export const Pedidos = () => {
           
         </tr>
       </thead>
-      <tbody className='text-center'>
+      <tbody className='text-start'>
      
 
 {cargarPedidos.map((pedido) =>{
@@ -81,10 +88,10 @@ return(
     <tr key={pedido._id}>
     <td>{pedido._id}</td>
     <td>{pedido.usuario}</td>
-    <td>{pedido.producto}</td>
+    <td>{pedido.producto[0]?.map((e)=>{return(<p>{e.nombre} x {e.cantidad}</p>)})}</td>
     <td>{pedido.fecha}</td>
     <td>{pedido.estado}</td>
-    <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
+    <td className='text-center'><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
    
   </tr>
 )
