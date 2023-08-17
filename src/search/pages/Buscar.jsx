@@ -33,7 +33,8 @@ export const Buscar = () => {
               <div className='home-contenedor-info-productos'>
                 <h2 className='home-nombre-producto'>{producto.nombre}</h2>
                 <p className='home-precio-producto'>${producto.precio}</p>
-                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <div className='home-descripcion-producto'><p className='contenido-parrafo'>{producto.descripcion}</p></div>
+                
                 <Link to={`/producto?id=${producto._id}`}>
                   <button className='home-boton-verProducto'>Ver producto</button>
                 </Link>
