@@ -68,7 +68,7 @@ export const Cart = () => {
             usuario : usuarioId2,
             cantidad : newQuantity
         }
-
+console.log(cantidad)
         // Actualiza el estado de carrito con los cambios en la cantidad
     const updatedCarrito = carrito.map(item =>
         item._id === itemId ? { ...item, cantidad: parseInt(newQuantity) } : item
@@ -78,7 +78,7 @@ export const Cart = () => {
 
     // Petición PUT
 
-        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : cantidad })
+        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`,  cantidad )
             .then(response => {
                 console.log(response);
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
