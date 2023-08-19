@@ -15,3 +15,19 @@
 {
     size: 10rem;
 }
+
+
+#caja-iconos-admin{
+    margin-top: 10%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+}
+
+#caja-admin{
+ /* border: 1px solid black; */
+ min-height: 100vh;
+ display: ;
+
+
+}

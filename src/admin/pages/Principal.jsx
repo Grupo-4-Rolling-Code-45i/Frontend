@@ -24,9 +24,9 @@ navigate(nav);
   return (
     <div>
 
-<Container fluid>
+<Container fluid id='caja-admin'>
 
-<Row className='row'>
+<Row className='row' id='caja-iconos-admin'>
 
     <Col   >
     
