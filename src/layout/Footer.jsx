@@ -1,3 +1,4 @@
+import logoReactToMyPizza from '../assets/Logo_React_to_my_Pizza_SVG.svg'
 export default function Footer() {
     return (
       <footer id="footer">
@@ -7,7 +8,7 @@ export default function Footer() {
               <img
                 className="logo-navbar"
                 id="logo-footer"
-                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
+                src={logoReactToMyPizza}
                 alt=""
               />
               <div className="texto-logo">
@@ -22,10 +23,10 @@ export default function Footer() {
           <h4 className="h4-footer">Enlaces utiles</h4>
           
               
-                  <li className="li-footer"><a className="hipervinculo-footer" href="">Inicio</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="/">Inicio</a></li>
                   {/* <li><a href="">Nuestros productos</a></li> */}
-                  <li className="li-footer"><a className="hipervinculo-footer" href="">Sobre nosotros</a></li>
-                  <li className="li-footer"><a className="hipervinculo-footer" href="">Contacto</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="/sobre-nosotros">Sobre nosotros</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="/contacto">Contacto</a></li>
               </ul>
              
   
@@ -34,7 +35,7 @@ export default function Footer() {
           
               <ul>
                <h4 className="h4-footer">Contacto</h4>
-                  <li className="li-footer"><a className="hipervinculo-footer" href="">Link redes sociales</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="/contacto">Link redes sociales</a></li>
               </ul>
              
           

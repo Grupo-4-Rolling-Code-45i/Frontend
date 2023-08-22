@@ -1,17 +1,27 @@
-#boton-principal
-{
-    color:  white;
-    background-color: #ff5a5f ;
+#boton-principal {
+  color: white;
+  background-color: #ff5a5f;
 }
-.row{
-    justify-content:space-between;
-    margin: 5rem;
-    height: auto;
-    margin-left: 25%;
-    margin-right: 20%;
+.row {
+  justify-content: space-between;
+  margin: 5rem;
+  height: auto;
+  margin-left: 25%;
+  margin-right: 20%;
 }
 
-.icono
-{
-    size: 10rem;
+.icono {
+  size: 10rem;
+}
+
+#caja-iconos-admin {
+  margin-top: 10%;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+}
+
+#caja-admin {
+  /* border: 1px solid black; */
+  min-height: 100vh;
 }

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import '../css/home.css'
 import { Link } from 'react-router-dom'
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI'
+import pizzaSecPrimera from '../assets/img/pizza-primera-seccion-png.png'
+import pizzaSobreNostros from '../assets/img/pizza-sobre-nosotros.png'
 import Swal from 'sweetalert2'
-export const HomePage = () => {
-    
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza'
 
+export const HomePage = () => {
+    reactToMyPizzaAPI
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      };
     const [terminoBusqueda, setTerminoBusqueda] = useState("")
     const handleBuscar = (e) =>{
         e.preventDefault()
@@ -42,17 +48,17 @@ export const HomePage = () => {
         <section className='home-primer-section'>
             <div className='home-div-imagen-primera-seccion'>
                 <div className='home-div-franjaNegra-imagen'>
-                    <img className='home-imagen-pizza-primera-seccion' src="src\home\assets\img\pizza-primera-seccion-png.png" alt="Imagen de Pizza" />
+                    <img className='home-imagen-pizza-primera-seccion' src={ pizzaSecPrimera } alt="Imagen de Pizza" />
                 </div>
                 </div>
             <div className='home-div-formularioBuscar-primera-seccion'>
                 <h2 className='home-titulo-primera-seccion'>Desde nuestra <span className='span-red'>cocina</span><br></br> a la puerta de tu <span className='span-red'>casa</span></h2>
                 <form onSubmit={handleBuscar} className='home-formulario-buscar-productos'>
                     <div className='home-contenedor-input-buscar'>
-                    <input className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required onChange={(e)=> setTerminoBusqueda(e.target.value)}/>
+                    <input maxlength="50" className="home-input-buscar-productos" type="search" placeholder='Buscar productos...' required onChange={(e)=> setTerminoBusqueda(e.target.value)}/>
                     <i className="fa-solid fa-magnifying-glass home-icono-lupa-input-buscar"></i>
                     </div>
-                    <input className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
+                    <input  className='home-boton-submit-buscar-productos' type="submit" value="Buscar" />
                 </form>
                 </div>
 
@@ -60,7 +66,7 @@ export const HomePage = () => {
          {/* Segunda sección de la web */}
         <section className='home-segundo-section-sobre-nosotros'>
             <div className='home-contenedor-imagen-sobre-nosotros'>
-                <img className='home-imagen-sobre-nosotros' src="src\home\assets\img\pizza-sobre-nosotros.png" alt="Imagen de Pizza sobre una mesa con las porciones cortadas" />
+                <img className='home-imagen-sobre-nosotros' src={pizzaSobreNostros} alt="Imagen de Pizza sobre una mesa con las porciones cortadas" />
             </div>
             <div className='home-contenedor-texto-sobre-nosotros'>
                 <h3 className='home-titulo-sobreNosotros'>Sobre nosotros</h3>
@@ -80,9 +86,14 @@ export const HomePage = () => {
                 <div className='home-contenedor-info-productos'>
                 <h2 className='home-nombre-producto'>{producto.nombre}</h2>
                 <p className='home-precio-producto'>${producto.precio}</p>
-                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <div className='home-descripcion-producto'>
+                <p className='contenido-parrafo'>{producto.descripcion}
+                </p>
+
+                </div>
+
                 <Link to={`/producto?id=${producto._id}`}>
-                <button className='home-boton-verProducto'>Ver producto</button>
+                <button onClick={scrollToTop}  className='home-boton-verProducto'>Ver producto</button>
                 </Link>
                 </div>
             </div>

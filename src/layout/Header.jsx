@@ -10,41 +10,52 @@ import ModalLogin from "./ModalLogin";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { PizzeriaContext } from "../PedidosContext/PedidosContext";
-import {BsFillPersonFill} from 'react-icons/bs';
+import { BsFillPersonFill } from "react-icons/bs";
+import imagenCarrito from "../assets/Carrito.png";
+import logoReactToMyPizza from "../assets/Logo_React_to_my_Pizza_SVG.svg";
 function OffcanvasExample() {
-  
   //VARIABLE QUE CONTROLA SI EL USUARIO ESTA LOGUEADO O NO
   //Y EN BASE A ESO MUESTRA UNA OPCION U OTRA EN EL NAVBAR
   const user = localStorage.getItem("token");
   const rol = localStorage.getItem("rol");
 
+  const { currentUser, getAuth } = useContext(PizzeriaContext);
 
-  const {currentUser, getAuth} = useContext(PizzeriaContext)
-console.log(currentUser);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const handleCloseNav = () => setIsNavOpen(false);
+  const handleOpenNav = () => setIsNavOpen(true);
+
+  //console.log(currentUser);
   const [show, setShow] = useState(false);
+ 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const handleLogin = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("rol");
-  console.log("SESION EXPIRADA");
-  Swal.fire({
-    icon: "success",
-    title: "Sesion cerrada",
-    text: "Vuelva pronto",
-    showConfirmButton: false,
-    timer: 2000,
+  const handleLogin = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("rol");
+    console.log("SESION EXPIRADA");
+    Swal.fire({
+      icon: "success",
+      title: "Sesion cerrada",
+      text: "Vuelva pronto",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
+  };
 
-  });
-  setTimeout(() => {
-    window.location.href = "/";
-  }, 2000);
-}
+  useEffect(() => {
+    getAuth();
+  }, []);
 
-useEffect(() => {
- getAuth();
 
-}, [])
+  const CerrarNavAbrirLogin = () => { 
+    handleCloseNav();
+    handleShow();
+  }
+
 
   return (
     <>
@@ -56,87 +67,99 @@ useEffect(() => {
           className="bg-body-tertiary mb-3"
         >
           <Container fluid className="caja-navbar">
-            <Nav.Link href="/" id="caja-logo-texto">
-              <img
-                className="logo-navbar"
-                src="src\assets\Logo_React_to_my_Pizza_SVG.svg"
-                alt=""
-              />
-              <div className="texto-logo">
-                 <div className="cajita">React to my </div>
-                
-                 <div className="cajita" id="pizza">PIZZA</div>
-              </div>
+            <Nav.Link>
+              {" "}
+              <Link id="caja-logo-texto" className="quitarHiperv" to="/">
+                {" "}
+                <img
+                  className="logo-navbar"
+                  src={logoReactToMyPizza}
+                  alt="Logotipo React to my Pizza"
+                />
+                <div className="texto-logo">
+                  <div className="cajita">React to my </div>
+
+                  <div className="cajita" id="pizza">
+                    PIZZA
+                  </div>
+                </div>{" "}
+              </Link>
             </Nav.Link>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} onClick={handleOpenNav} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
+              show={isNavOpen}
+              onHide={handleClose}
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeButton onClick={handleCloseNav}>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                   React to my Pizza!
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-               
-            
-                
-                
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                {
-                  currentUser?
-                  <h5 className=" mt-3 me-2"><BsFillPersonFill/>{currentUser.nombre}</h5>
-                  : <></>
+                  {currentUser ? (
+                    <h5 className=" mt-3 me-2">
+                      <BsFillPersonFill />
+                      {currentUser.nombre}
+                    </h5>
+                  ) : (
+                    <></>
+                  )}
 
-                }
-                
-                {
-                    currentUser?.rol == "admin"?
-                  
-                <Nav.Link >  <Link className="adminbutton" to="/admin-principal">Admin</Link></Nav.Link>
-                  :
-                        <></>
-                }
-                  <Nav.Link> <Link className="quitarHiperv" to="/">Inicio</Link> </Nav.Link>
-                 
+                  {currentUser?.rol == "administrador" ? (
+                    <Nav.Link>
+                      {" "}
+                      <Link className="adminbutton" to="/admin-principal">
+                        Admin
+                      </Link>
+                    </Nav.Link>
+                  ) : (
+                    <></>
+                  )}
+                  <Nav.Link>
+                    {" "}
+                    <Link className="quitarHiperv" to="/" onClick={handleCloseNav}>
+                      Inicio
+                    </Link>{" "}
+                  </Nav.Link>
 
-                  <Nav.Link> <Link className="quitarHiperv" to="/sobre-nosotros">Sobre nosotros</Link></Nav.Link>
+                  <Nav.Link>
+                    {" "}
+                    <Link className="quitarHiperv" to="/sobre-nosotros"  onClick={handleCloseNav}>
+                      Sobre nosotros
+                    </Link>
+                  </Nav.Link>
 
-                  <Nav.Link > <Link className="quitarHiperv" to="/contacto">Contacto</Link>  </Nav.Link>
-              
+                  <Nav.Link>
+                    {" "}
+                    <Link className="quitarHiperv" to="/contacto"  onClick={handleCloseNav}>
+                      Contacto
+                    </Link>{" "}
+                  </Nav.Link>
+
                   <NavDropdown
-                  
-                     
                     title="Cuenta"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
                     {user ? (
                       <li>
-                        {rol === "admin" ? (<>
-                          <NavDropdown.Item href="/admin">
-                            {/* Administrar */}
+                        {rol === "admin" ? (
+                          <>
+                            <NavDropdown.Item href="/admin">
+                              {/* Administrar */}
                             </NavDropdown.Item>
-                            <NavDropdown.Item onClick={handleLogin }>
+                            <NavDropdown.Item onClick={handleLogin}>
+                              Cerar sesion
+                            </NavDropdown.Item>
+                          </>
+                        ) : (
+                          <NavDropdown.Item onClick={handleLogin}>
                             Cerar sesion
-                            </NavDropdown.Item>
-                            </>
-                            ) : (
-                            <NavDropdown.Item onClick={handleLogin }>
-                            Cerar sesion
-                            </NavDropdown.Item>
-                                
-                                )
-                                  
-                                  }
-
-
-
-
-
-
-
+                          </NavDropdown.Item>
+                        )}
 
                         {/* <NavDropdown.Item onClick={handleLogin }>
                           Cerrar sesion
@@ -147,12 +170,16 @@ useEffect(() => {
                       </li>
                     ) : (
                       <li>
-                        <NavDropdown.Item onClick={handleShow}>
+                        <NavDropdown.Item onClick={CerrarNavAbrirLogin} >
                           Iniciar sesion
                         </NavDropdown.Item>
 
-                        <NavDropdown.Item  > <Link className="quitarHiperv" to="/registro"> Crear cuenta</Link>
-                        
+                        <NavDropdown.Item>
+                          {" "}
+                          <Link className="quitarHiperv" to="/registro" onClick={handleCloseNav}>
+                            {" "}
+                            Crear cuenta
+                          </Link>
                         </NavDropdown.Item>
                       </li>
                     )}
@@ -164,10 +191,23 @@ useEffect(() => {
                       Crear cuenta
                     </NavDropdown.Item> */}
                   </NavDropdown>
-                  <Nav.Link > <Link to="/crear">  {" "}
-                    <img src="src\assets\Carrito.png" alt="" />  </Link>
+
+                  {currentUser ? (
+                    <Nav.Link>
+                      {" "}
+                      <Link to="/cart">
+                        {" "}
+                        <img src={imagenCarrito} alt="icono carrito" />{" "}
+                      </Link>
+                    </Nav.Link>
+                  ) : (
+                    <></>
+                  )}
+
+                  {/* <Nav.Link > <Link to="/crear">  {" "}
+                    <img src={imagenCarrito} alt="" />  </Link>
                    
-                  </Nav.Link>
+                  </Nav.Link> */}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

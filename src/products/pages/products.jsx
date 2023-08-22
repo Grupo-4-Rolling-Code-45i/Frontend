@@ -1,27 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
-import reactToMyPizzaAPI from "../../api/reactToMyPizzaAPI";
+
+import Swal from "sweetalert2";
+
+import { PizzeriaContext } from "../../PedidosContext/PedidosContext";
+
 import { Link } from "react-router-dom";
+import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 export const Products = () => {
     const urlParams  = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');  
+    const id = urlParams.get('id'); 
     const [producto, setProducto] = useState([])
-    
+
     useEffect(() => {
-      try {
+    try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
-            
+            console.log(RespProducto)
+
             setProducto(RespProducto)
-            
+
         })
-      } catch (error) {
+    } catch (error) {
         console.log("Ocurrió un error, por favor contactese con el administrador")
-      }    
-      
+    }
+
     }, [])
+
     const {nombre,precio,descripcion,imagen} = producto
 
     // Mostrar todos los productos:
@@ -29,15 +36,62 @@ export const Products = () => {
         useEffect(() => {
             try {
             // Peticion GET (Todos los productos)
-          reactToMyPizzaAPI.get('/api/products/').then((response) =>{
-            const listaProductos = response.data.response;            
+        reactToMyPizzaAPI.get('/api/products/').then((response) =>{
+            const listaProductos = response.data.response;
             setProductos(listaProductos)
-            
-          })    
+
+            })
         } catch (error) {
                 console.log(`Ha ocurrido un error a la hora de querer obtener los productos, por favor contacte un administrador: ${error}`)
             }
         }, [])
+
+        // --- Cantidad ---
+
+        const {currentUser} = useContext(PizzeriaContext)
+
+        const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
+
+        const cambiarCantidad = (cant) => {
+            setCantidadAEnviar(cant);
+        };
+
+        // Petición POST ---
+
+        const agregarProducto = async () => {
+
+            if(currentUser) {
+
+                const usuarioId4 = currentUser._id;
+                const  nombre = producto.nombre
+                const  precio = producto.precio
+                const  cantidad = parseInt(cantidadAEnviar, 10)
+                const   usuario = usuarioId4
+
+                try{
+                    await reactToMyPizzaAPI.post('/api/cart/new',{ nombre, precio, cantidad, usuario})
+                    Swal.fire({
+                        icon: "success",
+                        title: "Listo!",
+                        text: "Pedido agregado al carrito",
+                        confirmButtonText: 'OK',
+                    })
+                }
+
+
+                    catch(error)  {
+                        console.error('Error al agregar el producto:', error);
+                    }
+            } else {
+                Swal.fire({
+                    icon: "info",
+                    title: "Importante",
+                    text: "Para agregar al pedido debes iniciar sesión.",
+                    confirmButtonText: 'OK',
+                });
+            }
+        };
+
     return (
         <>
             {/* Primer div con foto del producto y detalles */}
@@ -51,8 +105,15 @@ export const Products = () => {
                 <h3 className="product-price-product-page">${precio}</h3>
                 <p>{descripcion}</p>
                 <div className="product-actions">
-                    <input type="number" min="1" max="55" defaultValue="1"/>
-                    <Button variant="danger">Agregar al pedido</Button>
+                    <input type="number"
+                    min="1" max="55"
+                    defaultValue="1"
+                    onChange={(e) => cambiarCantidad(e.target.value)}
+                    />
+                    <Button variant="danger"
+                    onClick={() => agregarProducto()}>
+                    Agregar al pedido
+                    </Button>
                 </div>
                 </div>
             </Container>
@@ -92,9 +153,13 @@ export const Products = () => {
             <div key={producto.id} className="home-card-productos">
                 <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
                 <div className='home-contenedor-info-productos'>
-                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>                
                 <p className='home-precio-producto'>${producto.precio}</p>
-                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <div className='home-descripcion-producto'>
+                <p className='contenido-parrafo'>{producto.descripcion}</p>
+
+                </div>
+                
                 <Link onClick={() => Window.location.reload()} to={`/producto?id=${producto._id}`}>
                 <button className='home-boton-verProducto'>Ver producto</button>
                 </Link>

@@ -17,7 +17,7 @@
   display: flex;
   margin-top: 4rem;
   flex-wrap: wrap !important;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 20px;
 }
 .sobreNosotros-card {

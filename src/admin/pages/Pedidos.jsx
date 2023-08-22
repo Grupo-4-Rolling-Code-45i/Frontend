@@ -6,12 +6,16 @@ import { useNavigate } from 'react-router';
 import "../css/admin.css";
 import { Button, Container } from 'react-bootstrap';
 import{FaCheck} from 'react-icons/fa';
-import reactToMyPizzaAPI from '../../api/ReactToMyPizzaAPI';
+import reactToMyPizzaAPI from '../../api/ApiReactToMyPizza';
+
 
 
 export const Pedidos = () => {
 
     const [cargarPedidos, setcargarPedidos] = useState([]);
+    const [cargarUsuarios, setcargarUsuarios] = useState([]);
+    const [cargarUsersID, setcargarUsersID] = useState([]);
+    
     
     const cargarPedidosDB= async () =>
     {
@@ -20,8 +24,11 @@ export const Pedidos = () => {
             //reemplazar por ruta correcta
            const resp=await reactToMyPizzaAPI.get("/api/orders");
             setcargarPedidos(resp.data.pedidos);
-
-
+            const resp2=await reactToMyPizzaAPI.get("/api/users");
+            setcargarUsuarios(resp2.data.usuarios);
+            const users =resp.data.pedidos.map((pedido) =>{return resp2.data.usuarios.find((user)=>{return user._id===pedido.usuario})})
+            setcargarUsersID(users)
+            
         }
 
         catch(error)
@@ -50,8 +57,6 @@ export const Pedidos = () => {
       
         }, []);
 
-       
-
   return (
     <div>
 
@@ -67,72 +72,25 @@ export const Pedidos = () => {
           <th>Fecha</th>
           <th>Estado</th>
           <th>Entregado</th>
-          
-          
-        </tr>
+       </tr>
       </thead>
-      <tbody className='text-center'>
-      <tr>
-                <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-               
-               
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-            <tr>
-            <td>1</td>
-                <td>Juan Pérez</td>
-                <td>pizza napolitana</td>
-                <td>12/08/20233</td>
-                <td>pendiente</td>
-                <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
-            </tr>
-
-
-
-
-
-
-
-
+      <tbody className='text-start'>
+     
 
 {cargarPedidos.map((pedido) =>{
 return(
 
     <tr key={pedido._id}>
     <td>{pedido._id}</td>
-    <td>{pedido.usuario}</td>
-    <td>{pedido.producto}</td>
-    <td>{pedido.fecha}</td>
-    <td>{pedido.estado}</td>
-    <td><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
+   <td>
+  {cargarUsersID.find((user) => user._id === pedido.usuario) && (
+    <h6>{cargarUsersID.find((user) => user._id === pedido.usuario).nombre}</h6>
+  )}
+</td>
+ <td>{pedido.producto[0]?.map((e)=>{return(<p>{e.nombre} x {e.cantidad}</p>)})}</td>
+ <td>{pedido.fecha}</td>
+ <td>{pedido.estado}</td>
+ <td className='text-center'><Button onClick={()=> confirmarPedidosDB(pedido._id)} variant='warning'><FaCheck/></Button ></td>
    
   </tr>
 )

@@ -2,9 +2,9 @@ import "./Login.css";
 import Swal from "sweetalert2";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import reactToMyPizzaAPI from "../api/ReactToMyPizzaAPI";
 import { PizzeriaContext } from "../PedidosContext/PedidosContext";
-
+import reactToMyPizzaAPI from "../api/ApiReactToMyPizza";
+import iconoUsuarioLogin from '../assets/usuario.png'
 function LoginUi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,13 +94,62 @@ function LoginUi() {
         });
       }
     } catch (error) {
-      console.log(error);
-      console.log("USUARIO NO LOGUEADO");
-      Swal.fire({
-        icon: "error",
-        title: "¡Ups!",
-        text: "Ocurrió un error inesperado, intentelo nuevamente",
-      });
+      console.log(error.response.status);
+      console.log(error.response);
+      switch (error.response.status) {
+      
+        case 400:
+          localStorage.removeItem("token");
+          console.log("USUARIO O CONTRASEÑA INCORRECTOS");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        
+        case 401:
+          localStorage.removeItem("token");
+          console.log("USUARIO DESHABILITADO");
+          Swal.fire({
+            icon: "error",
+            title: "Usuario deshabilitado",
+            text: "Por favor contacte al administrador",
+          });
+         
+          break;
+
+
+
+
+          case 404:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Datos incorecctos, intentelo nuevamente",
+          });
+          break;
+        default:
+          console.log("USUARIO NO LOGUEADO");
+          Swal.fire({
+            icon: "error",
+            title: "¡Ups!",
+            text: "Ocurrió un error inesperado, intentelo nuevamente",
+          });
+          break;
+      }
+
+
+
+
+      // console.log(error);
+      // console.log("USUARIO NO LOGUEADO");
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "¡Ups!",
+      //   text: "Ocurrió un error inesperado, intentelo nuevamente",
+      // });
     }
   };
 
@@ -110,7 +159,7 @@ function LoginUi() {
         <div>
           <div className="imgs">
             <div className="container-image">
-              <img src="src\assets\usuario.png" alt="" className="profile" />
+              <img src={iconoUsuarioLogin} alt="Icono usuario" className="profile" />
             </div>
           </div>
           <div>
