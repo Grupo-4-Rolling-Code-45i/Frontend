@@ -209,6 +209,7 @@ setShowedit(true);
               
                 type="number"
                 min={0}
+                max={10000}
                 name='precio'
                 value={formDataEdit.precio}
                 onChange={handleChangeEdit}
