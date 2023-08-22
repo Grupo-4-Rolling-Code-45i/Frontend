@@ -10,7 +10,15 @@ import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 export const ModalAgregarProducto = ({ obtenerProductos }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setFormData({
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      imagen: "",
+    });
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const [formData, setFormData] = useState({
@@ -146,6 +154,7 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
                 placeholder="1500"
                 name='precio'
                 min={0}
+                max={10000}
                 value={formData.precio}
                 onChange={handleChange}
               />
