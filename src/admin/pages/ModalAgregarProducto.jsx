@@ -92,11 +92,9 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
       });
 
       obtenerProductos();
-    } catch (error) {
-      console.log(error);
+    } catch (error) {      
       if (error.response.status === 401) {
-        localStorage.removeItem("token");
-        console.log("SESION EXPIRADA");
+        localStorage.removeItem("token");        
         Swal.fire({
           icon: "error",
           title: "¡Ups!",

@@ -18,7 +18,7 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
-            console.log(RespProducto)
+            
 
             setProducto(RespProducto)
 

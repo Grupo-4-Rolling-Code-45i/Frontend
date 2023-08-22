@@ -52,7 +52,7 @@ export const Productos = () => {
 
         catch(error)
         {
-        console.log(error);
+        
     if(error.response.status===401){
       localStorage.removeItem("token");
       navigate("/");
@@ -80,7 +80,7 @@ export const Productos = () => {
         try{
           const resp= reactToMyPizzaAPI.delete(`/api/products/delete/${id}`);
           cargarProductsDB();
-          console.log(resp);
+          
           Swal.fire(
             'Eliminado!',
             'el producto fue eliminado.',
@@ -159,10 +159,7 @@ export const Productos = () => {
         catch(error)
         {
         console.log(error);
-        // if(error.response.status===401){
-        //   localStorage.removeItem("token");
-        //   navigate("/login");
-        // }
+
         }
     }
 

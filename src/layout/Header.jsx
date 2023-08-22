@@ -25,7 +25,7 @@ function OffcanvasExample() {
   const handleCloseNav = () => setIsNavOpen(false);
   const handleOpenNav = () => setIsNavOpen(true);
 
-  //console.log(currentUser);
+
   const [show, setShow] = useState(false);
  
   const handleClose = () => setShow(false);
@@ -33,7 +33,7 @@ function OffcanvasExample() {
   const handleLogin = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("rol");
-    console.log("SESION EXPIRADA");
+    
     Swal.fire({
       icon: "success",
       title: "Sesion cerrada",
