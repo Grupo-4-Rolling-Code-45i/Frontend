@@ -11,7 +11,12 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-
+    setFormData({
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      imagen: "",
+    });
     setShow(false);
   };
   const handleShow = () => setShow(true);
