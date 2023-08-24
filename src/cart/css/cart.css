@@ -1,61 +1,62 @@
 .containerCart {
-    margin-top: 40px;
-    margin-bottom: 80px;
-    width: 50%;
-    font-size: 1.1em;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  width: 50%;
+  font-size: 1.1em;
+  min-height: 100vh;
 }
 
 .inputCart {
-    width: 5vw;
-    border: none;
-    font-size: 1.04em;
-    text-align: center;
-    padding-right: 1vw;
-    padding-left: 0.9vw;
-    border-radius: 0.5em;
-    background-color: rgb(255, 215, 159);
+  width: 5vw;
+  border: none;
+  font-size: 1.04em;
+  text-align: center;
+  padding-right: 1vw;
+  padding-left: 0.9vw;
+  border-radius: 0.5em;
+  background-color: rgb(255, 215, 159);
 }
 
 div .total {
-    justify-content: end;
-    align-items: center;
-    display: flex;
+  justify-content: end;
+  align-items: center;
+  display: flex;
 }
 
 .botonEliminar {
-    font-size: 0.75em;
-    padding: 0.3em;
-    margin-bottom: 2%;
+  font-size: 0.75em;
+  padding: 0.3em;
+  margin-bottom: 2%;
 }
 
 .botonEliminar img {
-    height: 1.5em;
+  height: 1.5em;
 }
 
 .pedidoTitle {
-    margin: 0.6em 0;
+  margin: 0.6em 0;
 }
 
 .totalCart {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .botonPedido {
-    width: 180px;
-    padding: 0.3em;
-    margin-top: 0.5em;
-    margin-left: 1.1em;
-    font-size: 1.1em;
-    background-color: #ff5a5f;
-    font-weight: 500;
+  width: 180px;
+  padding: 0.3em;
+  margin-top: 0.5em;
+  margin-left: 1.1em;
+  font-size: 1.1em;
+  background-color: #ff5a5f;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
-    .containerCart {
-        margin: auto;
-        width: 100%;
-    }
-    .inputCart {
-        width: 12vw;
-    }
+  .containerCart {
+    margin: auto;
+    width: 100%;
+  }
+  .inputCart {
+    width: 12vw;
+  }
 }

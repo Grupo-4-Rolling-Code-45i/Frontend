@@ -198,7 +198,8 @@ export const Cart = () => {
                                     className='inputCart'
                                     type="number"
                                     value={item.cantidad}
-                                    min="1"
+                                    min={1}
+                                    max={10}
                                     onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>

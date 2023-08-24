@@ -106,7 +106,8 @@ export const Products = () => {
                 <p>{descripcion}</p>
                 <div className="product-actions">
                     <input type="number"
-                    min="1" max="55"
+                    min={1}
+                    max={10}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />

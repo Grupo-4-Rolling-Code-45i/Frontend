@@ -64,7 +64,7 @@ function LoginUi() {
           
           Swal.fire({
             icon: "success",
-            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            title: `Bienvenido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
             text: "Usuario Administrador",
             showConfirmButton: false,
             timer: 2000,
@@ -73,7 +73,7 @@ function LoginUi() {
           
           Swal.fire({
             icon: "success",
-            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            title: `¡Bienvenido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
             text: "Redireccionando...",
             showConfirmButton: false,
             timer: 2000,
