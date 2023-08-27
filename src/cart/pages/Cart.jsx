@@ -59,6 +59,29 @@ export const Cart = () => {
     // --- Cambiar cantidad lógica ---
 
     const actualizarCantidad = (itemId, newQuantity) => {
+        if(newQuantity < 1) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La cantidad debe ser mayor a 0",
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
+
+
+        if(newQuantity > 55) {
+            Swal.fire({
+                icon: "error",
+                title: "La cantidad debe ser menor a 55",
+                text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
+
+
+
 
         if(currentUser) {
 

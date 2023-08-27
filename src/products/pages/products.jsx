@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Form from 'react-bootstrap/Form';
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
@@ -52,6 +53,7 @@ export const Products = () => {
 
         const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
 
+
         const cambiarCantidad = (cant) => {
             setCantidadAEnviar(cant);
         };
@@ -59,6 +61,29 @@ export const Products = () => {
         // Petición POST ---
 
         const agregarProducto = async () => {
+
+            if(cantidadAEnviar < 1) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La cantidad debe ser mayor a 0",
+                    confirmButtonText: 'OK',
+                });
+                return;
+            }
+
+
+            if(cantidadAEnviar > 55) {
+                Swal.fire({
+                    icon: "error",
+                    title: "La cantidad debe ser menor a 55",
+                    text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
+                    confirmButtonText: 'OK',
+                });
+                return;
+            }
+
+
 
             if(currentUser) {
 
@@ -104,6 +129,10 @@ export const Products = () => {
                 <h1 className="product-title-product-page">{nombre}</h1>
                 <h3 className="product-price-product-page">${precio}</h3>
                 <p>{descripcion}</p>
+                
+
+
+                
                 <div className="product-actions">
                     <input type="number"
                     min={1}
@@ -111,11 +140,15 @@ export const Products = () => {
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
+
+
+
                     <Button variant="danger"
                     onClick={() => agregarProducto()}>
                     Agregar al pedido
                     </Button>
                 </div>
+                
                 </div>
             </Container>
 

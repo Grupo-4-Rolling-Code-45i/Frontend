@@ -26,6 +26,8 @@ function OffcanvasExample() {
   const handleOpenNav = () => setIsNavOpen(true);
 
 
+
+  //console.log(currentUser);
   const [show, setShow] = useState(false);
  
   const handleClose = () => setShow(false);
