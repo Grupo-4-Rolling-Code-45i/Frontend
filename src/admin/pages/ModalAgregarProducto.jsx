@@ -10,7 +10,15 @@ import reactToMyPizzaAPI from "../../api/ApiReactToMyPizza";
 export const ModalAgregarProducto = ({ obtenerProductos }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setFormData({
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      imagen: "",
+    });
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const [formData, setFormData] = useState({
@@ -84,11 +92,9 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
       });
 
       obtenerProductos();
-    } catch (error) {
-      console.log(error);
+    } catch (error) {      
       if (error.response.status === 401) {
-        localStorage.removeItem("token");
-        console.log("SESION EXPIRADA");
+        localStorage.removeItem("token");        
         Swal.fire({
           icon: "error",
           title: "¡Ups!",
@@ -146,6 +152,8 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
                 placeholder="1500"
                 name='precio'
                 min={0}
+                max={999999}
+                maxLength={6}
                 value={formData.precio}
                 onChange={handleChange}
               />

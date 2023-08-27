@@ -39,11 +39,11 @@ export const Cart = () => {
             .then(response => {
                 setCarrito(response.data.carrito);
                 calcularTotal(response.data.carrito);
-                console.log(response);
+                
             })
             .catch(error => {
                 console.error('Error al obtener el carrito:', error);
-                console.log(error);
+               
             });
         }
 
@@ -59,6 +59,29 @@ export const Cart = () => {
     // --- Cambiar cantidad lógica ---
 
     const actualizarCantidad = (itemId, newQuantity) => {
+        if(newQuantity < 1) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La cantidad debe ser mayor a 0",
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
+
+
+        if(newQuantity > 55) {
+            Swal.fire({
+                icon: "error",
+                title: "La cantidad debe ser menor a 55",
+                text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
+
+
+
 
         if(currentUser) {
 
@@ -78,9 +101,9 @@ export const Cart = () => {
 
     // Petición PUT
 
-        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`, { data : cantidad })
+        reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`,  cantidad )
             .then(response => {
-                console.log(response);
+                
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
             })
             .catch(error => {
@@ -103,7 +126,7 @@ export const Cart = () => {
 
             reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
                 .then(response => {
-                    console.log(response);
+                   
                     Swal.fire({
                         icon: "success",
                         title: "Producto elminado del pedido.",
@@ -116,23 +139,48 @@ export const Cart = () => {
             }
     };
 
+    const eliminarProducto2 = (itemID) => {
+
+        if(currentUser) {
+
+            const usuarioId3 = currentUser._id;
+
+            const bodyID = {
+                usuario : usuarioId3
+            }
+
+            reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
+                .then(response => {
+                    
+                  
+                    obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el producto:', error);
+                });
+            }
+    };
     // Enviar el pedido
 
     const crearPedido = async () => {
 
         if (currentUser) {
-            console.log("peticion enviada");
+            
 
         const usuarioId4 = currentUser._id;
 
-        const pedidosArray = [carrito];
+        const nombreProd = carrito.nombre;
+        const data = {
+            producto: [carrito],
+            usuario: usuarioId4
+          };
 
-            console.log(usuarioId4);
+         
         try {
-            await reactToMyPizzaAPI.post('/api/orders/new', {pedidosArray, usuarioId4})
-            console.log("ok");
+            await reactToMyPizzaAPI.post('/api/orders/new', data)
+           
             carrito.forEach(item => {
-                eliminarProducto(item._id);
+                eliminarProducto2(item._id);
             });
             Swal.fire({
                 icon: "success",
@@ -140,24 +188,13 @@ export const Cart = () => {
                 text: "El pedido fue enviado correctamente.",
             });
         } catch (error) {
-            console.log(error);
+          
             Swal.fire({
                 icon: "error",
                 title: "Error inesperado",
                 text: "Estamos experimentando un problema, intente más tarde",
             });
         }
-
-        // reactToMyPizzaAPI.post('/api/orders/new' , { data : data1})
-        //         .then(response => {
-        //             console.log(response);
-        //             obtenerCarrito();
-        //             console.log("anduvo") // Actualizar el carrito después de eliminar un producto
-        //         })
-        //         .catch(error => {
-        //             console.error('Error enviar el pedido:', error);
-        //         });
-
     }
 
     }
@@ -184,7 +221,8 @@ export const Cart = () => {
                                     className='inputCart'
                                     type="number"
                                     value={item.cantidad}
-                                    min="1"
+                                    min={1}
+                                    max={10}
                                     onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>

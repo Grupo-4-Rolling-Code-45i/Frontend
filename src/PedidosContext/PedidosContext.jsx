@@ -15,7 +15,7 @@ const PedidosContext = ({children}) => {
        
         try {
           const { data } = await reactToMyPizzaAPI.post("/api/auth/login", values);
-          console.log(data);
+        
           setAuthenticated(!!data.usuario);
           setCurrentUser(data.usuario);
           reactToMyPizzaAPI.defaults.headers.common["Authorization"] = data.token;
@@ -37,7 +37,7 @@ const PedidosContext = ({children}) => {
           const { data } = await reactToMyPizzaAPI.get("/api/users/authStatus");
           
           setCurrentUser(data.user);
-          console.log(currentUser.rol);
+         
           setAuthenticated(true);
         } catch (error) {
           setAuthenticated(false)

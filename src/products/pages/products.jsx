@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Form from 'react-bootstrap/Form';
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
 import { Route } from "react-router";
@@ -18,7 +19,7 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
-            console.log(RespProducto)
+            
 
             setProducto(RespProducto)
 
@@ -52,6 +53,7 @@ export const Products = () => {
 
         const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
 
+
         const cambiarCantidad = (cant) => {
             setCantidadAEnviar(cant);
         };
@@ -59,6 +61,29 @@ export const Products = () => {
         // Petición POST ---
 
         const agregarProducto = async () => {
+
+            if(cantidadAEnviar < 1) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La cantidad debe ser mayor a 0",
+                    confirmButtonText: 'OK',
+                });
+                return;
+            }
+
+
+            if(cantidadAEnviar > 55) {
+                Swal.fire({
+                    icon: "error",
+                    title: "La cantidad debe ser menor a 55",
+                    text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
+                    confirmButtonText: 'OK',
+                });
+                return;
+            }
+
+
 
             if(currentUser) {
 
@@ -104,17 +129,26 @@ export const Products = () => {
                 <h1 className="product-title-product-page">{nombre}</h1>
                 <h3 className="product-price-product-page">${precio}</h3>
                 <p>{descripcion}</p>
+                
+
+
+                
                 <div className="product-actions">
                     <input type="number"
-                    min="1" max="55"
+                    min={1}
+                    max={10}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
+
+
+
                     <Button variant="danger"
                     onClick={() => agregarProducto()}>
                     Agregar al pedido
                     </Button>
                 </div>
+                
                 </div>
             </Container>
 
@@ -153,9 +187,13 @@ export const Products = () => {
             <div key={producto.id} className="home-card-productos">
                 <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
                 <div className='home-contenedor-info-productos'>
-                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>                
                 <p className='home-precio-producto'>${producto.precio}</p>
-                <p className='home-descripcion-producto'>{producto.descripcion}</p>
+                <div className='home-descripcion-producto'>
+                <p className='contenido-parrafo'>{producto.descripcion}</p>
+
+                </div>
+                
                 <Link onClick={() => Window.location.reload()} to={`/producto?id=${producto._id}`}>
                 <button className='home-boton-verProducto'>Ver producto</button>
                 </Link>
