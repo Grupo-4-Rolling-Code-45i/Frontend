@@ -39,11 +39,11 @@ export const Cart = () => {
             .then(response => {
                 setCarrito(response.data.carrito);
                 calcularTotal(response.data.carrito);
-                console.log(response);
+                
             })
             .catch(error => {
                 console.error('Error al obtener el carrito:', error);
-                console.log(error);
+               
             });
         }
 
@@ -91,7 +91,7 @@ export const Cart = () => {
             usuario : usuarioId2,
             cantidad : newQuantity
         }
-console.log(cantidad)
+
         // Actualiza el estado de carrito con los cambios en la cantidad
     const updatedCarrito = carrito.map(item =>
         item._id === itemId ? { ...item, cantidad: parseInt(newQuantity) } : item
@@ -103,7 +103,7 @@ console.log(cantidad)
 
         reactToMyPizzaAPI.put(`/api/cart/edit/${itemId}`,  cantidad )
             .then(response => {
-                console.log(response);
+                
                 obtenerCarrito(); // Actualizar el carrito después de cambiar la cantidad
             })
             .catch(error => {
@@ -126,7 +126,7 @@ console.log(cantidad)
 
             reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
                 .then(response => {
-                    console.log(response);
+                   
                     Swal.fire({
                         icon: "success",
                         title: "Producto elminado del pedido.",
@@ -151,7 +151,7 @@ console.log(cantidad)
 
             reactToMyPizzaAPI.delete(`/api/cart/delete/${itemID}` , { data : bodyID })
                 .then(response => {
-                    console.log(response);
+                    
                   
                     obtenerCarrito(); // Actualizar el carrito después de eliminar un producto
                 })
@@ -165,7 +165,7 @@ console.log(cantidad)
     const crearPedido = async () => {
 
         if (currentUser) {
-            console.log("peticion enviada");
+            
 
         const usuarioId4 = currentUser._id;
 
@@ -175,10 +175,10 @@ console.log(cantidad)
             usuario: usuarioId4
           };
 
-            console.log(data);
+         
         try {
             await reactToMyPizzaAPI.post('/api/orders/new', data)
-            console.log("ok");
+           
             carrito.forEach(item => {
                 eliminarProducto2(item._id);
             });
@@ -188,24 +188,13 @@ console.log(cantidad)
                 text: "El pedido fue enviado correctamente.",
             });
         } catch (error) {
-            console.log(error);
+          
             Swal.fire({
                 icon: "error",
                 title: "Error inesperado",
                 text: "Estamos experimentando un problema, intente más tarde",
             });
         }
-
-        // reactToMyPizzaAPI.post('/api/orders/new' , { data : data1})
-        //         .then(response => {
-        //             console.log(response);
-        //             obtenerCarrito();
-        //             console.log("anduvo") // Actualizar el carrito después de eliminar un producto
-        //         })
-        //         .catch(error => {
-        //             console.error('Error enviar el pedido:', error);
-        //         });
-
     }
 
     }
@@ -232,7 +221,8 @@ console.log(cantidad)
                                     className='inputCart'
                                     type="number"
                                     value={item.cantidad}
-                                    min="1"
+                                    min={1}
+                                    max={10}
                                     onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>

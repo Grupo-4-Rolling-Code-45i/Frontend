@@ -53,27 +53,27 @@ function LoginUi() {
         password,
       });
       login({email, password})
-      console.log(resp);
+      
       //GUARDO EL TOKEN EN EL LOCAL STORAGE
-      // localStorage.setItem("token", resp.data.token);
+     
       localStorage.setItem("rol", resp.data.usuario.rol);
 
       if (resp.status === 200) {
-        console.log("DATOS CORRECTOS, USUARIO LOGUEADO");
+
         if (resp.data.usuario.rol === "admin") {
           
           Swal.fire({
             icon: "success",
-            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            title: `Bienvenido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
             text: "Usuario Administrador",
             showConfirmButton: false,
             timer: 2000,
           });
         } else {
-          console.log("USUARIO CLIENTE");
+          
           Swal.fire({
             icon: "success",
-            title: `¡Bienvedido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
+            title: `¡Bienvenido ${resp.data.usuario.nombre}! \n ¿Que vas a comer hoy?`,
             text: "Redireccionando...",
             showConfirmButton: false,
             timer: 2000,
@@ -86,7 +86,6 @@ function LoginUi() {
           window.location.href = "/";
         }, 2000);
       } else {
-        console.log("DATOS INCORRECTOS, USUARIO NO LOGUEADO");
         return Swal.fire({
           icon: "error",
           title: "¡Ups!",
@@ -94,13 +93,9 @@ function LoginUi() {
         });
       }
     } catch (error) {
-      console.log(error.response.status);
-      console.log(error.response);
-      switch (error.response.status) {
-      
+      switch (error.response.status) {      
         case 400:
-          localStorage.removeItem("token");
-          console.log("USUARIO O CONTRASEÑA INCORRECTOS");
+          localStorage.removeItem("token");       
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
@@ -109,8 +104,7 @@ function LoginUi() {
           break;
         
         case 401:
-          localStorage.removeItem("token");
-          console.log("USUARIO DESHABILITADO");
+          localStorage.removeItem("token");         
           Swal.fire({
             icon: "error",
             title: "Usuario deshabilitado",
@@ -123,7 +117,7 @@ function LoginUi() {
 
 
           case 404:
-          console.log("USUARIO NO LOGUEADO");
+          
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
@@ -131,7 +125,7 @@ function LoginUi() {
           });
           break;
         default:
-          console.log("USUARIO NO LOGUEADO");
+          
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
@@ -140,16 +134,6 @@ function LoginUi() {
           break;
       }
 
-
-
-
-      // console.log(error);
-      // console.log("USUARIO NO LOGUEADO");
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "¡Ups!",
-      //   text: "Ocurrió un error inesperado, intentelo nuevamente",
-      // });
     }
   };
 
@@ -216,24 +200,3 @@ function LoginUi() {
 
 export default LoginUi;
 
-//codigo para el catch cuando se vence el token
-
-// if (error.response.status === 401) {
-//   localStorage.removeItem("token");
-//   console.log("SESION EXPIRADA");
-//   Swal.fire({
-//     icon: "error",
-//     title: "¡Ups!",
-//     text: "Su sesión ha expirado, por favor vuelva a iniciar sesión",
-//   });
-//   setTimeout(() => {
-//     window.location.href = "/login";
-//   }, 2000);
-// } else {
-//   console.log("USUARIO NO LOGUEADO");
-//   Swal.fire({
-//     icon: "error",
-//     title: "¡Ups!",
-//     text: "Ocurrió un error inesperado, intentelo nuevamente",
-//   });
-// }

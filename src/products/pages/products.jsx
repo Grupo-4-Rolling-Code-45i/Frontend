@@ -19,7 +19,7 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
-            console.log(RespProducto)
+            
 
             setProducto(RespProducto)
 
@@ -135,7 +135,8 @@ export const Products = () => {
                 
                 <div className="product-actions">
                     <input type="number"
-                    min="1" max="55"
+                    min={1}
+                    max={10}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
