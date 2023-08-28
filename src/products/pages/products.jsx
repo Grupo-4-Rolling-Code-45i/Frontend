@@ -73,10 +73,10 @@ export const Products = () => {
             }
 
 
-            if(cantidadAEnviar > 55) {
+            if(cantidadAEnviar > 25) {
                 Swal.fire({
                     icon: "error",
-                    title: "La cantidad debe ser menor a 55",
+                    title: "La cantidad no puede ser mayor a 25",
                     text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
                     confirmButtonText: 'OK',
                 });
@@ -136,7 +136,7 @@ export const Products = () => {
                 <div className="product-actions">
                     <input type="number"
                     min={1}
-                    max={10}
+                    max={25}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
@@ -180,14 +180,13 @@ export const Products = () => {
             {/* Tercer div con productos relacionados */}
                 <h2 className="sec-title">Productos Relacionados</h2>
                     <section className='home-tercer-section-menu'>
-            <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
             <div className='home-contenedor-cards-productos'>
                 
-            {productos.map((producto) => (
+            {productos.sort(() => Math.random() - 0.5).filter((item, idx) => idx < 6).map((producto) => (
             <div key={producto.id} className="home-card-productos">
                 <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
                 <div className='home-contenedor-info-productos'>
-                <h2 className='home-nombre-producto'>{producto.nombre}</h2>                
+                <h2 className='home-nombre-producto'>{producto.nombre}</h2>
                 <p className='home-precio-producto'>${producto.precio}</p>
                 <div className='home-descripcion-producto'>
                 <p className='contenido-parrafo'>{producto.descripcion}</p>

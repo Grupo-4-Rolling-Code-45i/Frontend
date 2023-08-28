@@ -35,8 +35,8 @@ function handleSubmit(e){
     <>
     <Container fluid className='container-styles'>
 
-<Row className='pt-4 '  >
-   <Col  sm lg={6} className='m-3 p-3'>
+<Row className='pt-4'  >
+   <Col sm lg={6} className='m-2 p-1'>
    <h1 className='titulo p-1'>DEJANOS TU CONSULTA!</h1>
    <Form className='text-light p-2' onSubmit={handleSubmit}>
 <Form.Group className="mb-3" controlId="formBasicEmail">
