@@ -133,6 +133,7 @@ export const Products = () => {
 
                 <div className="product-actions">
                     <input type="number"
+                    step={1}
                     min={1}
                     max={25}
                     defaultValue="1"
