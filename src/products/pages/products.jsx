@@ -73,10 +73,10 @@ export const Products = () => {
             }
 
 
-            if(cantidadAEnviar > 55) {
+            if(cantidadAEnviar > 25) {
                 Swal.fire({
                     icon: "error",
-                    title: "La cantidad debe ser menor a 55",
+                    title: "La cantidad no puede ser mayor a 25",
                     text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
                     confirmButtonText: 'OK',
                 });
@@ -136,7 +136,7 @@ export const Products = () => {
                 <div className="product-actions">
                     <input type="number"
                     min={1}
-                    max={10}
+                    max={25}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
