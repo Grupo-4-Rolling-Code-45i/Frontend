@@ -152,8 +152,8 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
                 placeholder="3500"
                 name='precio'
                 min={0}
-                max={99999}
-                maxLength={5}
+                max={999999}
+                maxLength={6}
                 value={formData.precio}
                 onChange={handleChange}
               />
