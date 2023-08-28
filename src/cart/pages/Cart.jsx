@@ -24,13 +24,6 @@ export const Cart = () => {
 
         if(currentUser) {
 
-        // // Obtener el token de autenticación del almacenamiento local o donde corresponda
-        // const token = localStorage.getItem('token'); // Asumiendo que el token se almacena en localStorage
-
-        // // Decodificar el token para obtener los datos del usuario, que incluye su ID
-        // const decodedToken = jwt.decode(token);
-        // const usuarioId = decodedToken.userId;
-
         // Obtener carrito petición GET
 
         const usuarioId1 = currentUser._id;
@@ -70,10 +63,10 @@ export const Cart = () => {
         }
 
 
-        if(newQuantity > 55) {
+        if(newQuantity > 25) {
             Swal.fire({
                 icon: "error",
-                title: "La cantidad debe ser menor a 55",
+                title: "La cantidad no puede ser mayor a 25",
                 text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
                 confirmButtonText: 'OK',
             });
@@ -169,7 +162,6 @@ export const Cart = () => {
 
         const usuarioId4 = currentUser._id;
 
-        const nombreProd = carrito.nombre;
         const data = {
             producto: [carrito],
             usuario: usuarioId4
@@ -222,7 +214,7 @@ export const Cart = () => {
                                     type="number"
                                     value={item.cantidad}
                                     min={1}
-                                    max={10}
+                                    max={25}
                                     onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>

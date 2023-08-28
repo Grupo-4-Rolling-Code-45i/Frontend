@@ -35,7 +35,7 @@ export default function Footer() {
           
               <ul>
                <h4 className="h4-footer">Contacto</h4>
-                  <li className="li-footer"><a className="hipervinculo-footer" href="/contacto">Link redes sociales</a></li>
+                  <li className="li-footer"><a className="hipervinculo-footer" href="/contacto">Dejanos un mensaje</a></li>
               </ul>
              
           

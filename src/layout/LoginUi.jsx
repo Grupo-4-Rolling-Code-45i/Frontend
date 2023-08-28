@@ -22,7 +22,7 @@ function LoginUi() {
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
-        text: "Todos los campos son obligatorios",
+        text: "Todos los campos son obligatorios.",
       });
     }
 
@@ -33,7 +33,7 @@ function LoginUi() {
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
-        text: "El correo electronico que ingresaste no es válido",
+        text: "El correo electronico que ingresaste no es válido.",
       });
     }
 
@@ -42,7 +42,7 @@ function LoginUi() {
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
-        text: "La contraseña debe tener al menos 8 caracteres",
+        text: "La contraseña debe tener al menos 8 caracteres.",
       });
     }
 
@@ -89,7 +89,7 @@ function LoginUi() {
         return Swal.fire({
           icon: "error",
           title: "¡Ups!",
-          text: "Datos incorecctos, intentelo nuevamente",
+          text: "Datos incorecctos, intentelo nuevamente.",
         });
       }
     } catch (error) {
@@ -99,7 +99,7 @@ function LoginUi() {
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
-            text: "Datos incorecctos, intentelo nuevamente",
+            text: "Datos incorecctos, intentelo nuevamente.",
           });
           break;
         
@@ -121,7 +121,7 @@ function LoginUi() {
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
-            text: "Datos incorecctos, intentelo nuevamente",
+            text: "Datos incorecctos, intentelo nuevamente.",
           });
           break;
         default:
@@ -129,7 +129,7 @@ function LoginUi() {
           Swal.fire({
             icon: "error",
             title: "¡Ups!",
-            text: "Ocurrió un error inesperado, intentelo nuevamente",
+            text: "Ocurrió un error inesperado, intentelo nuevamente.",
           });
           break;
       }

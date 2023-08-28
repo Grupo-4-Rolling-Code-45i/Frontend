@@ -13,21 +13,16 @@ import { useNavigate } from 'react-router';
 
 export const Contacto = () => {
 
-  // const navigate = useNavigate();
 function handleSubmit(e){
   e.preventDefault();
 
   Swal.fire({
     position: 'center',
     icon: 'success',
-    title: 'Su consulta ha sido enviada!',
+    title: 'Su mensaje ha sido enviado!',
     showConfirmButton: false,
     timer: 1500
   })
-
-  // setTimeout(() => {
-  //   navigate("/home");
-  // }, 2000);
 
 }
 

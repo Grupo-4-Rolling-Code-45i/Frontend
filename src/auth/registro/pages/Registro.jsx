@@ -43,7 +43,7 @@ export const Registro = () => {
             return Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
-                text: 'Todos los campos son obligatorios',                
+                text: 'Todos los campos son obligatorios.',                
               })
         }
         // ! Verificar Email
@@ -53,7 +53,7 @@ export const Registro = () => {
             return Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
-                text: 'El correo electronico que ingresaste no es válido',                
+                text: 'El correo electronico que ingresaste no es válido.',                
               })
         }
         // ! Verificar que las contraseñas sean iguales
@@ -61,7 +61,7 @@ export const Registro = () => {
             return Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
-                text: 'Las contraseñas no coinciden',                
+                text: 'Las contraseñas no coinciden.',                
               })
         }
         // ! Verificar que la edad ingresada sea mayor a 13 años
@@ -69,7 +69,7 @@ export const Registro = () => {
             return Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
-                text: 'Debe ser mayor de 13 años para poder registrarse en nuestro sitio',                
+                text: 'Debe ser mayor de 13 años para poder registrarse en nuestro sitio.',                
               })
         }
         // ! Creo usuario en la base de datos
@@ -88,7 +88,7 @@ export const Registro = () => {
             if (resp.status === 201){
                 Swal.fire({
                     icon: 'success',
-                    title: `Bienvenido a React to my pizza ${nombre}!`,
+                    title: `Bienvenido a React to my Pizza ${nombre}!`,
                     showConfirmButton: false,
                     timer: 2000
                   })
@@ -99,7 +99,7 @@ export const Registro = () => {
                 return Swal.fire({
                     icon: 'error',
                     title: '¡Ups!',
-                    text: 'Ocurrió un error inesperado, intentelo nuevamente',                
+                    text: 'Ocurrió un error inesperado, intentelo nuevamente.',                
                   })
             }
         } catch (error) { 
@@ -114,7 +114,7 @@ export const Registro = () => {
                 return Swal.fire({
                     icon: 'error',
                     title: '¡Ups!',
-                    text: `Ocurrió un error inesperado, intentelo de nuevo`,                
+                    text: `Ocurrió un error inesperado, intentelo de nuevo.`,                
                   }) 
             }
         }

@@ -14,12 +14,7 @@ const ModalLogin = ({show , handleClose}) => {
       <LoginUi/>
 
     </Modal.Body>
-    {/* <Modal.Footer >
-      
-    <Button variant="secondary" size="lg" onClick={handleClose}>
-        Save Changes
-      </Button>
-    </Modal.Footer> */}
+    {}
   </Modal>
   );
 };

@@ -13,14 +13,6 @@ const PrivateRoute = ({ children }) => {
     getAuth();
   }, []);
 
-  // return loading ? (
-  //   <Spinner />
-  // ) : currentUser.rol=="admin"? (
-  //   children
-  // ) : (
-  //   <Navigate to="/" />
-  // );
-
   if (loading) {
     return <Spinner />;
   } else if (currentUser?.rol === "administrador") {
@@ -28,8 +20,6 @@ const PrivateRoute = ({ children }) => {
   } else {
     return <Navigate to="/" />;
   }
-
-
 
 };
 
