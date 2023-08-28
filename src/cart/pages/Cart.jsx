@@ -24,13 +24,6 @@ export const Cart = () => {
 
         if(currentUser) {
 
-        // // Obtener el token de autenticación del almacenamiento local o donde corresponda
-        // const token = localStorage.getItem('token'); // Asumiendo que el token se almacena en localStorage
-
-        // // Decodificar el token para obtener los datos del usuario, que incluye su ID
-        // const decodedToken = jwt.decode(token);
-        // const usuarioId = decodedToken.userId;
-
         // Obtener carrito petición GET
 
         const usuarioId1 = currentUser._id;
@@ -169,7 +162,6 @@ export const Cart = () => {
 
         const usuarioId4 = currentUser._id;
 
-        const nombreProd = carrito.nombre;
         const data = {
             producto: [carrito],
             usuario: usuarioId4

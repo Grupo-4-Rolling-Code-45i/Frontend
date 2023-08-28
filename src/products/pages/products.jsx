@@ -201,14 +201,7 @@ export const Products = () => {
                 <p className='home-precio-producto'>${producto.precio}</p>
                 <div className='home-descripcion-producto'>
                 <p className='contenido-parrafo'>{producto.descripcion}</p>
-
                 </div>
-                
-                <div className='home-descripcion-producto'>
-                <p className='contenido-parrafo'>{producto.descripcion}</p>
-
-                </div>
-                
                 <Link onClick={() => Window.location.reload()} to={`/producto?id=${producto._id}`}>
                 <button className='home-boton-verProducto'>Ver producto</button>
                 </Link>

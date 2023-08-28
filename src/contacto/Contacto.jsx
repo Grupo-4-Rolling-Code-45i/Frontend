@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router';
 
 export const Contacto = () => {
 
-  // const navigate = useNavigate();
 function handleSubmit(e){
   e.preventDefault();
 
@@ -24,10 +23,6 @@ function handleSubmit(e){
     showConfirmButton: false,
     timer: 1500
   })
-
-  // setTimeout(() => {
-  //   navigate("/home");
-  // }, 2000);
 
 }
 
