@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import Form from 'react-bootstrap/Form';
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
@@ -19,6 +20,7 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
+            
             
 
             setProducto(RespProducto)
@@ -52,6 +54,7 @@ export const Products = () => {
         const {currentUser} = useContext(PizzeriaContext)
 
         const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
+
 
 
         const cambiarCantidad = (cant) => {
@@ -133,6 +136,10 @@ export const Products = () => {
 
 
                 
+                
+
+
+                
                 <div className="product-actions">
                     <input type="number"
                     min={1}
@@ -143,11 +150,15 @@ export const Products = () => {
 
 
 
+
+
+
                     <Button variant="danger"
                     onClick={() => agregarProducto()}>
                     Agregar al pedido
                     </Button>
                 </div>
+                
                 
                 </div>
             </Container>
@@ -188,6 +199,11 @@ export const Products = () => {
                 <div className='home-contenedor-info-productos'>
                 <h2 className='home-nombre-producto'>{producto.nombre}</h2>
                 <p className='home-precio-producto'>${producto.precio}</p>
+                <div className='home-descripcion-producto'>
+                <p className='contenido-parrafo'>{producto.descripcion}</p>
+
+                </div>
+                
                 <div className='home-descripcion-producto'>
                 <p className='contenido-parrafo'>{producto.descripcion}</p>
 
