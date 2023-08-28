@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import Form from 'react-bootstrap/Form';
 import { Button , Container } from 'react-bootstrap';
 import '../css/products.css';
@@ -19,6 +20,7 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
+            
             
 
             setProducto(RespProducto)
@@ -54,6 +56,7 @@ export const Products = () => {
         const [cantidadAEnviar, setCantidadAEnviar] = useState(1);
 
 
+
         const cambiarCantidad = (cant) => {
             setCantidadAEnviar(cant);
         };
@@ -73,10 +76,10 @@ export const Products = () => {
             }
 
 
-            if(cantidadAEnviar > 55) {
+            if(cantidadAEnviar > 25) {
                 Swal.fire({
                     icon: "error",
-                    title: "La cantidad debe ser menor a 55",
+                    title: "La cantidad no puede ser mayor a 25",
                     text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
                     confirmButtonText: 'OK',
                 });
@@ -133,13 +136,20 @@ export const Products = () => {
 
 
                 
+                
+
+
+                
                 <div className="product-actions">
                     <input type="number"
                     min={1}
-                    max={10}
+                    max={25}
                     defaultValue="1"
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
+
+
+
 
 
 
@@ -148,6 +158,7 @@ export const Products = () => {
                     Agregar al pedido
                     </Button>
                 </div>
+                
                 
                 </div>
             </Container>
@@ -180,15 +191,19 @@ export const Products = () => {
             {/* Tercer div con productos relacionados */}
                 <h2 className="sec-title">Productos Relacionados</h2>
                     <section className='home-tercer-section-menu'>
-            <h2 className='home-tercer-section-tituloMenu'>Menú</h2>
             <div className='home-contenedor-cards-productos'>
                 
-            {productos.map((producto) => (
+            {productos.sort(() => Math.random() - 0.5).filter((item, idx) => idx < 6).map((producto) => (
             <div key={producto.id} className="home-card-productos">
                 <img src={producto.imagen} alt={producto.nombre} className="home-imagen-productos"/>
                 <div className='home-contenedor-info-productos'>
                 <h2 className='home-nombre-producto'>{producto.nombre}</h2>                
                 <p className='home-precio-producto'>${producto.precio}</p>
+                <div className='home-descripcion-producto'>
+                <p className='contenido-parrafo'>{producto.descripcion}</p>
+
+                </div>
+                
                 <div className='home-descripcion-producto'>
                 <p className='contenido-parrafo'>{producto.descripcion}</p>
 

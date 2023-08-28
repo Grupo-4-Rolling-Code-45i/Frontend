@@ -134,10 +134,12 @@
   gap: 1rem;
   padding-top: 2rem;
   flex-wrap: wrap;
+  margin-left: 3%;
 }
 
 .home-card-productos {
   width: 15%;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -194,6 +196,7 @@
   color: white;
   width: 10rem;
 }
+
 /* Cuarta seccion: Donde encontrarnos */
 .home-cuarta-section-donde-encontrarnos {
   margin-top: 5rem;

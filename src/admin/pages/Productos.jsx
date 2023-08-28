@@ -53,6 +53,7 @@ export const Productos = () => {
         catch(error)
         {
         
+        
     if(error.response.status===401){
       localStorage.removeItem("token");
       navigate("/");
@@ -61,11 +62,11 @@ export const Productos = () => {
         }
     }
     
-  const eliminarProductsDB = async(id) => {
+  const eliminarProductsDB = async(id, nombreProducto) => {
 
     Swal.fire({
-      title: 'Está seguro de eliminar el producto?',
-      text: "esta accion es irreversible!",
+      title: `Está por eliminar la "${nombreProducto}"`,
+      text: "Esta accion es irreversible!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#FF5A5F',
@@ -79,14 +80,16 @@ export const Productos = () => {
 
         try{
           const resp= reactToMyPizzaAPI.delete(`/api/products/delete/${id}`);
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `La pizza seleccionada fue eliminada.`,
+            showConfirmButton: false,
+            timer: 2500
+          });
+
           cargarProductsDB();
-          
-          Swal.fire(
-            'Eliminado!',
-            'el producto fue eliminado.',
-            'success'
-          )
-          
       }
     
       catch(error)
@@ -126,7 +129,7 @@ export const Productos = () => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Todos los campos son obligatorios',
+            text: 'Todos los campos son obligatorios.',
             
           })
     }
@@ -136,7 +139,7 @@ export const Productos = () => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'el precio no puede ser negativo',
+            text: 'El precio no puede ser negativo.',
             
           })
     }
@@ -152,6 +155,11 @@ export const Productos = () => {
     
         try{
             const resp=await reactToMyPizzaAPI.put("/api/products/edit",{_id,nombre,precio,descripcion,imagen});
+            Swal.fire(
+              'Operación procesada',
+              `Actualizaste los datos de la "${nombre}".`,
+              'success'
+            )
             cargarProductsDB();
     
         }
@@ -289,7 +297,7 @@ return(
     <td>{product.precio}</td>
     <td>{product.descripcion}</td>
     <td> <img src={product.imagen} alt="" width={60} /> </td>
-    <td><Button onClick={()=> eliminarProductsDB(product._id)} variant='danger' className='bg-rojo'>Eliminar</Button ></td>
+    <td><Button onClick={()=> eliminarProductsDB(product._id, product.nombre)} variant='danger' className='bg-rojo'>Eliminar</Button ></td>
     <td><Button onClick={()=> editarProductoClick(product)} variant='secondary'>Editar</Button ></td>
   </tr>
 )
