@@ -38,7 +38,7 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { _id, nombre, precio, descripcion, imagen } = formData;
+    const { nombre, precio, descripcion, imagen } = formData;
 
     //validaciones....
 
@@ -86,9 +86,9 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "producto agregado con exito",
+        title: `"${nombre}" agregada con éxito!`,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2500,
       });
 
       obtenerProductos();
@@ -152,8 +152,8 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
                 placeholder="3500"
                 name='precio'
                 min={0}
-                max={999999}
-                maxLength={6}
+                max={99999}
+                maxLength={5}
                 value={formData.precio}
                 onChange={handleChange}
               />

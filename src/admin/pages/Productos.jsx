@@ -61,10 +61,10 @@ export const Productos = () => {
         }
     }
     
-  const eliminarProductsDB = async(id, nombreproducto) => {
+  const eliminarProductsDB = async(id, nombreProducto) => {
 
     Swal.fire({
-      title: `Está por eliminar la "${nombreproducto}"`,
+      title: `Está por eliminar la "${nombreProducto}"`,
       text: "Esta accion es irreversible!",
       icon: 'warning',
       showCancelButton: true,
@@ -79,14 +79,16 @@ export const Productos = () => {
 
         try{
           const resp= reactToMyPizzaAPI.delete(`/api/products/delete/${id}`);
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `La pizza seleccionada fue eliminada.`,
+            showConfirmButton: false,
+            timer: 2500
+          });
+
           cargarProductsDB();
-          
-          Swal.fire(
-            'Eliminado!',
-            `La ${nombreproducto} fue eliminada.`,
-            'success'
-          )
-          
       }
     
       catch(error)
@@ -126,7 +128,7 @@ export const Productos = () => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Todos los campos son obligatorios',
+            text: 'Todos los campos son obligatorios.',
             
           })
     }
@@ -136,7 +138,7 @@ export const Productos = () => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'el precio no puede ser negativo',
+            text: 'El precio no puede ser negativo.',
             
           })
     }
