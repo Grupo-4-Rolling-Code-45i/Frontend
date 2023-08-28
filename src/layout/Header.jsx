@@ -53,7 +53,7 @@ function OffcanvasExample() {
   }, []);
 
 
-  const CerrarNavAbrirLogin = () => { 
+  const CerrarNavAbrirLogin = () => {
     handleCloseNav();
     handleShow();
   }
@@ -163,12 +163,7 @@ function OffcanvasExample() {
                           </NavDropdown.Item>
                         )}
 
-                        {/* <NavDropdown.Item onClick={handleLogin }>
-                          Cerrar sesion
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/registro">
-                          Administrar
-                        </NavDropdown.Item> */}
+                        {}
                       </li>
                     ) : (
                       <li>
@@ -186,12 +181,7 @@ function OffcanvasExample() {
                       </li>
                     )}
 
-                    {/* <NavDropdown.Item href="#action3">
-                      Iniciar sesion
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Crear cuenta
-                    </NavDropdown.Item> */}
+                    {}
                   </NavDropdown>
 
                   {currentUser ? (
@@ -206,10 +196,7 @@ function OffcanvasExample() {
                     <></>
                   )}
 
-                  {/* <Nav.Link > <Link to="/crear">  {" "}
-                    <img src={imagenCarrito} alt="" />  </Link>
-                   
-                  </Nav.Link> */}
+                  {}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
