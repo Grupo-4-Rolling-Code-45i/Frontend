@@ -51,27 +51,20 @@ export const ModalAgregarProducto = ({ obtenerProductos }) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Todos los campos son obligatorios",
+        text: "Todos los campos son obligatorios.",
       });
       return;
     } else if (precio < 0) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "el precio no puede ser negativo",
+        text: "El precio no puede ser negativo.",
       });
       return;
     }
 
     AgregarProductsDB(nombre, precio, descripcion, imagen);
 
-    // Swal.fire({
-    //   position: 'center',
-    //   icon: 'success',
-    //   title: 'producto agregado con exito',
-    //   showConfirmButton: false,
-    //   timer: 1500
-    // })
     handleClose();
   };
 

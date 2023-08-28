@@ -66,7 +66,7 @@ export const Cart = () => {
         if(newQuantity > 55) {
             Swal.fire({
                 icon: "error",
-                title: "La cantidad debe ser menor a 55",
+                title: "La cantidad no puede ser mayor a 55",
                 text: "Tenemos a los mejores pizzeros pero no podemos con tanto!",
                 confirmButtonText: 'OK',
             });
@@ -214,7 +214,7 @@ export const Cart = () => {
                                     type="number"
                                     value={item.cantidad}
                                     min={1}
-                                    max={10}
+                                    max={55}
                                     onChange={(e) => actualizarCantidad(item._id, e.target.value)}
                                 />
                             </td>

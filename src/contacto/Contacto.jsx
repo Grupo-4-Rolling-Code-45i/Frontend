@@ -19,7 +19,7 @@ function handleSubmit(e){
   Swal.fire({
     position: 'center',
     icon: 'success',
-    title: 'Su consulta ha sido enviada!',
+    title: 'Su mensaje ha sido enviado!',
     showConfirmButton: false,
     timer: 1500
   })

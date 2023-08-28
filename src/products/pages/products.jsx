@@ -20,8 +20,6 @@ export const Products = () => {
     try {
         reactToMyPizzaAPI.get(`api/products/get-one/${id}`).then((response) =>{
             const RespProducto = response.data.response;
-            
-            
 
             setProducto(RespProducto)
 
@@ -132,14 +130,7 @@ export const Products = () => {
                 <h1 className="product-title-product-page">{nombre}</h1>
                 <h3 className="product-price-product-page">${precio}</h3>
                 <p>{descripcion}</p>
-                
 
-
-                
-                
-
-
-                
                 <div className="product-actions">
                     <input type="number"
                     min={1}
@@ -148,18 +139,11 @@ export const Products = () => {
                     onChange={(e) => cambiarCantidad(e.target.value)}
                     />
 
-
-
-
-
-
                     <Button variant="danger"
                     onClick={() => agregarProducto()}>
                     Agregar al pedido
                     </Button>
                 </div>
-                
-                
                 </div>
             </Container>
 
