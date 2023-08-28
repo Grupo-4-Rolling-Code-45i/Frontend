@@ -1,9 +1,15 @@
 .container-styles{
+    margin: 0;
     background-image:url("../assets/img/pizza.jpg");
     background-size:cover;
     background-repeat: no-repeat;
-    height:120vh;
+    height: 100vh;
     background-position: center;
+}
+
+.container-styles .row {
+    margin: 0 10% 0 15%;
+    justify-content: space-around;
 }
 
 .titulo
