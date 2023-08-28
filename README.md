@@ -6,7 +6,7 @@ Aplicación web creada con el stack **"MERN"**
 
 ## Enlace a la versión de producción
 
-- [React to my Pizza | Netlify](https://reacttomipizza.netlify.app/ "React to my Pizza | Netlify")
+- [React to my Pizza | Netlify](https://reacttomypizza.netlify.app/ "React to my Pizza | Netlify")
 
 [![](https://i.imgur.com/cG9jrQH.png)](https://reacttomipizza.netlify.app/)
 
