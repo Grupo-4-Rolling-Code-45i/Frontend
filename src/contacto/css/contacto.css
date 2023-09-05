@@ -1,26 +1,23 @@
-.container-styles{
-    margin: 0;
-    background-image:url("../assets/img/pizza.jpg");
-    background-size:cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-position: center;
+.container-styles {
+  margin: 0;
+  background-image: url("../assets/img/pizza.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-position: center;
 }
 
 .container-styles .row {
-    margin: 0 10% 0 15%;
-    justify-content: space-around;
+  margin: 0 10% 0 15%;
+  justify-content: space-around;
 }
 
-.titulo
-{
-    color: #ff5a5f ;
-    
+.titulo {
+  color: #ff5a5f;
 }
 
-#boton
-{
-    color:  #252525 !important;
-    background-color:#fcd581 ;
-    border-color: #fcd581;
+#boton {
+  color: #252525 !important;
+  background-color: #fcd581;
+  border-color: #fcd581;
 }
